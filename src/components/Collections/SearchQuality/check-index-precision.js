@@ -52,10 +52,10 @@ export const checkIndexRecall = async (
 
     logFoo &&
       logFoo(
-        `Point ${pointId} (${
+        `Nokta ${pointId} (${
           idx + 1
         }/${total}) recall@${limit}: ${recall}` +
-        ` (search time: "exact" ${exactSearchElapsed}ms; "regular" ${searchElapsed}ms)`
+        ` (arama süresi: "exact" ${exactSearchElapsed}ms; "regular" ${searchElapsed}ms)`
       );
 
     return recall;

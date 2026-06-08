@@ -116,7 +116,7 @@ const TokenValidatior = ({ setTokenValidatior }) => {
                 <TextField disabled label="Anahtar" value={key} />
                 <TextField disabled label="Değer" value={matches[key]} />
                 <IconButton
-                  aria-label="delete"
+                  aria-label="sil"
                   size="large"
                   onClick={() => {
                     const newMatches = { ...matches };
@@ -134,7 +134,7 @@ const TokenValidatior = ({ setTokenValidatior }) => {
 
             <TextField label="Değer" value={newMatchesValue} onChange={(e) => setNewMatchesValue(e.target.value)} />
             <IconButton
-              aria-label="delete"
+              aria-label="sil"
               size="large"
               onClick={() => {
                 setMatches((prev) => ({

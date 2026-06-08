@@ -65,8 +65,9 @@ describe('collection cluster info', () => {
       </table>
     );
     expect(screen.getByTestId('shard-row').children[0].children[0].textContent).toBe(shard.shard_id.toString());
-    expect(screen.getByText(`Remote (${shard.peer_id})`)).toBeTruthy();
-    expect(screen.getByText(shard.state)).toBeTruthy();
+    expect(screen.getByText(`Uzak (${shard.peer_id})`)).toBeTruthy();
+    // shard.state is 'Active', which maps to 'Aktif'
+    expect(screen.getByText('Aktif')).toBeTruthy();
   });
 
   it('should render CollectionClusterInfo with given data', () => {

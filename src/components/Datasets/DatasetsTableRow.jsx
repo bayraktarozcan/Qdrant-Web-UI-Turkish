@@ -88,7 +88,7 @@ export const DatasetsTableRow = ({ dataset, importDataset }) => {
         <CopyableGroupedNumber value={dataset.vectorCount} />
       </TableCell>
       <TableCell align="center">
-        <Tooltip title="Import Dataset" arrow placement={'top'}>
+        <Tooltip title="Veri Kümesini İçe Aktar" arrow placement={'top'}>
           <Button
             variant="outlined"
             size="small"
@@ -96,14 +96,14 @@ export const DatasetsTableRow = ({ dataset, importDataset }) => {
             onClick={() => setIsImportDialogOpen(true)}
             disabled={importing}
           >
-            Import
+İçe Aktar
           </Button>
         </Tooltip>
       </TableCell>
       <ImportDatasetDialog
         open={isImportDialogOpen}
         onClose={() => setIsImportDialogOpen(false)}
-        content={`Enter collection name for ${dataset.fileName}`}
+        content={`${dataset.fileName} için koleksiyon adını girin`}
         fileName={dataset.fileName}
         actionHandler={importDataset}
         setImporting={setImporting}

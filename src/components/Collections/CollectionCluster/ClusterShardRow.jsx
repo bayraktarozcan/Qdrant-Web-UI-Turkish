@@ -2,6 +2,15 @@ import { TableCell, TableRow, Typography } from '@mui/material';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const SHARD_STATE_LABELS = {
+  Active: 'Aktif',
+  Dead: 'Ölü',
+  Partial: 'Kısmi',
+  Empty: 'Boş',
+  Resharding: 'Yeniden Parçalama',
+  Listener: 'Dinleyici',
+};
+
 const ClusterShardRow = ({ shard, clusterPeerId }) => {
   return (
     <TableRow data-testid="shard-row">
@@ -12,12 +21,12 @@ const ClusterShardRow = ({ shard, clusterPeerId }) => {
       </TableCell>
       <TableCell>
         <Typography variant="subtitle1" component={'span'} color="text.secondary">
-          {shard.peer_id ? `Remote (${shard.peer_id})` : `Local (${clusterPeerId ?? 'unknown'})`}
+          {shard.peer_id ? `Uzak (${shard.peer_id})` : `Yerel (${clusterPeerId ?? 'bilinmiyor'})`}
         </Typography>
       </TableCell>
       <TableCell>
         <Typography variant="subtitle1" component={'span'} color="text.secondary">
-          {shard.state}
+          {SHARD_STATE_LABELS[shard.state] || shard.state}
         </Typography>
       </TableCell>
     </TableRow>

@@ -35,7 +35,7 @@ export const TutorialFooter = () => {
         <Grid>
           {currentPageIndex >= 0 && (
             <Button sx={{ alignItems: 'flex-start' }} onClick={handlePrev} startIcon={<ArrowBack />}>
-              Previous
+              Önceki
             </Button>
           )}
         </Grid>
@@ -43,7 +43,7 @@ export const TutorialFooter = () => {
         <Grid>
           {currentPageIndex < pageKeys.length - 1 && (
             <Button sx={{ alignItems: 'flex-start' }} onClick={handleNext} endIcon={<ArrowForward />}>
-              Next
+Sonraki
             </Button>
           )}
         </Grid>

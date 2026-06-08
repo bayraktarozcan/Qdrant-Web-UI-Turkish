@@ -120,7 +120,7 @@ export default function Notifications() {
           ref={anchorRef}
           aria-controls={open ? 'notifications-popup' : undefined}
           aria-haspopup="true"
-          aria-label="unreadNotifications"
+          aria-label="okunmamışBildirimler"
           data-ga-event-category="AppBar"
           data-ga-event-action="toggleNotifications"
           onClick={handleToggle}
@@ -149,18 +149,18 @@ export default function Notifications() {
       >
         <div>
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, mr: 2 }}>
-            <Typography variant={'h5'}>Notifications</Typography>
+            <Typography variant={'h5'}>Bildirimler</Typography>
             <Box sx={{ flexGrow: 1 }} />
             <IconButton onClick={handleToggle}>
               <Close />
             </IconButton>
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 2, mr: 2 }}>
-            <Typography variant={'body1'}>Configuration Issues Detected</Typography>
+            <Typography variant={'body1'}>Yapılandırma Sorunları Tespit Edildi</Typography>
             <Box sx={{ flexGrow: 1 }} />
             {issues.length > 0 && (
               <Button color="error" variant="contained" onClick={handleDeleteAll}>
-                Delete all issues
+                Tüm sorunları sil
               </Button>
             )}
           </Box>
@@ -175,7 +175,7 @@ export default function Notifications() {
                 ))
               ) : (
                 <ListItem>
-                  <Typography color="text.secondary">No notifications (issues)</Typography>
+                  <Typography color="text.secondary">Bildirim yok (sorun)</Typography>
                 </ListItem>
               )
             ) : (
@@ -232,7 +232,7 @@ function Notification({ issue }) {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <CheckCircleOutlineIcon color="success" />
           <Typography color="success" variant="body1">
-            <b>Success! Indexing successfully acknowledged.</b>
+            <b>Başarılı! İndeksleme başarıyla kabul edildi.</b>
           </Typography>
         </Box>
       ) : (
@@ -289,7 +289,7 @@ ${JSON.stringify(issue.solution.immediate.action.body, null, 2)}`}
                   language="json"
                   withRunButton={true}
                   onRun={handleRun}
-                  title="Solution"
+                  title="Çözüm"
                   editable={false}
                 />
               </Box>
@@ -298,7 +298,7 @@ ${JSON.stringify(issue.solution.immediate.action.body, null, 2)}`}
           {issue.solution && issue.solution.immediate_choice && (
             <React.Fragment>
               <Typography gutterBottom variant="body" color="text.secondary">
-                Choose one of the following solutions:
+                Aşağıdaki çözümlerden birini seçin:
               </Typography>
               {issue.solution.immediate_choice.map((choice, index) => (
                 <React.Fragment key={index}>
@@ -320,7 +320,7 @@ ${JSON.stringify(choice.action.body, null, 2)}`}
                       language="json"
                       withRunButton={true}
                       onRun={handleRun}
-                      title="Solution"
+                      title="Çözüm"
                       editable={false}
                     />
                   </Box>
@@ -336,7 +336,7 @@ ${JSON.stringify(choice.action.body, null, 2)}`}
 
           {issue.timestamp && (
             <Typography variant="caption" color="text.secondary">
-              {new Date(issue.timestamp).toLocaleDateString('en-US', {
+              {new Date(issue.timestamp).toLocaleDateString('tr-TR', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',

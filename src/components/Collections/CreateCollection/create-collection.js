@@ -290,7 +290,7 @@ export async function createCollection(qdrantClient, configuration, recreate = f
     if (recreate) {
       await qdrantClient.deleteCollection(collectionName);
     } else {
-      throw new Error(`Collection "${collectionName}" already exists. Remove it first to recreate.`);
+      throw new Error(`"${collectionName}" koleksiyonu zaten mevcut. Yeniden oluşturmak için önce onu kaldırın.`);
     }
   }
 

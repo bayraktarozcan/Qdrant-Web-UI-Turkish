@@ -33,7 +33,7 @@ const PointPayload = ({ point, showImage = true, onPayloadEdit, setLoading, butt
             {buttonsToShow.includes('edit') && (
               <Tooltip title={'Yükü düzenle'} placement={'left'}>
                 <IconButton
-                  aria-label="add payload"
+                  aria-label="yük ekle"
                   onClick={() => setOpenPayloadEditor(true)}
                   sx={{ color: 'text.primary' }}
                 >

@@ -22,7 +22,7 @@ function History({ state, code, handleEditorChange, toggleDrawer }) {
         return bigIntJSON.stringify(val, null, 2);
       } catch {
         const errorJson = {
-          error: `HERE ${val}`,
+          error: `JSON ayrıştırma hatası: ${val}`,
         };
         return bigIntJSON.stringify(errorJson, null, 2);
       }

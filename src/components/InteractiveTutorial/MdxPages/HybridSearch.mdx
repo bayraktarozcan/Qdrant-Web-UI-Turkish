@@ -1,13 +1,13 @@
-export const title = 'Hybrid Search';
+export const title = 'Hibrit Arama';
 
-# Hybrid Search with Sparse and Dense Vectors 
+# Seyrek ve Yoğun Vektörlerle Hibrit Arama
 
-In this tutorial, we will continue to explore hybrid search in Qdrant, focusing on both sparse and dense vectors. 
-This time, we will work with a collection related to `terraforming_plans`, and each data point will have a brief description of its content in the `payload`.
+Bu eğitimde, hem seyrek hem de yoğun vektörlere odaklanarak Qdrant'ta hibrit aramayı keşfetmeye devam edeceğiz.
+Bu sefer, `terraforming_plans` ile ilgili bir koleksiyonla çalışacağız ve her veri noktasının `payload`'unda içeriğinin kısa bir açıklaması olacak.
 
-## Step 1: Create a collection with sparse vectors
+## Adım 1: Seyrek vektörlerle koleksiyon oluşturun
 
-We'll start by creating a collection named `terraforming_plans`. This collection will support both dense vectors for semantic similarity and sparse vectors for keyword-based search.
+`terraforming_plans` adında bir koleksiyon oluşturarak başlayacağız. Bu koleksiyon, anlamsal benzerlik için yoğun vektörleri ve anahtar kelime tabanlı arama için seyrek vektörleri destekleyecek.
 
 ```json withRunButton=true
 PUT /collections/terraforming_plans
@@ -22,15 +22,15 @@ PUT /collections/terraforming_plans
 }
 ```
 
-### Explanation:
-- **`vectors`**: Configures the dense vector space with 4 dimensions, using cosine similarity for distance measurement.
-- **`sparse_vectors`**: Configures the collection to support sparse vectors for keyword-based indexing.
+### Açıklama:
+- **`vectors`**: Yoğun vektör uzayını 4 boyutla, mesafe ölçümü için cosine similarity kullanarak yapılandırır.
+- **`sparse_vectors`**: Koleksiyonu, anahtar kelime tabanlı indeksleme için seyrek vektörleri destekleyecek şekilde yapılandırır.
 
 ---
 
-## Step 2: Insert data points with descriptions
+## Adım 2: Açıklamalarla veri noktaları ekleyin
 
-Now, we'll insert three data points into the `terraforming_plans` collection, each related to a different celestial body (Mars, Jupiter, and Venus). Each point will have both a dense and sparse vector, along with a `description` in the `payload`.
+Şimdi, her biri farklı bir gök cismi (Mars, Jupiter ve Venus) ile ilgili olan `terraforming_plans` koleksiyonuna üç veri noktası ekleyeceğiz. Her nokta, `payload`'da bir `description` ile birlikte hem yoğun hem de seyrek bir vektöre sahip olacak.
 
 ```json withRunButton=true
 PUT /collections/terraforming_plans/points
@@ -79,16 +79,16 @@ PUT /collections/terraforming_plans/points
 }
 ```
 
-### Explanation:
-- **Dense vector**: Represents the semantic features of the data point in a numerical form.
-- **Sparse vector (`keywords`)**: Represents the keyword features, with `indices` mapped to specific keywords and `values` representing their relevance.
-- **`payload`**: Provides a short description of the data point's content, making it easier to understand what each vector represents.
+### Açıklama:
+- **Yoğun vektör**: Veri noktasının anlamsal özelliklerini sayısal biçimde temsil eder.
+- **Seyrek vektör (`keywords`)**: Anahtar kelime özelliklerini temsil eder; `indices` belirli anahtar kelimelere, `values` ise bunların alaka düzeyine eşlenir.
+- **`payload`**: Her vektörün neyi temsil ettiğini anlamayı kolaylaştıran, veri noktasının içeriği hakkında kısa bir açıklama sağlar.
 
 ---
 
-## Step 3: Perform a hybrid search
+## Adım 3: Hibrit arama gerçekleştirin
 
-Next, perform a hybrid search on the `terraforming_plans` collection, combining both keyword-based (sparse) and semantic (dense) search using Reciprocal Rank Fusion (RRF).
+Ardından, Karşılıklı Sıra Füzyonu (RRF) kullanarak hem anahtar kelime tabanlı (seyrek) hem de anlamsal (yoğun) aramayı birleştiren `terraforming_plans` koleksiyonunda hibrit bir arama gerçekleştirin.
 
 ```json withRunButton=true
 POST /collections/terraforming_plans/points/query
@@ -114,20 +114,20 @@ POST /collections/terraforming_plans/points/query
 }
 ```
 
-### Explanation:
-- **`prefetch`**: Contains two subqueries:
-  - **Keyword-based query**: Uses the sparse vector (keywords) to search by keyword relevance.
-  - **Dense vector query**: Uses the dense vector for semantic similarity search.
-- **`fusion: rrf`**: Combines the results from both queries using Reciprocal Rank Fusion (RRF), giving priority to points ranked highly in both searches.
-- **`limit`**: Limits the number of results to the top 10.
+### Açıklama:
+- **`prefetch`**: İki alt sorgu içerir:
+  - **Anahtar kelime tabanlı sorgu**: Anahtar kelime alaka düzeyine göre arama yapmak için seyrek vektörü (keywords) kullanır.
+  - **Yoğun vektör sorgusu**: Anlamsal benzerlik araması için yoğun vektörü kullanır.
+- **`fusion: rrf`**: Her iki sorgudan gelen sonuçları Karşılıklı Sıra Füzyonu (RRF) kullanarak birleştirir ve her iki aramada da yüksek sıralanan noktalara öncelik verir.
+- **`limit`**: Sonuçları en iyi 10 ile sınırlar.
 
 ---
 
-## Summary
+## Özet
 
-In this tutorial, we:
-1. Created a Qdrant collection called `terraforming_plans` that supports hybrid search using both dense and sparse vectors.
-2. Inserted data points with both dense and sparse vectors, as well as descriptions in the payload.
-3. Performed a hybrid search combining keyword relevance and dense vector similarity using Reciprocal Rank Fusion.
+Bu eğitimde:
+1. `terraforming_plans` adında, hem yoğun hem de seyrek vektörleri kullanarak hibrit aramayı destekleyen bir Qdrant koleksiyonu oluşturduk.
+2. Payload'da açıklamaların yanı sıra hem yoğun hem de seyrek vektörlerle veri noktaları ekledik.
+3. Karşılıklı Sıra Füzyonu kullanarak anahtar kelime alaka düzeyini ve yoğun vektör benzerliğini birleştiren bir hibrit arama gerçekleştirdik.
 
-This approach allows for effective hybrid search, combining textual and semantic search capabilities, which can be highly useful in applications involving complex search requirements.
+Bu yaklaşım, metinsel ve anlamsal arama yeteneklerini birleştiren etkili bir hibrit aramaya olanak tanır ve karmaşık arama gereksinimleri içeren uygulamalarda oldukça kullanışlı olabilir.

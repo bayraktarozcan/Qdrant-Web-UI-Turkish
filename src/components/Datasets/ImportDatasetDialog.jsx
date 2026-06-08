@@ -52,7 +52,7 @@ const ImportDatasetDialog = ({ open, onClose, content, actionHandler, fileName, 
         }}
       >
         <div>
-          <Typography variant="h5">Import Dataset</Typography>
+          <Typography variant="h5">Veri Kümesini İçe Aktar</Typography>
           <Typography color="textSecondary" sx={{ mt: 2 }} variant="body1">
             {content}
           </Typography>
@@ -62,10 +62,10 @@ const ImportDatasetDialog = ({ open, onClose, content, actionHandler, fileName, 
         sx={{ mx: 3, mb: 3 }}
         id="collection-name-input"
         variant="outlined"
-        placeholder="Collection Name"
+        placeholder="Koleksiyon Adı"
         value={collectionName}
         error={error}
-        helperText={error ? 'Collection name is required' : ''}
+        helperText={error ? 'Koleksiyon adı gerekli' : ''}
         onChange={handleInputChange}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
@@ -84,10 +84,10 @@ const ImportDatasetDialog = ({ open, onClose, content, actionHandler, fileName, 
         }}
       >
         <Button sx={{ mr: 1 }} variant="outlined" color="inherit" onClick={handleClose}>
-          Cancel
+          İptal
         </Button>
         <Button variant="contained" onClick={handleActionClick} disabled={!collectionName}>
-          Import Dataset
+          Veri Kümesini İçe Aktar
         </Button>
       </Box>
     </Dialog>

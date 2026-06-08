@@ -43,9 +43,9 @@ const MemoryNode = ({ node, level = 0, maxBytes, mode = 'memory' }) => {
 
   const tooltipContent = (
     <Box sx={{ fontFamily: 'Menlo, monospace', fontSize: '0.75rem', lineHeight: 1.6 }}>
-      <div>RAM:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {formatBytes(ram)} (heap)</div>
-      <div>Cached:&nbsp;&nbsp; {formatBytes(cached)} (page cache)</div>
-      <div>Expected: {formatBytes(expected)}</div>
+      <div>RAM:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {formatBytes(ram)} (yığın)</div>
+      <div>Önbellek:&nbsp;&nbsp; {formatBytes(cached)} (sayfa önbelleği)</div>
+      <div>Beklenen: {formatBytes(expected)}</div>
       <div>Disk:&nbsp;&nbsp;&nbsp;&nbsp; {formatBytes(disk)}</div>
     </Box>
   );
@@ -194,7 +194,7 @@ const MemoryNode = ({ node, level = 0, maxBytes, mode = 'memory' }) => {
                     fontSize: '0.65rem',
                   }}
                 >
-                  cache {cacheRatio}%
+                  önbellek {cacheRatio}%
                 </Typography>
               )}
             </Box>

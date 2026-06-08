@@ -50,14 +50,14 @@ export default function ColorModeToggle() {
   return (
     <StyledToggleButtonGroup value={toggleValue} exclusive onChange={handleModeChange} size="small">
       <StyledToggleButton value="dark">
-        <Tooltip title="Dark Mode">
+        <Tooltip title="Karanlık Mod">
           <StyledIcon>
             <Moon size={20} />
           </StyledIcon>
         </Tooltip>
       </StyledToggleButton>
       <StyledToggleButton value="light">
-        <Tooltip title="Light Mode">
+        <Tooltip title="Aydınlık Mod">
           <StyledIcon>
             <Sun size={20} />
           </StyledIcon>

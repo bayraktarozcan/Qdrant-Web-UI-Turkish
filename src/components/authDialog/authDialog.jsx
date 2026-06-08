@@ -73,7 +73,7 @@ export function ApiKeyDialog({ open, setOpen, onApply }) {
             }}
             autoFocus
             id="api-key-input"
-            placeholder="API Key"
+            placeholder="API Anahtarı"
             error={error}
             helperText={error ? 'API Anahtarı gerekli' : ''}
             type={showApiKey ? 'text' : 'password'}
@@ -84,7 +84,7 @@ export function ApiKeyDialog({ open, setOpen, onApply }) {
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
-                      aria-label="toggle password visibility"
+                      aria-label="şifre görünürlüğünü değiştir"
                       onClick={handleClickShowApiKey}
                       onMouseDown={handleMouseDown}
                     >

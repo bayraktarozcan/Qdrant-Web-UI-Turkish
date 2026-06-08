@@ -6,53 +6,53 @@ import { Filter, SlidersHorizontal, ScanText, VectorSquare, Grip, SearchCode, Ne
 
 const TUTORIAL_SECTIONS = {
   vectorSearch: {
-    title: 'Vector Search',
+    title: 'Vektör Arama',
     tutorials: [
       {
         icon: Filter,
-        title: 'Filtering - Beginner',
-        description: 'Filter search results using basic payload conditions.',
+        title: 'Filtreleme - Başlangıç',
+        description: 'Temel yük koşullarını kullanarak arama sonuçlarını filtreleyin.',
         href: '/tutorial/filteringbeginner',
       },
       {
         icon: SlidersHorizontal,
-        title: 'Filtering - Advanced',
-        description: 'Try advanced filtering based on nested payload conditions.',
+        title: 'Filtreleme - İleri',
+        description: 'İç içe yük koşullarına dayalı gelişmiş filtrelemeyi deneyin.',
         href: '/tutorial/filteringadvanced',
       },
       {
         icon: ScanText,
-        title: 'Filtering - Full Text',
-        description: 'Search for substrings, tokens, or phrases within text fields.',
+        title: 'Filtreleme - Tam Metin',
+        description: 'Metin alanlarında alt dizeler, belirteçler veya ifadeler arayın.',
         href: '/tutorial/filteringfulltext',
       },
       {
         icon: VectorSquare,
-        title: 'Multivector Search',
-        description: 'Work with data represented by ColBERT multivectors.',
+        title: 'Çoklu Vektör Arama',
+        description: 'ColBERT çoklu vektörleriyle temsil edilen verilerle çalışın.',
         href: '/tutorial/multivectors',
       },
       {
         icon: Grip,
-        title: 'Sparse Vector Search',
-        description: 'Use sparse vectors to get specific search results.',
+        title: 'Seyrek Vektör Arama',
+        description: 'Belirli arama sonuçları elde etmek için seyrek vektörleri kullanın.',
         href: '/tutorial/sparsevectors',
       },
       {
         icon: SearchCode,
-        title: 'Hybrid Search',
-        description: 'Combine dense and sparse vectors for more accurate search results.',
+        title: 'Hibrit Arama',
+        description: 'Daha doğru arama sonuçları için yoğun ve seyrek vektörleri birleştirin.',
         href: '/tutorial/hybridsearch',
       },
     ],
   },
   multitenancy: {
-    title: 'Setup Guide',
+    title: 'Kurulum Kılavuzu',
     tutorials: [
       {
         icon: Network,
-        title: 'Multitenancy',
-        description: 'Manage multiple users within a single collection.',
+        title: 'Çok Kiracılı',
+        description: 'Tek bir koleksiyonda birden çok kullanıcıyı yönetin.',
         href: '/tutorial/multitenancy',
       },
     ],

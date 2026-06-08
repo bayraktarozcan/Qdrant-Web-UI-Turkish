@@ -94,7 +94,7 @@ describe('ShardTransferDialog', () => {
     expect(shardDetailsSection).toHaveTextContent('No:');
     expect(shardDetailsSection).toHaveTextContent('1'); // shard_id
     expect(shardDetailsSection).toHaveTextContent('Durum:');
-    expect(shardDetailsSection).toHaveTextContent('Active'); // state
+    expect(shardDetailsSection).toHaveTextContent('Aktif'); // state
     expect(shardDetailsSection).toHaveTextContent('Anahtar:');
     expect(shardDetailsSection).toHaveTextContent('test-key'); // shard_key
     expect(shardDetailsSection).toHaveTextContent('Kaynak Düğüm:');
@@ -283,6 +283,6 @@ describe('ShardTransferDialog', () => {
       />
     );
 
-    expect(screen.getByText('Inactive')).toBeInTheDocument();
+    expect(screen.getByText('Inactive')).toBeInTheDocument(); // fallback: unknown states stay as-is
   });
 });

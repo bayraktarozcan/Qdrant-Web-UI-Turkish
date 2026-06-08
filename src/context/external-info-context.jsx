@@ -27,13 +27,13 @@ export function ExternalInfoProvider({ children }) {
       const response = await fetch(externalInfoPath);
 
       if (!response.ok) {
-        throw new Error(`Failed to load external info: ${response.status}`);
+        throw new Error(`Harici bilgi yüklenemedi: ${response.status}`);
       }
 
       const data = await response.json();
       setExternalInfo(data);
     } catch (err) {
-      console.error('Error fetching external info:', err);
+      console.error('Harici bilgi getirme hatası:', err);
       setError(err);
       setExternalInfo(null);
     } finally {

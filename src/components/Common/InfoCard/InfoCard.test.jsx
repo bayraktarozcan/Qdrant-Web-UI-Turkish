@@ -81,8 +81,8 @@ describe('InfoCard', () => {
       expect(screen.getByText('Test Title')).toBeInTheDocument();
       expect(screen.getByText('Test Description')).toBeInTheDocument();
       expect(screen.getByTestId('mock-icon')).toBeInTheDocument();
-      expect(screen.getByText('Learn More')).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: 'Learn More' })).toBeInTheDocument();
+      expect(screen.getByText('Daha Fazla Bilgi')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Daha Fazla Bilgi' })).toBeInTheDocument();
 
       const icon = screen.getByTestId('mock-icon');
       expect(icon).toHaveAttribute('stroke', testTheme.palette.info.main);
@@ -147,8 +147,8 @@ describe('InfoCard', () => {
         </TestWrapper>
       );
 
-      expect(screen.getByText('Learn More')).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: 'Learn More' })).toBeInTheDocument();
+      expect(screen.getByText('Daha Fazla Bilgi')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Daha Fazla Bilgi' })).toBeInTheDocument();
     });
 
     it('should hide CTA button when showCta is false', () => {
@@ -158,8 +158,8 @@ describe('InfoCard', () => {
         </TestWrapper>
       );
 
-      expect(screen.queryByText('Learn More')).not.toBeInTheDocument();
-      expect(screen.queryByRole('button', { name: 'Learn More' })).not.toBeInTheDocument();
+      expect(screen.queryByText('Daha Fazla Bilgi')).not.toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: 'Daha Fazla Bilgi' })).not.toBeInTheDocument();
     });
 
     it('should add margin-left class for side icon with CTA', () => {
@@ -169,7 +169,7 @@ describe('InfoCard', () => {
         </TestWrapper>
       );
 
-      const linkButton = screen.getByRole('button', { name: 'Learn More' });
+      const linkButton = screen.getByRole('button', { name: 'Daha Fazla Bilgi' });
       expect(linkButton).toHaveClass('add-margin-left');
     });
   });

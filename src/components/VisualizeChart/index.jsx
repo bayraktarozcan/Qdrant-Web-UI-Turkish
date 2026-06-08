@@ -30,7 +30,7 @@ function intoDatasets(
     // No grouping
     return [
       {
-        label: 'Data',
+        label: 'Veri',
         data,
         offsets: Array.from({ length: data.length }, (_, i) => i),
         pointBackgroundColor: [...colors],
@@ -48,7 +48,7 @@ function intoDatasets(
 
     if (!group) {
       // If specified field is not present in the payload, fallback to 'Unknown'
-      group = 'Unknown';
+      group = 'Bilinmiyor';
     }
 
     if (!groups[group]) {
@@ -208,7 +208,7 @@ const VisualizeChart = ({
                 const selectedPoint = handlePointHover(context.chart);
                 if (!selectedPoint) return '';
                 const id = selectedPoint.id;
-                return `Point ${id}`;
+                return `Nokta ${id}`;
               },
             },
           },
@@ -225,7 +225,7 @@ const VisualizeChart = ({
 
     worker.onmessage = (m) => {
       if (m.data.error) {
-        enqueueSnackbar(`Visualization Unsuccessful, error: ${m.data.error}`, {
+        enqueueSnackbar(`Görselleştirme başarısız, hata: ${m.data.error}`, {
           variant: 'error',
         });
       } else if (m.data.result && m.data.result.length > 0) {
@@ -239,7 +239,7 @@ const VisualizeChart = ({
 
         myChart.update();
       } else {
-        enqueueSnackbar(`Visualization Unsuccessful, error: Unexpected Error Occured`, { variant: 'error' });
+        enqueueSnackbar(`Görselleştirme başarısız, hata: Beklenmeyen Hata Oluştu`, { variant: 'error' });
       }
     };
 

@@ -1,10 +1,10 @@
-export const title = "Basic Filtering"
+export const title = "Temel Filtreleme"
 
-# Basic Filtering - Clauses and Conditions
+# Temel Filtreleme - Cümleler ve Koşullar
 
-## Step 1: Create a Collection
+## Adım 1: Koleksiyon Oluşturun
 
-First, create a collection called `terraforming`. Each point will have vectors of size 4, and the distance metric is set to `Dot`:
+İlk olarak, `terraforming` adında bir koleksiyon oluşturun. Her nokta, boyutu 4 olan vektörlere sahip olacak ve mesafe ölçütü `Dot` olarak ayarlanacak:
 
 ```json withRunButton="true"
 PUT collections/terraforming
@@ -16,9 +16,9 @@ PUT collections/terraforming
 }
 ```
 
-## Step 2: Add Points with Vectors and Payloads
+## Adım 2: Vektör ve Payload İçeren Noktalar Ekleyin
 
-Now, add points to the collection. Each point includes an `id`,  `vector` and a `payload` with various attributes like `land type`, `color`, `life presence`, and `humidity`:
+Şimdi koleksiyona noktalar ekleyin. Her nokta bir `id`, `vector` ve `land type`, `color`, `life presence` ve `humidity` gibi çeşitli niteliklere sahip bir `payload` içerir:
 
 ```json withRunButton="true"
 PUT collections/terraforming/points
@@ -58,9 +58,9 @@ PUT collections/terraforming/points
 }
 ```
 
-## Step 3: Index the fields before filtering
+## Adım 3: Filtrelemeden önce alanları indeksleyin
 
-**Note:** You should always index a field before filtering. If you use filtering before you create an index, Qdrant will search through the entire dataset in an unstructured way. Your search performance will be very slow.
+**Not:** Filtreleme yapmadan önce bir alanı her zaman indekslemelisiniz. İndeks oluşturmadan önce filtreleme kullanırsanız, Qdrant tüm veri kümesinde yapılandırılmamış bir şekilde arama yapar. Arama performansınız çok yavaş olur.
 
 ```json withRunButton="true"
 PUT /collections/terraforming/index
@@ -89,11 +89,11 @@ PUT /collections/terraforming/index
 }
 ```
 
-## Step 4: Filtering examples
+## Adım 4: Filtreleme örnekleri
 
-### Filter by exact match
+### Tam eşleşme ile filtreleme
 
-Finally, this query retrieves points where the `color` is `"black"`, using a straightforward `match` condition:
+Son olarak, bu sorgu, basit bir `match` koşulu kullanarak `color` değeri `"black"` olan noktaları getirir:
 
 ```json withRunButton="true"
 POST collections/terraforming/points/scroll
@@ -113,9 +113,9 @@ POST collections/terraforming/points/scroll
 }
 ```
 
-### Combined filter by `must` clause
+### `must` cümlesi ile birleşik filtre
 
-In this example, the query returns points where `life` is `true` and `color` is `"green"`. These must conditions both need to be met for a point to be returned.
+Bu örnekte sorgu, `life` değeri `true` ve `color` değeri `"green"` olan noktaları döndürür. Bir noktanın döndürülmesi için bu must koşullarının her ikisinin de karşılanması gerekir.
 
 ```json withRunButton=true
 POST collections/terraforming/points/scroll
@@ -131,9 +131,9 @@ POST collections/terraforming/points/scroll
 }
 ```
 
-### Filter by `should` clause
+### `should` cümlesi ile filtreleme
 
-Here, you are filtering for points where `life` is `false` and `color` is `"black"`. These conditions act as *should* clauses, meaning points meeting either or both criteria will be returned:
+Burada, `life` değeri `false` veya `color` değeri `"black"` olan noktalar arıyorsunuz. Bu koşullar *should* cümleleri olarak çalışır, yani her iki kritere veya bunlardan yalnızca birine uyan noktalar döndürülür:
 
 ```json withRunButton=true
 POST collections/terraforming/points/scroll
@@ -152,9 +152,9 @@ POST collections/terraforming/points/scroll
 }
 ```
 
-### Filter by `must_not` clause
+### `must_not` cümlesi ile filtreleme
 
-This query filters out any points where `life` is `false`. Points matching this condition are excluded from the results.
+Bu sorgu, `life` değeri `false` olan noktaları filtreler. Bu koşula uyan noktalar sonuçlardan çıkarılır.
 
 ```json withRunButton=true
 POST collections/terraforming/points/scroll
@@ -172,9 +172,9 @@ POST collections/terraforming/points/scroll
 }
 ```
 
-### Filter by `range` condition
+### `range` koşulu ile filtreleme
 
-This query filters points based on a range of `humidity`. Here, the `humidity` value must be exactly 40:
+Bu sorgu, noktaları `humidity` aralığına göre filtreler. Burada `humidity` değeri tam olarak 40 olmalıdır:
 
 ```json withRunButton="true"
 POST collections/terraforming/points/scroll

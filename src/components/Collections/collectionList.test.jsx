@@ -83,8 +83,8 @@ describe('CollectionsList', () => {
         />
       </MemoryRouter>
     );
-    expect(screen.getByText('green')).toBeInTheDocument();
-    expect(screen.getByText('yellow')).toBeInTheDocument();
+    expect(screen.getByText('Yeşil')).toBeInTheDocument();
+    expect(screen.getByText('Sarı')).toBeInTheDocument();
     expect(screen.getByText('1000')).toBeInTheDocument();
     expect(screen.getByText('500')).toBeInTheDocument();
     expect(screen.getByText('128')).toBeInTheDocument();

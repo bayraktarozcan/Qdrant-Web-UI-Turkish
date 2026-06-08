@@ -38,7 +38,7 @@ const CodeEditorWindow = ({ onChange, code, onChangeResult, customRequestSchema,
       } catch (e) {
         return {
           reqBody: codeText,
-          error: 'Fix the position brackets to run & check the json',
+          error: 'JSON çalıştırmak ve kontrol etmek için konum parantezlerini düzeltin',
         };
       }
     }
@@ -47,7 +47,7 @@ const CodeEditorWindow = ({ onChange, code, onChangeResult, customRequestSchema,
   function onRun(codeText) {
     const data = codeParse(codeText);
     if (data.error) {
-      enqueueSnackbar(`Invalid JSON: ${JSON.stringify(data.error)}`, {
+      enqueueSnackbar(`Geçersiz JSON: ${JSON.stringify(data.error)}`, {
         variant: 'error',
       });
       return data;

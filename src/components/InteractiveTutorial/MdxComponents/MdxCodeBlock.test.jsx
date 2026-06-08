@@ -50,7 +50,7 @@ describe('CodeBlock', () => {
     expect(occurrences).toBe(2);
     expect(screen.getAllByText(/}/).length).toBe(2);
 
-    expect(screen.getByText(/Run/)).toBeInTheDocument();
+    expect(screen.getByText(/Çalıştır/)).toBeInTheDocument();
   });
 
   it('should render CodeBlock without run button', () => {
@@ -92,7 +92,7 @@ describe('CodeBlock', () => {
 
     const runButton = screen.getByTestId('code-block-run');
     expect(runButton).toBeInTheDocument();
-    expect(runButton).toHaveTextContent('Run');
+    expect(runButton).toHaveTextContent('Çalıştır');
 
     await userEvent.click(runButton);
 

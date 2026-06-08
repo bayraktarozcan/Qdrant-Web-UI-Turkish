@@ -13,7 +13,7 @@ export const getSnackbarOptions = (variant, closeSnackbar, autoHideDuration = nu
         closeSnackbar(key);
       }}
     >
-      Dismiss
+      Kapat
     </Button>
   ),
 });

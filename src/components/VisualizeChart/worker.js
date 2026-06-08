@@ -21,6 +21,14 @@ function getVectorType(vector) {
   return 'unknown';
 }
 
+const vectorTypeLabels = {
+  vector: 'vektör',
+  sparse: 'seyrek',
+  multivector: 'çoklu vektör',
+  named: 'adlandırılmış',
+  unknown: 'bilinmiyor',
+};
+
 self.onmessage = function (e) {
   let now = new Date().getTime();
 
@@ -36,7 +44,7 @@ self.onmessage = function (e) {
   if (!points || points.length === 0) {
     self.postMessage({
       data: [],
-      error: 'No data found',
+      error: 'Veri bulunamadı',
     });
     return;
   }
@@ -44,7 +52,7 @@ self.onmessage = function (e) {
   if (points.length === 1) {
     self.postMessage({
       data: [],
-      error: `cannot perform ${params.algorithm || DEFAULT_ALGORITHM} on single point`,
+      error: `${params.algorithm || DEFAULT_ALGORITHM} tek nokta üzerinde gerçekleştirilemiyor`,
     });
     return;
   }
@@ -72,14 +80,16 @@ self.onmessage = function (e) {
     if (vectorType === 'named') {
       self.postMessage({
         data: [],
-        error: 'Please select a valid vector name (by `using`), default vector is not defined',
+        error: 'Lütfen geçerli bir vektör adı seçin (`using` ile), varsayılan vektör tanımlanmamış',
       });
       return;
     }
 
     self.postMessage({
       data: [],
-      error: 'Vector visualization is not supported for vector type: ' + vectorType,
+      error:
+        'Vektör görselleştirmesi şu vektör türü için desteklenmiyor: ' +
+        (vectorTypeLabels[vectorType] || vectorType),
     });
     return;
   }

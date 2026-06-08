@@ -42,7 +42,7 @@ const OptimizationNode = ({ node, level = 0, totalDuration, maxTime }) => {
   let progressText = '';
 
   if (!node.started_at) {
-    progressText = 'pending';
+    progressText = 'bekliyor';
   } else if (duration > 0) {
     // Show duration for all tasks
     if (duration < 1000) {
@@ -102,10 +102,10 @@ const OptimizationNode = ({ node, level = 0, totalDuration, maxTime }) => {
             >
               {node.name ||
                 (level === 0 ? (
-                  'Optimizations'
+                  'İyileştirmeler'
                 ) : (
                   <Typography component="span" variant="body2" fontStyle="italic">
-                    default
+                    varsayılan
                   </Typography>
                 ))}
             </Typography>
@@ -150,9 +150,9 @@ const OptimizationNode = ({ node, level = 0, totalDuration, maxTime }) => {
                   <Tooltip
                     title={
                       progressInfo
-                        ? `Progress: ${progressInfo}${progressText ? ` | Duration: ${progressText}` : ''}`
+                        ? `İlerleme: ${progressInfo}${progressText ? ` | Süre: ${progressText}` : ''}`
                         : progressText
-                        ? `Duration: ${progressText}`
+                        ? `Süre: ${progressText}`
                         : ''
                     }
                   >

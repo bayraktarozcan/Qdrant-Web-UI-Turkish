@@ -82,6 +82,13 @@ const getStatusTooltip = (status) => {
   }
 };
 
+const STATUS_LABELS = {
+  green: 'Yeşil',
+  yellow: 'Sarı',
+  grey: 'Gri',
+  red: 'Kırmızı',
+};
+
 const CollectionStatus = ({ status, collectionName }) => (
   <Tooltip title={getStatusTooltip(status)} placement="top">
     <StatusBadge
@@ -91,7 +98,7 @@ const CollectionStatus = ({ status, collectionName }) => (
       sx={{ textDecoration: 'none' }}
     >
       <div className="status-dot" />
-      <Typography className="status-text">{status}</Typography>
+      <Typography className="status-text">{STATUS_LABELS[status] || status}</Typography>
     </StatusBadge>
   </Tooltip>
 );

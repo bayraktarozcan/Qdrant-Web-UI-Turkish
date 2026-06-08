@@ -26,7 +26,7 @@ export default function AccessibilityToggle() {
 
   return (
     <>
-      <Tooltip title="Accessibility">
+      <Tooltip title="Erişilebilirlik">
         <IconButton
           size="large"
           onClick={handleClick}
@@ -48,7 +48,7 @@ export default function AccessibilityToggle() {
           <ListItemIcon>
             <Contrast size={18} />
           </ListItemIcon>
-          <ListItemText>High Contrast</ListItemText>
+          <ListItemText>Yüksek Kontrast</ListItemText>
           {isHighContrast && <Check size={16} style={{ marginLeft: 8 }} />}
         </MenuItem>
       </Menu>

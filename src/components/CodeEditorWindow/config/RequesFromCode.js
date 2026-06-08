@@ -45,7 +45,7 @@ export function codeParse(codeText) {
         method: null,
         endpoint: null,
         reqBody: null,
-        error: 'Fix the Position brackets to run & check the json',
+        error: 'JSON\'u çalıştırmak ve kontrol etmek için konum parantezlerini düzeltin',
       };
     }
   }
@@ -54,21 +54,21 @@ export function codeParse(codeText) {
       method: null,
       endpoint: null,
       reqBody: reqBody,
-      error: 'Add Headline or remove the line gap between json and headline (if any)',
+      error: 'Başlık ekleyin veya json ile başlık arasındaki satır boşluğunu kaldırın (varsa)',
     };
   } else if (method === '') {
     return {
       method: null,
       endpoint: endpoint,
       reqBody: reqBody,
-      error: 'Add method',
+      error: 'HTTP yöntemi ekleyin',
     };
   } else if (endpoint === '') {
     return {
       method: method,
       endpoint: null,
       reqBody: reqBody,
-      error: 'Add endpoint',
+      error: 'Uç nokta ekleyin',
     };
   } else {
     return {

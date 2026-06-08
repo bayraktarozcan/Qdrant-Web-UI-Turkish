@@ -42,7 +42,7 @@ function Collection() {
                 value={currentTab}
                 onChange={handleTabChange}
                 aria-label="sekmeler"
-                aria-description="Collection tabs menu"
+                aria-description="Koleksiyon sekmeleri menüsü"
               >
                 <Tab label="Noktalar" value={'points'} />
                 <Tab label="Bilgi" value={'info'} />

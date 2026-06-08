@@ -27,7 +27,7 @@ root.render(
                 closeSnackbar(snackbarId);
               }}
             >
-              Dismiss
+              Kapat
             </Button>
           )}
         >

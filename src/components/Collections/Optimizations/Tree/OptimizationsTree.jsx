@@ -88,11 +88,11 @@ const OptimizationsTree = ({ data, requestTime, ...other }) => {
             ))
           ) : !data ? (
             <Typography variant="body2" color="text.secondary" align="center">
-              Loading optimizations...
+              İyileştirmeler yükleniyor...
             </Typography>
           ) : (
             <Typography variant="body2" color="text.secondary" align="center" sx={{ pt: 1 }}>
-              No running optimizations
+              Çalışan iyileştirme yok
             </Typography>
           )}
         </Box>

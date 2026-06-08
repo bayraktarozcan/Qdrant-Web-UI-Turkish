@@ -1,13 +1,13 @@
-export const title = 'Load Content';
+export const title = 'Veri Yükleme';
 
-# Load Data into a Collection from a Remote Snapshot
+# Uzak Anlık Görüntüden Koleksiyona Veri Yükleme
 
-In this tutorial, we will guide you through loading data into a Qdrant collection from a remote snapshot.
+Bu eğitimde, uzak bir anlık görüntüden Qdrant koleksiyonuna nasıl veri yükleyeceğinizi adım adım göstereceğiz.
 
-## Step 1: Import a snapshot to a collection
+## Adım 1: Koleksiyona anlık görüntü aktarın
 
-To start, create the collection `midjourney` and load vector data into it.
-The collection will take on the parameters of the snapshot, with vector size of 512, and similarity measured using the Cosine distance.
+Başlamak için `midjourney` koleksiyonunu oluşturun ve içine vektör verilerini yükleyin.
+Koleksiyon, anlık görüntünün parametrelerini alacak; vektör boyutu 512 ve benzerlik Cosine mesafesi ile ölçülecek.
 
 ```json withRunButton=true
 PUT /collections/midjourney/snapshots/recover
@@ -16,19 +16,19 @@ PUT /collections/midjourney/snapshots/recover
 }
 ```
 
-Wait a few moments while the vectors from the snapshot are added to the `midjourney` collection.
+Anlık görüntüdeki vektörlerin `midjourney` koleksiyonuna eklenmesi için birkaç dakika bekleyin.
 
-## Step 2: Verify the data upload
+## Adım 2: Veri yüklemeyi doğrulayın
 
-After the data has been imported, it's important to verify that it has been successfully uploaded. You can do this by checking the number of vectors (or points) in the collection.
+Veriler aktarıldıktan sonra, başarıyla yüklendiğini doğrulamak önemlidir. Bunu, koleksiyondaki vektör (veya nokta) sayısını kontrol ederek yapabilirsiniz.
 
-Run the following request to get the vector count:
+Vektör sayısını almak için aşağıdaki isteği çalıştırın:
 
 ```json withRunButton=true
 POST /collections/midjourney/points/count
 ```
 
-The collection should contain 5,417 data points. 
+Koleksiyon 5.417 veri noktası içermelidir.
 
-### Step 3: Open the collection UI
-You can also [inspect your collection](/dashboard#/collections/midjourney/) to review the uploaded data.
+### Adım 3: Koleksiyon arayüzünü açın
+Yüklenen verileri incelemek için [koleksiyonunuzu görüntüleyebilirsiniz](/dashboard#/collections/midjourney/).

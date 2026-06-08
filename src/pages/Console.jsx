@@ -121,7 +121,7 @@ function Console() {
                 '&:hover': { backgroundColor: green[700] },
               }}
               color="info"
-              aria-label="add"
+              aria-label="ekle"
               onClick={() => setOpenCommands(true)}
             >
               <Code />

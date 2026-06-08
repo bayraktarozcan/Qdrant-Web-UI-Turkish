@@ -201,7 +201,7 @@ describe('createCollection', () => {
       payload_indexes: [],
     };
     await expect(createCollection(qdrantClient, configuration, false)).rejects.toThrow(
-      'Collection "existing_collection" already exists.'
+      '"existing_collection" koleksiyonu zaten mevcut.'
     );
   });
 

@@ -1,14 +1,14 @@
-export const title = 'Multitenancy';
+export const title = 'Çok Kiracılılık';
 
-# Separate User Data in Multitenant Setups
+# Çok Kiracılı Ortamlarda Kullanıcı Verilerini Ayırma
 
-In this tutorial, we will cover how to implement multitenancy in Qdrant. Multitenancy allows you to host multiple tenants or clients within a single instance of Qdrant, ensuring data isolation and access control between tenants. This feature is essential for use cases where you need to serve different clients while maintaining separation of their data.
+Bu eğitimde, Qdrant'ta çok kiracılılığın nasıl uygulanacağını ele alacağız. Çok kiracılılık, birden fazla kiracıyı veya istemciyi tek bir Qdrant örneğinde barındırmanıza olanak tanır ve kiracılar arasında veri yalıtımı ile erişim kontrolü sağlar. Bu özellik, farklı müşterilere hizmet verirken verilerinin ayrımını korumanız gereken kullanım durumları için çok önemlidir.
 
-## Step 1: Create a collection
+## Adım 1: Koleksiyon oluşturun
 
-Imagine you are running a recommendation service where different departments (tenants) store their data in Qdrant. By using **payload-based multitenancy**, you can keep all tenants’ data in a single collection but filter the data based on a unique tenant identifier.
+Bir öneri hizmeti işlettiğinizi ve farklı departmanların (kiracıların) verilerini Qdrant'ta depoladığınızı hayal edin. **Payload tabanlı çok kiracılılık** kullanarak, tüm kiracıların verilerini tek bir koleksiyonda tutabilir ancak verileri benzersiz bir kiracı tanımlayıcıya göre filtreleyebilirsiniz.
 
-Run the following request to create a shared collection for all tenants:
+Tüm kiracılar için paylaşılan bir koleksiyon oluşturmak üzere aşağıdaki isteği çalıştırın:
 
 ```json withRunButton=true
 PUT collections/central_library
@@ -20,11 +20,11 @@ PUT collections/central_library
 }
 ```
 
-## Step 2: Build a tenant index
+## Adım 2: Bir kiracı indeksi oluşturun
 
-Qdrant supports efficient indexing based on the tenant's identifier to optimize multitenant searches. By enabling tenant indexing, you can structure data on disk for faster tenant-specific searches, improving performance and reducing disk reads.
+Qdrant, çok kiracılı aramaları optimize etmek için kiracının tanımlayıcısına dayalı verimli indekslemeyi destekler. Kiracı indekslemeyi etkinleştirerek, verileri daha hızlı kiracıya özel aramalar için diskte yapılandırabilir, performansı artırabilir ve disk okumalarını azaltabilirsiniz.
 
-Run the following request to enable indexing for the tenant identifier (`group_id`):
+Kiracı tanımlayıcısı (`group_id`) için indekslemeyi etkinleştirmek üzere aşağıdaki isteği çalıştırın:
 
 ```json withRunButton=true
 PUT /collections/central_library/index
@@ -37,11 +37,11 @@ PUT /collections/central_library/index
 }
 ```
 
-## Step 3: Load vectors for tenants
+## Adım 3: Kiracılar için vektörleri yükleyin
 
-Next, you will load data into the shared collection. Each data point is tagged with a tenant-specific identifier in the payload. This identifier (`group_id`) ensures that tenants' data remains isolated even when stored in the same collection.
+Ardından, paylaşılan koleksiyona veri yükleyeceksiniz. Her veri noktası, payload'da kiracıya özgü bir tanımlayıcı ile etiketlenir. Bu tanımlayıcı (`group_id`), aynı koleksiyonda depolandıklarında bile kiracıların verilerinin yalıtılmış kalmasını sağlar.
 
-Run the following request to insert data points:
+Veri noktalarını eklemek için aşağıdaki isteği çalıştırın:
 
 ```json withRunButton=true
 PUT /collections/central_library/points
@@ -78,11 +78,11 @@ PUT /collections/central_library/points
 }
 ```
 
-## Step 4: Perform a filtered query
+## Adım 4: Filtrelenmiş bir sorgu gerçekleştirin
 
-When querying the shared collection, use the `group_id` payload field to ensure tenants can only access their own data. The filter in this query ensures that only points belonging to the specified `group_id` are returned.
+Paylaşılan koleksiyonu sorgularken, kiracıların yalnızca kendi verilerine erişebilmesini sağlamak için `group_id` payload alanını kullanın. Bu sorgudaki filtre, yalnızca belirtilen `group_id`'ye ait noktaların döndürülmesini sağlar.
 
-Run the following request to search for data specific to `user_1`:
+`user_1`'e özgü verileri aramak için aşağıdaki isteği çalıştırın:
 
 ```json withRunButton=true
 POST /collections/central_library/points/query
@@ -103,12 +103,12 @@ POST /collections/central_library/points/query
 }
 ```
 
-## Step 5: Add more data
+## Adım 5: Daha fazla veri ekleyin
 
-If needed, you can add more data points for multiple tenants. This example shows how to expand the collection with new points tagged with different `group_id` values:
+Gerekirse, birden fazla kiracı için daha fazla veri noktası ekleyebilirsiniz. Bu örnek, koleksiyonun farklı `group_id` değerleriyle etiketlenmiş yeni noktalarla nasıl genişletileceğini gösterir:
 
 <details open={true}>
-<summary>Add more data</summary>
+<summary>Daha fazla veri ekle</summary>
 
 ```json withRunButton=true
 PUT /collections/central_library/points
@@ -164,11 +164,11 @@ PUT /collections/central_library/points
 ```
 </details>
 
-## Step 6: Group query results
+## Adım 6: Sorgu sonuçlarını gruplayın
 
-You can group query results by specific fields, such as `group_id`, to get an overview of each tenant's data. This query groups results by `group_id` and limits the number of groups and the number of points per group.
+Sorgu sonuçlarını `group_id` gibi belirli alanlara göre gruplayarak her kiracının verilerine genel bir bakış elde edebilirsiniz. Bu sorgu, sonuçları `group_id`'ye göre gruplar ve grup sayısı ile grup başına nokta sayısını sınırlar.
 
-Run the following request to group the results by `group_id`:
+Sonuçları `group_id`'ye göre gruplamak için aşağıdaki isteği çalıştırın:
 
 ```json withRunButton=true
 POST /collections/central_library/points/query/groups
@@ -180,4 +180,3 @@ POST /collections/central_library/points/query/groups
     "with_payload": true  
 }
 ```
-

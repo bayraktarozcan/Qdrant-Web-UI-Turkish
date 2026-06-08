@@ -5,6 +5,15 @@ import { JsonViewer } from '@textea/json-viewer';
 import { CopyButton } from '../../Common/CopyButton';
 import { useTheme } from '@mui/material/styles';
 
+const SHARD_STATE_LABELS = {
+  Active: 'Aktif',
+  Dead: 'Ölü',
+  Partial: 'Kısmi',
+  Empty: 'Boş',
+  Resharding: 'Yeniden Parçalama',
+  Listener: 'Dinleyici',
+};
+
 const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loading = false, collectionName }) => {
   const theme = useTheme();
 
@@ -120,7 +129,7 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
                   fontWeight: 'medium',
                 }}
               >
-                {shard.state}
+                {SHARD_STATE_LABELS[shard.state] || shard.state}
               </Typography>
 
               {shard.shard_key && (

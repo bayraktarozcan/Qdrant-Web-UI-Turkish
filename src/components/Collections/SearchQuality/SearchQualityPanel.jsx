@@ -94,7 +94,7 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
   const [inProgressVector, setInProgressVector] = useState(null);
 
   const [code, setCode] = useState(`
-// Run this code to estimate ANN recall versus exact search
+// ANN geri çağırmayı tam aramaya karşı tahmin etmek için bu kodu çalıştırın
 {
   "limit": 10,
 
@@ -103,7 +103,7 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
   }
 }
 
-// You can specify filters and different vector fields
+// Filtreler ve farklı vektör alanları belirtebilirsiniz
 // {
 //   "limit": 100,
 //   "using": "vector_name",
@@ -169,7 +169,7 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
   });
 
   if (!vectors) {
-    return <>No vectors</>;
+    return <>Vektör yok</>;
   }
 
   const onCheckIndexQuality = async ({ using = '', limit = 10, params = null, filter = null, timeout }) => {
@@ -217,7 +217,7 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
       // n-1 denominator: Bessel's correction for estimating population std dev from a sample
       const stdDev = round(Math.sqrt(recalls.reduce((x, val) => x + (val - avgRecall) ** 2, 0) / (recalls.length - 1)));
 
-      loggingFoo('Mean recall@' + limit + ' for collection: ' + avgRecall + ' ± ' + stdDev);
+      loggingFoo('Ortalama recall@' + limit + ' koleksiyon için: ' + avgRecall + ' ± ' + stdDev);
 
       setRecall((prev) => {
         return {
@@ -253,7 +253,7 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
               control={<Switch checked={advancedMod} onChange={() => setAdvancedMod(!advancedMod)} size="medium" />}
               label={
                 <Typography component={'span'} variant={'body1'}>
-                  Advanced Mode
+                  Gelişmiş Mod
                 </Typography>
               }
             />
@@ -273,22 +273,22 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
             >
               <TableCell sx={{ width: '25%' }}>
                 <Typography variant="subtitle1" fontWeight={600}>
-                  Vector Name
+                  Vektör Adı
                 </Typography>
               </TableCell>
               <TableCell sx={{ width: '25%' }}>
                 <Typography variant="subtitle1" fontWeight={600}>
-                  Size
+                  Boyut
                 </Typography>
               </TableCell>
               <TableCell sx={{ width: '25%' }}>
                 <Typography variant="subtitle1" fontWeight={600}>
-                  Distance
+                  Mesafe
                 </Typography>
               </TableCell>
               <TableCell sx={{ width: '25%' }}>
                 <Typography variant="subtitle1" fontWeight={600}>
-                  Recall
+Geri Çağırma
                 </Typography>
               </TableCell>
             </TableRow>

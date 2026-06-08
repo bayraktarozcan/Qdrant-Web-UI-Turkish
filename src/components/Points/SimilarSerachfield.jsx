@@ -18,7 +18,7 @@ function SimilarSerachfield({ conditions, onConditionChange, usingVector }) {
 
   const getChipValue = (condition) => {
     if (usingVector && condition.type === 'id') {
-      return condition.key + ': ' + condition.value + ' using ' + usingVector;
+      return condition.key + ': ' + condition.value + ' üzerinde ' + usingVector;
     }
     return condition.key + ': ' + condition.value;
   };

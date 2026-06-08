@@ -152,7 +152,9 @@ describe('parser', () => {
     requests = codeParse(block.blockText);
     expect(requests.method).toEqual(null);
     expect(requests.endpoint).toEqual(null);
-    expect(requests.error).toEqual('Fix the Position brackets to run & check the json');
+    expect(requests.error).toEqual(
+      "JSON'u çalıştırmak ve kontrol etmek için konum parantezlerini düzeltin",
+    );
 
     // 38
     // {

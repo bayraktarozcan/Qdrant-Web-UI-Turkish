@@ -46,7 +46,7 @@ const CommandSearch = ({ commands, setCommands }) => {
       label="Komut ara"
       variant="outlined"
       fullWidth
-      placeholder={'GET collections'}
+      placeholder={'GET koleksiyonlar'}
       inputRef={ref}
       InputProps={{
         startAdornment: (

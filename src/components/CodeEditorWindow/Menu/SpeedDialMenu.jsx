@@ -15,7 +15,7 @@ function SpeedDialMenu({ actions }) {
 
   return (
     <SpeedDial
-      ariaLabel="SpeedDial tooltip example"
+      ariaLabel="Hızlı menü araç ipucu örneği"
       sx={{ position: 'absolute', bottom: '106px', right: '49px' }}
       icon={<Bolt />}
       onClose={handleClose}

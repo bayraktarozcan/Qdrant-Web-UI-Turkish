@@ -40,7 +40,7 @@ const VectorsConfigChips = ({ collectionConfigParams, collectionName, sx = {} })
 
   const renderVectorChips = (vectorName, vectorConfig) => {
     const chips = [
-      <StyledChip key="name" label={vectorName || 'Default'} title={'Vektör Adı'} />,
+      <StyledChip key="name" label={vectorName || 'Varsayılan'} title={'Vektör Adı'} />,
       <StyledChip key="size" label={vectorConfig.size} title={'Boyut'} />,
       <StyledChip key="distance" label={vectorConfig.distance} title={'Uzaklık'} />,
     ];
@@ -65,7 +65,7 @@ const VectorsConfigChips = ({ collectionConfigParams, collectionName, sx = {} })
   if (collectionConfigParams.vectors.size) {
     allChips.push(
       <VectorChipsContainer key="default-vector">
-        {renderVectorChips('Default', collectionConfigParams.vectors)}
+        {renderVectorChips('Varsayılan', collectionConfigParams.vectors)}
       </VectorChipsContainer>
     );
   }

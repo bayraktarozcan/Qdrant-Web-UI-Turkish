@@ -48,7 +48,7 @@ export const buildFilterInputFromConditions = (conditionsList) => {
       if (condition.isIdFilter) {
         return `id:${condition.value}`;
       }
-      const readableValue = condition.value === null ? 'null' : condition.value === '' ? '(empty)' : condition.value;
+      const readableValue = condition.value === null ? 'null' : condition.value === '' ? '(boş)' : condition.value;
       return `${condition.key}:${readableValue}`;
     })
     .join(' ');
@@ -168,7 +168,7 @@ export const parseFilterString = (filterText, payloadSchema) => {
     let value;
     if (rawValue.toLowerCase() === 'null') {
       value = null;
-    } else if (rawValue === '(empty)') {
+    } else if (rawValue === '(boş)') {
       value = '';
     } else {
       value = normalizeValueBySchema(rawValue, key, payloadSchema);

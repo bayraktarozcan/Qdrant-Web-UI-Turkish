@@ -1,14 +1,14 @@
 import { useSnackbar } from 'notistack';
 import { getSnackbarOptions } from '../components/Common/utils/snackbarOptions';
 
-export const useCopyToClipboard = ({ successMessage = 'Copied to clipboard', duration = 1000 }) => {
+export const useCopyToClipboard = ({ successMessage = 'Panoya kopyalandı', duration = 1000 }) => {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const successSnackbarOptions = getSnackbarOptions('success', closeSnackbar, duration);
   const errorSnackbarOptions = getSnackbarOptions('error', closeSnackbar);
 
   const copyToClipboard = async (text) => {
     if (window.isSecureContext === false) {
-      enqueueSnackbar('Clipboard access is not available in insecure contexts.', { variant: 'warning' });
+      enqueueSnackbar('Pano erişimi güvenli olmayan bağlamlarda kullanılamaz.', { variant: 'warning' });
       return false;
     }
 

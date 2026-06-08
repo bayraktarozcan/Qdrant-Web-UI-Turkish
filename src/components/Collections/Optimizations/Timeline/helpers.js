@@ -37,7 +37,7 @@ export const createChartConfig = (timelineData = [], theme, onSelectRef, range) 
     labels,
     datasets: [
       {
-        label: 'Optimizations',
+        label: 'İyileştirmeler',
         data: floatingBars,
         backgroundColor: [], // will be filled/updated later
         borderRadius: 4,

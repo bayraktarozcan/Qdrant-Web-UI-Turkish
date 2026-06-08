@@ -15,33 +15,32 @@ import { useSnackbar } from 'notistack';
 
 const query = `
 
-// Try me!
+// Beni dene!
 
 {
   "limit": 500
 }
 
-// Specify request parameters to select data for visualization.
+// Görselleştirme için veri seçmek üzere istek parametrelerini belirtin.
 //
-// Available parameters:
+// Kullanılabilir parametreler:
 //
-// - 'limit': maximum number of vectors to visualize.
-//            *Warning*: large values may cause browser to freeze.
+// - 'limit': görselleştirilecek maksimum vektör sayısı.
+//            *Uyarı*: büyük değerler tarayıcının donmasına neden olabilir.
 //
-// - 'filter': filter expression to select vectors for visualization.
-//             See https://qdrant.tech/documentation/concepts/filtering/
+// - 'filter': görselleştirme için vektörleri seçmek üzere filtre ifadesi.
+//             Bakınız: https://qdrant.tech/documentation/concepts/filtering/
 //
-// - 'color_by': specify score or payload field to use for coloring points.
-//               How to use:
+// - 'color_by': noktaları renklendirmek için puan veya payload alanı belirtin.
+//               Kullanımı:
 //
 //                "color_by": {
 //                  "payload": "field_name"
 //                }
 //
-// - 'using': specify which vector to use for visualization
-//                  if there are multiple.
+// - 'using': birden fazla varsa görselleştirme için hangi vektörün kullanılacağını belirtin.
 //
-// - 'algorithm': specify algorithm to use for visualization. Available options: 'TSNE', 'UMAP', 'PCA'.
+// - 'algorithm': görselleştirme için kullanılacak algoritma. Seçenekler: 'TSNE', 'UMAP', 'PCA'.
 
 
 `;
@@ -86,23 +85,23 @@ function Visualize() {
       const result = await requestData(qdrantClient, collectionName, data);
       setResult(result);
     } catch (e) {
-      enqueueSnackbar(`Request error: ${e.message}`, { variant: 'error' });
+      enqueueSnackbar(`İstek hatası: ${e.message}`, { variant: 'error' });
     }
   };
 
   const filterRequestSchema = (vectorNames) => ({
-    description: 'Filter request',
+    description: 'Filtre isteği',
     type: 'object',
     properties: {
       limit: {
-        description: 'Page size. Default: 10',
+        description: 'Sayfa boyutu. Varsayılan: 10',
         type: 'integer',
         format: 'uint',
         minimum: 1,
         nullable: true,
       },
       filter: {
-        description: 'Look only for points which satisfies this conditions. If not provided - all points.',
+        description: 'Yalnızca bu koşulları sağlayan noktalara bak. Belirtilmezse - tüm noktalar.',
         anyOf: [
           {
             $ref: '#/components/schemas/Filter',
@@ -113,28 +112,28 @@ function Visualize() {
         ],
       },
       using: {
-        description: 'Specify which vector to use for visualization',
+        description: 'Görselleştirme için hangi vektörün kullanılacağını belirtin',
         type: 'string',
         enum: vectorNames,
       },
       color_by: {
-        description: 'Color points by this field',
+        description: 'Noktaları bu alana göre renklendir',
         anyOf: [
           {
             type: 'string', // Name of the field to use for coloring
           },
           {
-            description: 'field name',
+            description: 'alan adı',
             type: 'object',
             properties: {
               payload: {
-                description: 'Name of the field to use for coloring',
+                description: 'Renklendirme için kullanılacak alan adı',
                 type: 'string',
               },
             },
           },
           {
-            description: 'query',
+            description: 'sorgu',
             type: 'object',
             properties: {
               query: {
@@ -148,7 +147,7 @@ function Visualize() {
         ],
       },
       algorithm: {
-        description: 'Algorithm to use for visualization',
+        description: 'Görselleştirme için kullanılacak algoritma',
         type: 'string',
         enum: ['TSNE', 'UMAP', 'PCA'],
         default: 'TSNE',

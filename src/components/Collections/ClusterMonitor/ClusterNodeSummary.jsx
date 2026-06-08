@@ -12,7 +12,7 @@ const WIDE_QUERY = '@container nodeSummary (min-width: 200px)';
 
 function sortedShardStateCounts(shards) {
   const stateCounts = shards.reduce((acc, shard) => {
-    const key = shard.state || 'Unknown';
+    const key = shard.state || 'Bilinmiyor';
     acc[key] = (acc[key] || 0) + 1;
     return acc;
   }, {});

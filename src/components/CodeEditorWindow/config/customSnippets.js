@@ -1,6 +1,6 @@
 export const customSnippets = [
   {
-    documentation: 'Create Simple Collection',
+    documentation: 'Basit Koleksiyon Oluştur',
     insertText: `PUT collections/\${1:new_collection_name}
 {
   "vectors": {
@@ -10,7 +10,7 @@ export const customSnippets = [
 }`,
   },
   {
-    documentation: 'Create Hybrid Collection',
+    documentation: 'Hibrit Koleksiyon Oluştur',
     insertText: `PUT collections/\${1:new_collection_name}
 {
   "vectors": {

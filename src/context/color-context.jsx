@@ -36,7 +36,7 @@ export function ColorModeProvider({ children, initialMode }) {
       const mode = payload?.mode ?? payload?.qdrantTheme ?? payload;
       if (mode === 'light' || mode === 'dark' || mode === 'high-contrast') {
         setColorMode(mode);
-        event.source.postMessage(`{ status: 'success', message: 'Color mode changed to ${mode}' }`, event.origin);
+        event.source.postMessage(`{ status: 'success', message: 'Renk modu ${mode} olarak değiştirildi' }`, event.origin);
       }
     };
 

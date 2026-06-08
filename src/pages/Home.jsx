@@ -71,7 +71,7 @@ function HomeContent() {
               {cloudInfo?.cluster_name ? (
                 <Box sx={{ flexGrow: 1, pl: '140px', display: 'flex', alignItems: 'center', gap: 1 }}>
                   <Typography variant="body1" sx={{ color: theme.palette.text.primary }}>
-                    cluster
+                    küme
                   </Typography>
                   <Typography variant="body1" sx={{ color: theme.palette.text.primary }}>
                     /

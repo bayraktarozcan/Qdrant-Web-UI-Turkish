@@ -87,7 +87,7 @@ CollectionTableRow.propTypes = {
 const CollectionsList = ({ collections, getCollectionsCall, refreshCollection, isRefreshing }) => {
   return (
     <StyledTableContainer>
-      <Table aria-label="simple table">
+      <Table aria-label="koleksiyon tablosu">
         <StyledTableHead>
           <TableRow>
             <StyledHeaderCell width="25%">Ad</StyledHeaderCell>

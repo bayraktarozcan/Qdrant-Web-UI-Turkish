@@ -105,7 +105,7 @@ function PointImage({ data, sx }) {
               borderRadius: '5px',
             }}
           >
-            Close [ESC]
+            Kapat [ESC]
           </Typography>
           <img
             src={fullScreenImg}

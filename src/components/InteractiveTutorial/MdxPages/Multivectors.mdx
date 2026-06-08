@@ -1,14 +1,14 @@
-export const title = 'Multivector Search';
+export const title = 'Çoklu Vektör Arama';
 
-# Search with ColBERT Multivectors
+# ColBERT Çoklu Vektörleri ile Arama
 
-In Qdrant, multivectors allow you to store and search multiple vectors for each point in your collection. Additionally, you can store payloads, which are key-value pairs containing metadata about each point. This tutorial will show you how to create a collection, insert points with multivectors and payloads, and perform a search.
+Qdrant'ta çoklu vektörler, koleksiyonunuzdaki her nokta için birden fazla vektör depolamanıza ve aramanıza olanak tanır. Ayrıca, her nokta hakkında meta veri içeren anahtar-değer çiftleri olan payload'ları da depolayabilirsiniz. Bu eğitim, bir koleksiyon oluşturmayı, çoklu vektörler ve payload'lar içeren noktalar eklemeyi ve arama yapmayı gösterecektir.
 
-## Step 1: Create a collection with multivectors
+## Adım 1: Çoklu vektörlerle koleksiyon oluşturun
 
-To use multivectors, you need to configure your collection to store multiple vectors per point. The collection’s configuration specifies the vector size, distance metric, and multivector settings, such as the comparator function.
+Çoklu vektörleri kullanmak için, koleksiyonunuzu nokta başına birden fazla vektör depolayacak şekilde yapılandırmanız gerekir. Koleksiyonun yapılandırması, vektör boyutunu, mesafe ölçütünü ve karşılaştırıcı işlevi gibi çoklu vektör ayarlarını belirtir.
 
-Run the following request to create a collection with multivectors:
+Çoklu vektörlerle bir koleksiyon oluşturmak için aşağıdaki isteği çalıştırın:
 
 ```json withRunButton=true
 PUT collections/multivector_collection
@@ -23,11 +23,11 @@ PUT collections/multivector_collection
 }
 ```
 
-## Step 2: Insert points with multivectors and payloads
+## Adım 2: Çoklu vektörler ve payload'lar içeren noktalar ekleyin
 
-Now that the collection is set up, you can insert points where each point contains multiple vectors and a payload. Payloads store additional metadata, such as the planet name and its type.
+Koleksiyon hazır olduğuna göre, her noktanın birden fazla vektör ve bir payload içerdiği noktalar ekleyebilirsiniz. Payload'lar, gezegen adı ve türü gibi ek meta verileri depolar.
 
-Run the following request to insert points with multivectors and payloads:
+Çoklu vektörler ve payload'lar içeren noktalar eklemek için aşağıdaki isteği çalıştırın:
 
 ```json withRunButton=true
 PUT collections/multivector_collection/points
@@ -84,11 +84,11 @@ PUT collections/multivector_collection/points
 }
 ```
 
-## Step 3: Query the collection 
+## Adım 3: Koleksiyonu sorgulayın
 
-To perform a search with multivectors, you can pass multiple query vectors. Qdrant will compare the query vectors against the multivectors and return the most similar results based on the comparator defined for the collection (`max_sim`). You can also request the payloads to be returned along with the search results.
+Çoklu vektörlerle arama yapmak için birden fazla sorgu vektörü iletebilirsiniz. Qdrant, sorgu vektörlerini çoklu vektörlerle karşılaştırır ve koleksiyon için tanımlanan karşılaştırıcıya (`max_sim`) göre en benzer sonuçları döndürür. Arama sonuçlarıyla birlikte payload'ların da döndürülmesini isteyebilirsiniz.
 
-Run the following request to search with multivectors and retrieve the payloads:
+Çoklu vektörlerle arama yapmak ve payload'ları almak için aşağıdaki isteği çalıştırın:
 
 ```json withRunButton=true
 POST collections/multivector_collection/points/query

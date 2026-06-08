@@ -89,7 +89,7 @@ export const SnapshotsTableRow = ({ snapshot, downloadSnapshot, deleteSnapshot }
           />
         )}
       </TableCell>
-      <TableCell align="center">{snapshot.creation_time || 'unknown'}</TableCell>
+      <TableCell align="center">{snapshot.creation_time || 'bilinmiyor'}</TableCell>
       <TableCell align="center" sx={{ whiteSpace: 'nowrap' }}>
         {prettyBytes(snapshot.size)}
       </TableCell>

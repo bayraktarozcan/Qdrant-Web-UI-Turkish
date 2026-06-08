@@ -19,7 +19,7 @@ const InfoBanner = ({ severity, children, onClose, hideCloseButton }) => {
           severity={severity}
           action={
             !hideCloseButton && (
-              <IconButton aria-label="close" color="inherit" size="small" onClick={handleClose}>
+              <IconButton aria-label="kapat" color="inherit" size="small" onClick={handleClose}>
                 <CloseIcon fontSize="inherit" />
               </IconButton>
             )

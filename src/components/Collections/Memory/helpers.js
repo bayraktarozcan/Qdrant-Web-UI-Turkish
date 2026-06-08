@@ -34,9 +34,9 @@ export const sortTree = (node, sortKey) => {
 
 const buildVectorSubs = (vector) => {
   const subs = [];
-  if (vector.storage) subs.push({ name: 'storage', usage: vector.storage });
-  if (vector.index) subs.push({ name: 'index', usage: vector.index });
-  if (vector.quantized) subs.push({ name: 'quantized', usage: vector.quantized });
+  if (vector.storage) subs.push({ name: 'depolama', usage: vector.storage });
+  if (vector.index) subs.push({ name: 'dizin', usage: vector.index });
+  if (vector.quantized) subs.push({ name: 'nicelenmiş', usage: vector.quantized });
   return subs;
 };
 
@@ -59,35 +59,35 @@ export const buildMemoryTree = (result) => {
 
   if (result.vectors?.length) {
     const children = buildVectorGroupChildren(result.vectors);
-    groups.push({ name: 'Vectors', usage: sumChildren(children), children });
+    groups.push({ name: 'Vektörler', usage: sumChildren(children), children });
   }
 
   if (result.sparse_vectors?.length) {
     const children = result.sparse_vectors.map((v) => {
       const subs = [];
-      if (v.storage) subs.push({ name: 'storage', usage: v.storage });
-      if (v.index) subs.push({ name: 'index', usage: v.index });
+      if (v.storage) subs.push({ name: 'depolama', usage: v.storage });
+      if (v.index) subs.push({ name: 'dizin', usage: v.index });
       return { name: v.name, usage: sumChildren(subs), children: subs };
     });
-    groups.push({ name: 'Sparse Vectors', usage: sumChildren(children), children });
+    groups.push({ name: 'Seyrek Vektörler', usage: sumChildren(children), children });
   }
 
   if (result.payload) {
-    groups.push({ name: 'Payload', usage: result.payload });
+    groups.push({ name: 'Yük', usage: result.payload });
   }
 
   if (result.payload_index?.length) {
     const children = result.payload_index.map((f) => ({ name: f.name, usage: f.usage }));
-    groups.push({ name: 'Payload Indexes', usage: sumChildren(children), children });
+    groups.push({ name: 'Yük Dizinleri', usage: sumChildren(children), children });
   }
 
   if (result.other && Object.keys(result.other).length > 0) {
     const children = Object.entries(result.other).map(([name, usage]) => ({ name, usage }));
-    groups.push({ name: 'Other', usage: sumChildren(children), children });
+    groups.push({ name: 'Diğer', usage: sumChildren(children), children });
   }
 
   return {
-    name: 'Total',
+    name: 'Toplam',
     usage: result.total || sumChildren(groups),
     children: groups,
   };

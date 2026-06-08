@@ -56,7 +56,7 @@ const ProgressGrid = ({ data, ...other }) => {
   return (
     <Card elevation={0} {...other}>
       <CardHeader
-        title="Optimization Progress"
+        title="İyileştirme İlerlemesi"
         variant="heading"
         slotProps={{
           title: {
@@ -70,16 +70,16 @@ const ProgressGrid = ({ data, ...other }) => {
             title={
               <Box>
                 <Typography variant="subtitle2">
-                  {summary.total} segments &middot; {summary.totalPoints.toLocaleString()} points
+                  {summary.total} bölüm &middot; {summary.totalPoints.toLocaleString()} nokta
                 </Typography>
                 <Typography variant="body2">
-                  Idle: {summary.idle.count} ({summary.idle.points.toLocaleString()} points)
+                  Boşta: {summary.idle.count} ({summary.idle.points.toLocaleString()} nokta)
                 </Typography>
                 <Typography variant="body2">
-                  Queued: {summary.queued.count} ({summary.queued.points.toLocaleString()} points)
+                  Sırada: {summary.queued.count} ({summary.queued.points.toLocaleString()} nokta)
                 </Typography>
                 <Typography variant="body2">
-                  Running: {summary.running.count} ({summary.running.points.toLocaleString()} points)
+                  Çalışıyor: {summary.running.count} ({summary.running.points.toLocaleString()} nokta)
                 </Typography>
               </Box>
             }
@@ -107,7 +107,7 @@ const ProgressGrid = ({ data, ...other }) => {
                 key={index}
                 title={
                   square.status
-                    ? `Segment - ${getStatusLabel(square.status)} - ${square.pointsCount?.toLocaleString()} points`
+                    ? `Bölüm - ${getStatusLabel(square.status)} - ${square.pointsCount?.toLocaleString()} nokta`
                     : ''
                 }
                 arrow

@@ -96,7 +96,7 @@ const CollectionAliases = ({ collectionName }) => {
 
   return (
     <StyledTableContainer>
-      <Table aria-label="aliases table">
+      <Table aria-label="takma adlar tablosu">
         <StyledTableHead sx={{ background: theme.palette.background.paperElevation1, borderBottom: 0 }}>
           <TableRow sx={{ background: alpha(theme.palette.action.hover, 0.04) }}>
             <TableCell sx={{ py: 1, borderBottom: 0 }}>
@@ -169,7 +169,7 @@ const AliasRow = ({ aliasName, onDelete }) => (
               py: '4px',
             }}
             onClick={onDelete}
-            aria-label="delete"
+            aria-label="sil"
             color="error"
             data-testid={`delete-alias-${aliasName}`}
           >

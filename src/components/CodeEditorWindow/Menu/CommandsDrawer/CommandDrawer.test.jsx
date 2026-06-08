@@ -51,7 +51,7 @@ describe('CommandsDrawer', () => {
 
     expect(screen.getByRole('textbox')).toBeInTheDocument();
     expect(screen.getByRole('textbox')).toHaveFocus();
-    expect(screen.getByRole('textbox')).toHaveAttribute('placeholder', 'GET collections');
+    expect(screen.getByRole('textbox')).toHaveAttribute('placeholder', 'GET koleksiyonlar');
 
     expect(screen.getByTestId('commands-table')).toBeInTheDocument();
 

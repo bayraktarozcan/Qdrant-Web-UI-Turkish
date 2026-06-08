@@ -8,7 +8,7 @@
  * @return {null|string}
  */
 export const getErrorMessage = (e, options = {}) => {
-  const { fallbackMessage = 'Something went wrong.', withApiKey = null } = options;
+  const { fallbackMessage = 'Bir şeyler yanlış gitti.', withApiKey = null } = options;
   const { apiKey } = withApiKey || {};
   let message;
 
@@ -19,7 +19,7 @@ export const getErrorMessage = (e, options = {}) => {
       if (!apiKey) {
         return null;
       } else {
-        return 'Your API key is invalid. Please, set a new one.';
+        return 'API anahtarınız geçersiz. Lütfen yeni bir tane belirleyin.';
       }
     }
     message = error.data?.status?.error || e.message || fallbackMessage;

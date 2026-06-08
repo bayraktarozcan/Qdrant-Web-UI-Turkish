@@ -28,7 +28,7 @@ export function btnconfig(commandId) {
           id: 'RUN',
           command: {
             id: commandId,
-            title: 'RUN',
+            title: 'ÇALIŞTIR',
             arguments: [codeBlocks[i].blockText],
           },
         });

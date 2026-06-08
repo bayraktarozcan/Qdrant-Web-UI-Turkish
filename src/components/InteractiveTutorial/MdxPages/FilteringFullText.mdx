@@ -1,12 +1,12 @@
-export const title = 'Full Text Filtering';
+export const title = 'Tam Metin Filtreleme';
 
-# Full Text Filtering
+# Tam Metin Filtreleme
 
-Here's a step-by-step tutorial on **Full Text Filtering in Qdrant** using a collection of planetary data with description fields:
+İşte gezegen verileri ve açıklama alanları içeren bir koleksiyon kullanarak **Qdrant'ta Tam Metin Filtrelemeyi** adım adım anlatan bir eğitim:
 
-## Step 1: Create a collection
+## Adım 1: Koleksiyon oluşturun
 
-We first create a collection named `star_charts` with vectors of size 4 and dot product distance for similarity.
+Önce, boyutu 4 olan vektörler ve benzerlik için dot product mesafesi ile `star_charts` adında bir koleksiyon oluşturuyoruz.
 
 ```json withRunButton="true"
 PUT /collections/star_charts
@@ -18,9 +18,9 @@ PUT /collections/star_charts
 }
 ```
 
-## Step 2: Add data with descriptions in payload
+## Adım 2: Payload'da açıklamalar içeren veriler ekleyin
 
-Next, we add data to the collection. Each entry includes an id, vector and a payload containing details about various celestial bodies, such as colony information, whether the body supports life and a description.
+Ardından, koleksiyona veri ekliyoruz. Her giriş, bir id, vector ve çeşitli gök cisimleri hakkında koloni bilgisi, yaşam desteği ve açıklama gibi detayları içeren bir payload içerir.
 
 ```json withRunButton="true"
 PUT collections/star_charts/points
@@ -50,7 +50,7 @@ PUT collections/star_charts/points
       "payload": {
         "colony": "Venus",
         "supports_life": false,
-        "description": "Venus, Earth’s twin in size, has an extremely thick atmosphere and surface temperatures hot enough to melt lead."
+        "description": "Venus, Earth's twin in size, has an extremely thick atmosphere and surface temperatures hot enough to melt lead."
       }
     },
     {
@@ -59,7 +59,7 @@ PUT collections/star_charts/points
       "payload": {
         "colony": "Moon",
         "supports_life": true,
-        "description": "Earth’s Moon, long visited by astronauts, is a barren, airless world but could host colonies in its underground caves."
+        "description": "Earth's Moon, long visited by astronauts, is a barren, airless world but could host colonies in its underground caves."
       }
     },
     {
@@ -75,10 +75,10 @@ PUT collections/star_charts/points
 }
 ```
 
-### Step 3: Try filtering with exact phrase (substring match)
+### Adım 3: Tam ifade ile filtrelemeyi deneyin (alt dizin eşleşmesi)
 
-Now, let's try to filter the descriptions to find entries that contain the exact phrase "host colonies." 
-Qdrant supports text filtering by default using exact matches, but note that this will not tokenize the text.
+Şimdi, "host colonies" tam ifadesini içeren girişleri bulmak için açıklamaları filtrelemeyi deneyelim.
+Qdrant, varsayılan olarak tam eşleşmeler kullanarak metin filtrelemesini destekler, ancak bunun metni tokenize etmeyeceğini unutmayın.
 
 ```json withRunButton="true"
 POST /collections/star_charts/points/scroll
@@ -98,15 +98,15 @@ POST /collections/star_charts/points/scroll
 }
 ```
 
-You’ll notice this filter works, but if you change the phrase slightly, it won’t return results, since substring matching in unindexed text isn’t flexible enough for variations.
+Bu filtrenin çalıştığını göreceksiniz, ancak ifadeyi biraz değiştirirseniz sonuç döndürmez, çünkü indekslenmemiş metinde alt dizin eşleştirmesi varyasyonlar için yeterince esnek değildir.
 
-**Note**: If your cluster is running on Qdrant Cloud, this query fails. On Qdrant Cloud, collections are configured to run in strict mode by default, which prevents querying unindexed fields. You'll learn how to index a field for text filtering next.
+**Not**: Kümeniz Qdrant Cloud'da çalışıyorsa bu sorgu başarısız olur. Qdrant Cloud'da koleksiyonlar varsayılan olarak strict modda çalışacak şekilde yapılandırılmıştır, bu da indekslenmemiş alanların sorgulanmasını engeller. Bir alanı metin filtrelemesi için nasıl indeksleyeceğinizi daha sonra öğreneceksiniz.
 
-### Step 4: Index the description field
+### Adım 4: Açıklama alanını indeksleyin
 
-To make filtering more powerful and flexible, we’ll index the `description` field. This will tokenize the text, allowing for more complex queries such as filtering for phrases like "cave colonies." We use a `word` tokenizer, and only tokens that are between 5 and 20 characters will be indexed.
+Filtrelemeyi daha güçlü ve esnek hale getirmek için `description` alanını indeksleyeceğiz. Bu, metni tokenize ederek "cave colonies" gibi ifadeler için daha karmaşık sorgulara olanak tanır. Bir `word` tokenizer kullanıyoruz ve yalnızca 5 ila 20 karakter arasındaki tokenler indekslenecek.
 
-**Note:** You should always index a field before filtering. If you use filtering before you create an index (like in Step 3), Qdrant will search through the entire dataset in an unstructured way. Your search performance will be very slow.
+**Not:** Filtreleme yapmadan önce bir alanı her zaman indekslemelisiniz. İndeks oluşturmadan önce filtreleme kullanırsanız (Adım 3'teki gibi), Qdrant tüm veri kümesinde yapılandırılmamış bir şekilde arama yapar. Arama performansınız çok yavaş olur.
 
 ```json withRunButton="true"
 PUT /collections/star_charts/index
@@ -120,10 +120,10 @@ PUT /collections/star_charts/index
 }
 ```
 
-### Step 5: Try the filter again
+### Adım 5: Filtreyi tekrar deneyin
 
-After indexing, you can now run the filter again, but this time not searching for a phrase. 
-Now you will filter for all tokens "caves" AND "colonies" from the descriptions. 
+İndekslemeden sonra, filtreyi tekrar çalıştırabilirsiniz, ancak bu kez bir ifade aramak yerine.
+Şimdi açıklamalardan tüm "caves" VE "colonies" tokenlerini filtreleyeceksiniz.
 
 ```json withRunButton="true"
 POST /collections/star_charts/points/scroll
@@ -142,6 +142,6 @@ POST /collections/star_charts/points/scroll
   "with_payload": true
 }
 ```
-## Summary
+## Özet
 
-Full text filtering on an unindexed field performs a substring match by default, or results in an error on collections running in strict mode (the default on Qdrant Cloud). It's a best practice to index the field first. This enables more advanced full text queries, such as queries that ignore the word sequence completely.
+İndekslenmemiş bir alanda tam metin filtrelemesi varsayılan olarak alt dizin eşleşmesi yapar veya strict modda çalışan koleksiyonlarda (Qdrant Cloud'da varsayılan) bir hatayla sonuçlanır. Alanı önce indekslemek en iyi uygulamadır. Bu, kelime sırasını tamamen yok sayan sorgular gibi daha gelişmiş tam metin sorgularını mümkün kılar.

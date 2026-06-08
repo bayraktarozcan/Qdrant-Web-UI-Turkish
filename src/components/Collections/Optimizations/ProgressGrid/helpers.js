@@ -186,12 +186,12 @@ export const getEmptySquareColor = (theme) => {
 export const getStatusLabel = (status) => {
   switch (status) {
     case SegmentStatus.IDLE:
-      return 'Idle';
+      return 'Boşta';
     case SegmentStatus.QUEUED:
-      return 'Queued';
+      return 'Sırada';
     case SegmentStatus.RUNNING:
-      return 'Running';
+      return 'Çalışıyor';
     default:
-      return 'Unknown';
+      return 'Bilinmiyor';
   }
 };

@@ -206,7 +206,7 @@ export const SnapshotsTab = ({ collectionName }) => {
         {(snapshots?.length > 0 || isSnapshotLoading) && (
           <Grid size={12}>
             <StyledTableContainer>
-              <Table aria-label="simple table">
+              <Table aria-label="anlık görüntü tablosu">
                 <StyledTableHead>
                   <TableRow>
                     <StyledHeaderCell>Anlık Görüntü Adı</StyledHeaderCell>

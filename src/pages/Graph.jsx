@@ -124,18 +124,18 @@ function Graph() {
   };
 
   const queryRequestSchema = (vectorNames) => ({
-    description: 'Filter request',
+    description: 'Filtre isteği',
     type: 'object',
     properties: {
       limit: {
-        description: 'Page size. Default: 10',
+        description: 'Sayfa boyutu. Varsayılan: 10',
         type: 'integer',
         format: 'uint',
         minimum: 1,
         nullable: true,
       },
       filter: {
-        description: 'Look only for points which satisfies this conditions. If not provided - all points.',
+        description: 'Yalnızca bu koşulları sağlayan noktalara bak. Belirtilmezse - tüm noktalar.',
         anyOf: [
           {
             $ref: '#/components/schemas/Filter',
@@ -146,17 +146,17 @@ function Graph() {
         ],
       },
       using: {
-        description: 'Vector field name',
+        description: 'Vektör alan adı',
         type: 'string',
         enum: vectorNames,
       },
       sample: {
-        description: 'Bootstrap graph with sample data from collection',
+        description: 'Koleksiyondan örnek verilerle grafiği başlat',
         type: 'integer',
         nullable: true,
       },
       tree: {
-        description: 'Show spanning tree instead of full graph',
+        description: 'Tam grafik yerine yayılan ağacı göster',
         type: 'boolean',
         nullable: true,
       },

@@ -1,10 +1,10 @@
-export const title = "Advanced Filtering"
+export const title = "Gelişmiş Filtreleme"
 
-# Advanced Filtering - Nested Filters
+# Gelişmiş Filtreleme - İç İçe Filtreler
 
-## Step 1: Create a Collection
+## Adım 1: Koleksiyon Oluşturun
 
-Start by creating a collection named `dinosaurs` with a vector size of 4 and the distance metric set to `Dot`:
+Vektör boyutu 4 ve mesafe ölçütü `Dot` olan `dinosaurs` adında bir koleksiyon oluşturarak başlayın:
 
 ```json withRunButton="true"
 PUT collections/dinosaurs
@@ -16,9 +16,9 @@ PUT collections/dinosaurs
 }
 ```
 
-## Step 2: Add Vectors with Payloads
+## Adım 2: Payload İçeren Vektörler Ekleyin
 
-You can now add points to the collection. Each point contains an `id`,  `vector` and a `payload` with additional information such as the dinosaur species and diet preferences. For example:
+Şimdi koleksiyona noktalar ekleyebilirsiniz. Her nokta bir `id`, `vector` ve dinozor türü ile beslenme tercihleri gibi ek bilgiler içeren bir `payload` içerir. Örneğin:
 
 ```json withRunButton="true"
 PUT collections/dinosaurs/points
@@ -51,9 +51,9 @@ PUT collections/dinosaurs/points
 ```
 
 
-## Step 3: Index the fields before filtering
+## Adım 3: Filtrelemeden önce alanları indeksleyin
 
-**Note:** You should always index a field before filtering. If you use filtering before you create an index, Qdrant will search through the entire dataset in an unstructured way. Your search performance will be very slow.
+**Not:** Filtreleme yapmadan önce bir alanı her zaman indekslemelisiniz. İndeks oluşturmadan önce filtreleme kullanırsanız, Qdrant tüm veri kümesinde yapılandırılmamış bir şekilde arama yapar. Arama performansınız çok yavaş olur.
 
 ```json withRunButton="true"
 PUT /collections/dinosaurs/index
@@ -71,16 +71,16 @@ PUT /collections/dinosaurs/index
 }
 ```
 
-## Step 4: Basic Filtering with `match`
+## Adım 4: `match` ile Temel Filtreleme
 
-You can filter points by specific payload values. For instance, the query below matches points where:
+Noktaları belirli payload değerlerine göre filtreleyebilirsiniz. Örneğin, aşağıdaki sorgu şu koşulları sağlayan noktaları eşleştirir:
 
-- The `diet[].food` contains "meat".
-- The `diet[].likes` is set to `true`.
+- `diet[].food` "meat" içeriyor.
+- `diet[].likes` `true` olarak ayarlanmış.
 
-Both points match these conditions, as:
-- The “t-rex” eats meat and likes it.
-- The “diplodocus” eats meat but doesn't like it.
+Her iki nokta da bu koşulları karşılar:
+- "t-rex" et yer ve sever.
+- "diplodocus" et yer ama sevmez.
 
 ```json withRunButton="true"
 POST /collections/dinosaurs/points/scroll
@@ -104,11 +104,11 @@ POST /collections/dinosaurs/points/scroll
 }
 ```
 
-However, if you want to retrieve only the points where both conditions are true for the same element within the array (e.g., the "t-rex" with ID 1), you'll need to use a **nested filter**.
+Ancak, yalnızca her iki koşulun da dizi içindeki aynı öğe için geçerli olduğu noktaları (örneğin, ID 1 olan "t-rex") almak istiyorsanız, **iç içe bir filtre** kullanmanız gerekir.
 
-## Step 5: Advanced Filtering with Nested Object Filters
+## Adım 5: İç İçe Nesne Filtreleri ile Gelişmiş Filtreleme
 
-To apply the filter at the array element level, you use the `nested` filter condition. This ensures that the `food` and `likes` values are evaluated together within each array element:
+Filtreyi dizi öğesi düzeyinde uygulamak için `nested` filtre koşulunu kullanırsınız. Bu, `food` ve `likes` değerlerinin her bir dizi öğesi içinde birlikte değerlendirilmesini sağlar:
 
 ```json withRunButton="true"
 POST /collections/dinosaurs/points/scroll
@@ -141,17 +141,17 @@ POST /collections/dinosaurs/points/scroll
 }
 ```
 
-With this filter, only the "t-rex" (ID 1) is returned, because its array element satisfies both conditions.
+Bu filtre ile yalnızca "t-rex" (ID 1) döndürülür, çünkü onun dizi öğesi her iki koşulu da karşılar.
 
-### Explanation
+### Açıklama
 
-Nested filters treat each array element as a separate object, applying the filter independently to each element. The parent document (in this case, the dinosaur point) matches the filter if any one array element meets all conditions.
+İç içe filtreler, her bir dizi öğesini ayrı bir nesne olarak ele alır ve filtreyi her öğeye bağımsız olarak uygular. Ana belge (bu durumda dinozor noktası), herhangi bir dizi öğesi tüm koşulları karşılarsa filtreyle eşleşir.
 
-## Step 6: Combining `has_id` with Nested Filters
+## Adım 6: `has_id` ile İç İçe Filtreleri Birleştirme
 
-Note that `has_id` cannot be used inside a nested filter. If you need to filter by ID as well, include the `has_id` condition as a separate clause, like this:
+`has_id`'nin iç içe bir filtrenin içinde kullanılamayacağını unutmayın. Ayrıca ID'ye göre filtreleme yapmanız gerekiyorsa, `has_id` koşulunu ayrı bir cümle olarak ekleyin:
 
-You won't get a different answer. You can see that this filter matches the "t-rex" (ID 1) by combining the `nested` diet filter with an explicit ID match.
+Farklı bir sonuç almayacaksınız. Bu filtrenin, iç içe diet filtresini açık bir ID eşleşmesiyle birleştirerek "t-rex" (ID 1) ile eşleştiğini görebilirsiniz.
 
 ```json withRunButton="true"
 POST /collections/dinosaurs/points/scroll
@@ -186,4 +186,3 @@ POST /collections/dinosaurs/points/scroll
   }
 }
 ```
-
