@@ -1,40 +1,40 @@
-# Qdrant web-ui
+# Qdrant Web Arayüzü
 
-This is a self-hosted web UI for [Qdrant](https://github.com/qdrant/qdrant) Vector Search Engine.
+Bu, [Qdrant](https://github.com/qdrant/qdrant) Vektör Arama Motoru için kendi sunucunuzda barındırabileceğiniz bir web arayüzüdür.
 
-This UI is supposed to be served by Qdrant itself, but you can use it as a standalone application.
+Bu arayüzün Qdrant tarafından sunulması amaçlanmıştır, ancak bağımsız bir uygulama olarak da kullanabilirsiniz.
 
-Main goal of this UI is to provide a simple way to view and manage your collections.
+Bu arayüzün temel amacı, koleksiyonlarınızı görüntülemek ve yönetmek için basit bir yol sağlamaktır.
 
-Similar to [Kibana](https://www.elastic.co/kibana) for Elasticsearch, but does not require any additional services.
+Elasticsearch için [Kibana](https://www.elastic.co/kibana)'ya benzer, ancak ek hizmet gerektirmez.
 
-## Available Scripts
+## Kullanılabilir Betikler
 
-In the project directory, you can run:
+Proje dizininde aşağıdakileri çalıştırabilirsiniz:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Uygulamayı geliştirme modunda çalıştırır.\
+Tarayıcınızda görüntülemek için [http://localhost:3000](http://localhost:3000) adresini açın.
 
-Development mode expects that Qdrant is running on [http://localhost:6333](http://localhost:6333).
+Geliştirme modu, Qdrant'ın [http://localhost:6333](http://localhost:6333) adresinde çalıştığını varsayar.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Test çalıştırıcısını etkileşimli izleme modunda başlatır.\
+Daha fazla bilgi için [test çalıştırma](https://facebook.github.io/create-react-app/docs/running-tests) bölümüne bakın.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Uygulamayı üretim için `build` klasörüne derler.\
+React'i üretim modunda doğru şekilde paketler ve en iyi performans için derlemeyi optimize eder.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Derleme küçültülür ve dosya adları hash içerir.\
+Uygulamanız dağıtıma hazır!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Daha fazla bilgi için [dağıtım](https://facebook.github.io/create-react-app/docs/deployment) bölümüne bakın.
 
-## Stack used
+## Kullanılan Teknolojiler
 
 - [React](https://reactjs.org/)
 - [MUI](https://mui.com/core/)

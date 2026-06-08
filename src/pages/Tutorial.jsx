@@ -14,8 +14,8 @@ export const Tutorial = () => {
       <Box sx={{ p: 5, width: '100%' }}>
         <Grid size={12}>
           <Alert severity="warning">
-            Access Denied: Because of the serverless mode, tutorial will not work here properly. Please contact your
-            administrator.
+            Erişim Reddedildi: Sunucusuz mod nedeniyle eğitim burada düzgün{' '}
+            çalışmayacaktır. Lütfen yöneticinize başvurun.
           </Alert>
         </Grid>
       </Box>

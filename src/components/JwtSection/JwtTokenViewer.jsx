@@ -24,10 +24,10 @@ function JwtTokenViewer({ jwt, token, sx }) {
         codeStr={JSON.stringify(token, null, 2)}
         language={'json'}
         editable={false}
-        title={'JWT Token Payload'}
+        title={'JWT Token Yükü'}
       />
 
-      <Tooltip title="Use this JWT token as an API key to get restricted access to the Qdrant API">
+      <Tooltip title="Bu JWT token'ını API anahtarı olarak kullanarak Qdrant API'sine kısıtlı erişim elde edin">
         <Box sx={{ display: 'flex', flexDirection: 'column' }} role="group">
           <InputLabel htmlFor="jwt-token-output" sx={{ pb: 0.625 }}>
             JWT Token
@@ -42,7 +42,7 @@ function JwtTokenViewer({ jwt, token, sx }) {
             endAdornment={
               <InputAdornment position="end">
                 <IconButton onClick={handleVisibility}>{isVisible ? <VisibilityOff /> : <Visibility />}</IconButton>
-                <CopyButton text={jwt} tooltip={'Copy JWT to clipboard'} successMessage={'JWT copied to clipboard'} />
+                <CopyButton text={jwt} tooltip={"JWT'yi panoya kopyala"} successMessage={'JWT panoya kopyalandı'} />
               </InputAdornment>
             }
           />

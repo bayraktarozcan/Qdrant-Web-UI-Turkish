@@ -58,7 +58,7 @@ describe('ShardTransferDialog', () => {
       />
     );
 
-    expect(screen.queryByText('Transfer Shard')).not.toBeInTheDocument();
+    expect(screen.queryByText('Parçacık Aktar')).not.toBeInTheDocument();
   });
 
   it('should render dialog with correct title and description', () => {
@@ -72,7 +72,7 @@ describe('ShardTransferDialog', () => {
       />
     );
 
-    expect(screen.getByText('Transfer Shard')).toBeInTheDocument();
+    expect(screen.getByText('Parçacık Aktar')).toBeInTheDocument();
   });
 
   it('should display shard information correctly', () => {
@@ -87,19 +87,19 @@ describe('ShardTransferDialog', () => {
     );
 
     // Check shard details section specifically
-    const shardDetailsSection = screen.getByText('Shard Details').closest('div');
+    const shardDetailsSection = screen.getByText('Parçacık Detayları').closest('div');
     expect(shardDetailsSection).toBeInTheDocument();
 
     // Check that the shard details are displayed in the grid
-    expect(shardDetailsSection).toHaveTextContent('ID:');
+    expect(shardDetailsSection).toHaveTextContent('No:');
     expect(shardDetailsSection).toHaveTextContent('1'); // shard_id
-    expect(shardDetailsSection).toHaveTextContent('State:');
+    expect(shardDetailsSection).toHaveTextContent('Durum:');
     expect(shardDetailsSection).toHaveTextContent('Active'); // state
-    expect(shardDetailsSection).toHaveTextContent('Key:');
+    expect(shardDetailsSection).toHaveTextContent('Anahtar:');
     expect(shardDetailsSection).toHaveTextContent('test-key'); // shard_key
-    expect(shardDetailsSection).toHaveTextContent('From Peer:');
+    expect(shardDetailsSection).toHaveTextContent('Kaynak Düğüm:');
     expect(shardDetailsSection).toHaveTextContent('100'); // fromPeerId
-    expect(shardDetailsSection).toHaveTextContent('To Peer:');
+    expect(shardDetailsSection).toHaveTextContent('Hedef Düğüm:');
     expect(shardDetailsSection).toHaveTextContent('200'); // toPeerId
   });
 
@@ -114,8 +114,8 @@ describe('ShardTransferDialog', () => {
       />
     );
 
-    expect(screen.getByText(/This action will move shard 1 from peer 100 to peer 200/)).toBeInTheDocument();
-    expect(screen.getByText(/Shard key: test-key/)).toBeInTheDocument();
+    expect(screen.getByText(/Bu işlem 1 numaralı parçacığı 100 düğümünden 200 düğümüne taşıyacak/)).toBeInTheDocument();
+    expect(screen.getByText(/Parçacık anahtarı: test-key/)).toBeInTheDocument();
   });
 
   it('should display request section with copy button', () => {
@@ -129,9 +129,9 @@ describe('ShardTransferDialog', () => {
       />
     );
 
-    expect(screen.getByText('Request')).toBeInTheDocument();
+    expect(screen.getByText('İstek')).toBeInTheDocument();
     expect(screen.getByTestId('copy-button')).toBeInTheDocument();
-    expect(screen.getByTestId('copy-button')).toHaveAttribute('title', 'Copy request to clipboard');
+    expect(screen.getByTestId('copy-button')).toHaveAttribute('title', 'İsteği panoya kopyala');
   });
 
   it('should display HTTP method and endpoint', () => {
@@ -159,12 +159,12 @@ describe('ShardTransferDialog', () => {
       />
     );
 
-    expect(screen.getByText('Shard Details')).toBeInTheDocument();
-    expect(screen.getByText('ID:')).toBeInTheDocument();
-    expect(screen.getByText('State:')).toBeInTheDocument();
-    expect(screen.getByText('Key:')).toBeInTheDocument();
-    expect(screen.getByText('From Peer:')).toBeInTheDocument();
-    expect(screen.getByText('To Peer:')).toBeInTheDocument();
+    expect(screen.getByText('Parçacık Detayları')).toBeInTheDocument();
+    expect(screen.getByText('No:')).toBeInTheDocument();
+    expect(screen.getByText('Durum:')).toBeInTheDocument();
+    expect(screen.getByText('Anahtar:')).toBeInTheDocument();
+    expect(screen.getByText('Kaynak Düğüm:')).toBeInTheDocument();
+    expect(screen.getByText('Hedef Düğüm:')).toBeInTheDocument();
   });
 
   it('should handle shard without shard_key gracefully', () => {
@@ -186,9 +186,9 @@ describe('ShardTransferDialog', () => {
       />
     );
 
-    expect(screen.getByText(/This action will move shard 1 from peer 100 to peer 200/)).toBeInTheDocument();
-    expect(screen.queryByText(/Shard key:/)).not.toBeInTheDocument();
-    expect(screen.queryByText('Key:')).not.toBeInTheDocument();
+    expect(screen.getByText(/Bu işlem 1 numaralı parçacığı 100 düğümünden 200 düğümüne taşıyacak/)).toBeInTheDocument();
+    expect(screen.queryByText(/Parçacık anahtarı:/)).not.toBeInTheDocument();
+    expect(screen.queryByText('Anahtar:')).not.toBeInTheDocument();
   });
 
   it('should call onClose when cancel button is clicked', () => {
@@ -204,7 +204,7 @@ describe('ShardTransferDialog', () => {
       />
     );
 
-    const cancelButton = screen.getByText('Cancel');
+    const cancelButton = screen.getByText('İptal');
     fireEvent.click(cancelButton);
 
     expect(mockOnClose).toHaveBeenCalledTimes(1);
@@ -223,7 +223,7 @@ describe('ShardTransferDialog', () => {
       />
     );
 
-    const confirmButton = screen.getByText('Confirm Transfer');
+    const confirmButton = screen.getByText('Aktarımı Onayla');
     fireEvent.click(confirmButton);
 
     expect(mockOnConfirm).toHaveBeenCalledTimes(1);
@@ -242,8 +242,8 @@ describe('ShardTransferDialog', () => {
       />
     );
 
-    const cancelButton = screen.getByText('Cancel');
-    const confirmButton = screen.getByText('Transferring...');
+    const cancelButton = screen.getByText('İptal');
+    const confirmButton = screen.getByText('Aktarılıyor...');
 
     expect(cancelButton).toBeDisabled();
     expect(confirmButton).toBeDisabled();
@@ -261,7 +261,7 @@ describe('ShardTransferDialog', () => {
       />
     );
 
-    expect(screen.getByText('Transferring...')).toBeInTheDocument();
+    expect(screen.getByText('Aktarılıyor...')).toBeInTheDocument();
   });
 
   it('should handle different shard states', () => {

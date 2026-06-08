@@ -68,15 +68,15 @@ function Datasets() {
 
   const importDataset = async (fileName, collectionName, setImporting, importing) => {
     if (isAccessDenied) {
-      enqueueSnackbar('Access denied: You do not have permission to import datasets', errorSnackbarOptions);
+      enqueueSnackbar('Erişim reddedildi: Veri kümelerini içe aktarma izniniz yok', errorSnackbarOptions);
       return;
     }
 
     if (importing) {
-      enqueueSnackbar('Importing in progress', errorSnackbarOptions);
+      enqueueSnackbar('İçe aktarma devam ediyor', errorSnackbarOptions);
       return;
     } else if (!collectionName) {
-      enqueueSnackbar('Collection name is required', errorSnackbarOptions);
+      enqueueSnackbar('Koleksiyon adı gerekli', errorSnackbarOptions);
       return;
     } else {
       setImporting(true);
@@ -85,7 +85,7 @@ function Datasets() {
         await qdrantClient.recoverSnapshot(collectionName, {
           location: `https://snapshots.qdrant.io/${fileName}`,
         });
-        enqueueSnackbar('Snapshot successfully imported', getSnackbarOptions('success', closeSnackbar, 2000));
+        enqueueSnackbar('Anlık görüntü başarıyla içe aktarıldı', getSnackbarOptions('success', closeSnackbar, 2000));
       } catch (e) {
         enqueueSnackbar(e.message, errorSnackbarOptions);
       } finally {
@@ -103,23 +103,23 @@ function Datasets() {
       <CenteredFrame>
         <Grid container maxWidth={'xl'} width={'100%'} spacing={3}>
           <Grid size={12}>
-            <Typography variant="h4">Datasets</Typography>
+            <Typography variant="h4">Veri Kümeleri</Typography>
           </Grid>
           {isAccessDenied && (
             <Grid size={12}>
               <Alert severity="warning">
-                You do not have permission to import datasets. Please contact your administrator.
+                Veri kümelerini içe aktarma izniniz yok. Lütfen yöneticinize başvurun.
               </Alert>
             </Grid>
           )}
-          {isLoading && <div>Loading...</div>}
-          {!isLoading && datasets?.length === 0 && <div>No datasets found</div>}
+          {isLoading && <div>Yükleniyor...</div>}
+          {!isLoading && datasets?.length === 0 && <div>Veri kümesi bulunamadı</div>}
           {!isLoading && datasets?.length > 0 && (
             <Grid size={12}>
               <StyledTableContainer>
-                <Table aria-label="Datasets table">
+                <Table aria-label="Veri kümeleri tablosu">
                   <DatasetsHeader
-                    headers={['Name', 'Datasets&nbsp;size', 'Vectors Config', 'Vectors count', 'Actions']}
+                    headers={['Ad', 'Veri&nbsp;kümesi boyutu', 'Vektör Yapılandırması', 'Vektör sayısı', 'İşlemler']}
                   />
 
                   <StyledTableBody>{tableRows}</StyledTableBody>

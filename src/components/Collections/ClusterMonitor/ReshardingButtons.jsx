@@ -33,7 +33,7 @@ const ReshardingButtons = ({
 
   const tooltipContent = !reshardingEnabled ? (
     <Box>
-      Resharding is not available.{' '}
+      Yeniden parçacıklama kullanılamıyor.{' '}
       <Link
         href="https://qdrant.tech/documentation/cloud/cluster-scaling/#resharding"
         target="_blank"
@@ -41,28 +41,28 @@ const ReshardingButtons = ({
         sx={{ color: 'inherit', textDecoration: 'underline' }}
         onClick={(e) => e.stopPropagation()}
       >
-        Learn more
+        Daha fazla bilgi
       </Link>
     </Box>
   ) : !hasShards ? (
-    'Cannot reshard up: collection has no shards'
+    'Yukarı yeniden parçacıklanamaz: koleksiyonda parçacık yok'
   ) : !hasEnoughNodes ? (
-    'Resharding requires at least 2 nodes in the cluster'
+    'Yeniden parçacıklama, kümede en az 2 düğüm gerektirir'
   ) : (
     ''
   );
 
   const reshardDownTooltipContent =
     !canReshardDown && shardCount === 1
-      ? 'Cannot reshard down: collection already has the minimum of 1 shard'
+      ? 'Aşağı yeniden parçacıklanamaz: koleksiyon zaten en az 1 parçacığa sahip'
       : !hasShards
-      ? 'Cannot reshard down: collection has no shards'
-      : tooltipContent || 'Reshard down (remove shard)';
+      ? 'Aşağı yeniden parçacıklanamaz: koleksiyonda parçacık yok'
+      : tooltipContent || 'Aşağı yeniden parçacıkla (parçacık kaldır)';
 
   // Show cancel button if resharding is ongoing
   if (hasOngoingResharding) {
     return (
-      <Tooltip title="Cancel ongoing resharding operation" placement="top">
+      <Tooltip title="Devam eden yeniden parçacıklama işlemini iptal et" placement="top">
         <span>
           <Button
             variant="outlined"
@@ -71,14 +71,14 @@ const ReshardingButtons = ({
             startIcon={<X size={18} />}
             onClick={onAbortResharding}
             disabled={reshardingLoading || transferLoading}
-            aria-label="Cancel resharding"
+            aria-label="Yeniden parçacıklamayı iptal et"
             sx={{
               minWidth: 'auto',
               fontSize: '0.8125rem',
               padding: '0.25rem 0.625rem',
             }}
           >
-            Cancel Resharding
+            Yeniden Parçacıklamayı İptal Et
           </Button>
         </span>
       </Tooltip>
@@ -88,7 +88,7 @@ const ReshardingButtons = ({
   // Show up/down buttons if no resharding is ongoing
   return (
     <>
-      <Tooltip title={tooltipContent || 'Reshard up (add shard)'} placement="top">
+      <Tooltip title={tooltipContent || 'Yukarı yeniden parçacıkla (parçacık ekle)'} placement="top">
         <span>
           <Button
             variant="outlined"
@@ -96,18 +96,18 @@ const ReshardingButtons = ({
             startIcon={<ArrowUp size={18} />}
             onClick={() => onResharding('up')}
             disabled={isDisabled}
-            aria-label="Reshard up"
+            aria-label="Yukarı yeniden parçacıkla"
             sx={{
               minWidth: 'auto',
               fontSize: '0.8125rem',
               padding: '0.25rem 0.625rem',
             }}
           >
-            Reshard Up
+            Yukarı Yeniden Parçacıkla
           </Button>
         </span>
       </Tooltip>
-      <Tooltip title={reshardDownTooltipContent} placement="top">
+      <Tooltip title={reshardDownTooltipContent || 'Aşağı yeniden parçacıkla (parçacık kaldır)'} placement="top">
         <span>
           <Button
             variant="outlined"
@@ -115,14 +115,14 @@ const ReshardingButtons = ({
             startIcon={<ArrowDown size={18} />}
             onClick={() => onResharding('down')}
             disabled={isReshardDownDisabled}
-            aria-label="Reshard down"
+            aria-label="Aşağı yeniden parçacıkla"
             sx={{
               minWidth: 'auto',
               fontSize: '0.8125rem',
               padding: '0.25rem 0.625rem',
             }}
           >
-            Reshard Down
+            Aşağı Yeniden Parçacıkla
           </Button>
         </span>
       </Tooltip>

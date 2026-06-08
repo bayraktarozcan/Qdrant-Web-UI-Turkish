@@ -62,15 +62,15 @@ const TokenValidatior = ({ setTokenValidatior }) => {
 
   return (
     <Box>
-      <Tooltip title="Configures validation of the token based on record stored in the collection" placement="right">
+      <Tooltip title="Koleksiyonda saklanan kayda göre token doğrulamasını yapılandırır" placement="right">
         <FormControlLabel
           control={<Switch checked={isTokenValidator} onChange={handleToggle} />}
-          label="Token Validator"
+          label="Token Doğrulayıcı"
           sx={{ gap: 0.75 }}
         />
       </Tooltip>
       <Dialog fullWidth open={open} onClose={handleClose}>
-        <DialogTitle>Token Validator</DialogTitle>
+        <DialogTitle>Token Doğrulayıcı</DialogTitle>
         <DialogContent component="form" role="form">
           <Box sx={{ display: 'flex', gap: 2, mb: 2, mt: 1 }}>
             <Box sx={{ display: 'flex', width: '100%', flexDirection: 'column', gap: 1.5 }} role="group">
@@ -89,7 +89,7 @@ const TokenValidatior = ({ setTokenValidatior }) => {
                     displayEmpty: true,
                     renderValue: (selected) => {
                       if (!selected) {
-                        return <Box sx={{ color: 'text.secondary' }}>Select Collection</Box>;
+                        return <Box sx={{ color: 'text.secondary' }}>Koleksiyon Seçin</Box>;
                       }
                       return selected;
                     },
@@ -107,14 +107,14 @@ const TokenValidatior = ({ setTokenValidatior }) => {
 
           <Box sx={{ mt: 4, mb: 2 }}>
             <Typography variant="h6" color={selectedCollection?.name ? 'textPrimary' : 'textSecondary'}>
-              Set Matches
+              Eşleşmeleri Ayarla
             </Typography>
           </Box>
           {Object.keys(matches).map((key) => {
             return (
               <Box sx={{ display: 'flex', gap: 2, mb: 2, '& > :not(:last-of-type)': { width: '40%' } }} key={key}>
-                <TextField disabled label="Key" value={key} />
-                <TextField disabled label="Value" value={matches[key]} />
+                <TextField disabled label="Anahtar" value={key} />
+                <TextField disabled label="Değer" value={matches[key]} />
                 <IconButton
                   aria-label="delete"
                   size="large"
@@ -130,9 +130,9 @@ const TokenValidatior = ({ setTokenValidatior }) => {
             );
           })}
           <Box sx={{ display: 'flex', gap: 2 }}>
-            <TextField label="Key" value={newMatchesKey} onChange={(e) => setNewMatchesKey(e.target.value)} />
+            <TextField label="Anahtar" value={newMatchesKey} onChange={(e) => setNewMatchesKey(e.target.value)} />
 
-            <TextField label="Value" value={newMatchesValue} onChange={(e) => setNewMatchesValue(e.target.value)} />
+            <TextField label="Değer" value={newMatchesValue} onChange={(e) => setNewMatchesValue(e.target.value)} />
             <IconButton
               aria-label="delete"
               size="large"
@@ -152,7 +152,7 @@ const TokenValidatior = ({ setTokenValidatior }) => {
         </DialogContent>
         <DialogActions sx={{ p: 3 }}>
           <Button variant="outlined" color="inherit" onClick={handleClose}>
-            Cancel
+            İptal
           </Button>
           <Button
             variant="contained"
@@ -166,7 +166,7 @@ const TokenValidatior = ({ setTokenValidatior }) => {
             }}
             disabled={!selectedCollection?.name || Object.keys(matches).length === 0}
           >
-            Save
+            Kaydet
           </Button>
         </DialogActions>
       </Dialog>

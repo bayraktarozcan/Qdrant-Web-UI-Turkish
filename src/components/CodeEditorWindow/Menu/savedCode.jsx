@@ -39,26 +39,26 @@ function SavedCode({ state, code, handleEditorChange, toggleDrawer }) {
   const columns = [
     {
       field: 'name',
-      headerName: 'Name',
+      headerName: 'Ad',
       minWidth: 100,
       valueGetter: (r, v) => v.name,
       flex: 1,
     },
     {
       field: 'time',
-      headerName: 'Time',
+      headerName: 'Saat',
       width: 100,
       valueGetter: (r, v) => v.time,
     },
     {
       field: 'date',
-      headerName: 'Date',
+      headerName: 'Tarih',
       width: 100,
       valueGetter: (r, v) => v.date,
     },
     {
       field: 'delete',
-      headerName: 'Delete',
+      headerName: 'Sil',
       width: 100,
       align: 'center',
       headerAlign: 'center',
@@ -97,23 +97,23 @@ function SavedCode({ state, code, handleEditorChange, toggleDrawer }) {
             }}
           >
             <Typography variant="h5" m={2} gutterBottom>
-              Saved Code
+              Kayıtlı Kod
             </Typography>
             <Stack direction="row" spacing={2} m={2}>
               <TextField
-                placeholder=" Name (Required)*"
+                placeholder=" Ad (Gerekli)*"
                 variant="standard"
                 value={saveNameText}
                 onChange={(e) => {
                   setSaveNameText(e.target.value);
                 }}
               />
-              <Button onClick={saveCode}>Save</Button>
+              <Button onClick={saveCode}>Kaydet</Button>
             </Stack>
             {savedCodes.length === 0 && (
               <Stack direction="row" spacing={2}>
                 <Typography variant="h6" m={2} gutterBottom>
-                  No save code found
+                  Kayıtlı kod bulunamadı
                 </Typography>
               </Stack>
             )}
@@ -179,10 +179,10 @@ function SavedCode({ state, code, handleEditorChange, toggleDrawer }) {
                   toggleDrawer();
                 }}
               >
-                Apply Code
+                Kodu Uygula
               </Button>
               <Button key={'close'} variant="outlined" color="error" onClick={toggleDrawer}>
-                Close
+                Kapat
               </Button>
             </Stack>
           </Box>

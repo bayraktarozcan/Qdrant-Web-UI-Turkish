@@ -17,21 +17,21 @@ const PointPayload = ({ point, showImage = true, onPayloadEdit, setLoading, butt
 
   return (
     <>
-      <Box display={'flex'} justifyContent={'space-between'} aria-label="Point Payload">
+      <Box display={'flex'} justifyContent={'space-between'} aria-label="Nokta Yükü">
         <Box>
           <Box display="flex" alignItems="center" gap={1}>
             <Typography variant="subtitle2" marginRight={'24px'}>
-              Payload
+              Yük
             </Typography>
             {buttonsToShow.includes('copy') && (
               <CopyButton
                 text={bigIntJSON.stringify(point.payload)}
-                tooltip={'Copy payload to clipboard'}
-                successMessage={'Payload JSON copied to clipboard.'}
+                tooltip={'Yükü panoya kopyala'}
+                successMessage={'Yük JSON panoya kopyalandı.'}
               />
             )}
             {buttonsToShow.includes('edit') && (
-              <Tooltip title={'Edit payload'} placement={'left'}>
+              <Tooltip title={'Yükü düzenle'} placement={'left'}>
                 <IconButton
                   aria-label="add payload"
                   onClick={() => setOpenPayloadEditor(true)}
@@ -59,7 +59,7 @@ const PointPayload = ({ point, showImage = true, onPayloadEdit, setLoading, butt
         onClose={() => setOpenPayloadEditor(false)}
         onSave={onPayloadEdit}
         setLoading={setLoading || (() => {})}
-        aria-label="Payload Editor"
+        aria-label="Yük Düzenleyici"
       />
     </>
   );

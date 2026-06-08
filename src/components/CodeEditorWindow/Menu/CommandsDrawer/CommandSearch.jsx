@@ -43,7 +43,7 @@ const CommandSearch = ({ commands, setCommands }) => {
   return (
     <TextField
       id="command-search"
-      label="Search command"
+      label="Komut ara"
       variant="outlined"
       fullWidth
       placeholder={'GET collections'}

@@ -108,15 +108,15 @@ const Timeline = ({ data, requestTime, onSelect, selectedItem, onRefresh, isRefr
         {...other}
       >
         <CardHeader
-          title={'Timeline'}
+          title={'Zaman Çizelgesi'}
           variant="heading"
           action={
             onRefresh && (
-              <Tooltip title="Refresh data">
+              <Tooltip title="Verileri yenile">
                 <IconButton
                   onClick={onRefresh}
                   disabled={isRefreshing}
-                  aria-label="Refresh optimizations data"
+                  aria-label="İyileştirme verilerini yenile"
                   sx={{
                     color: 'text.primary',
                   }}
@@ -140,7 +140,7 @@ const Timeline = ({ data, requestTime, onSelect, selectedItem, onRefresh, isRefr
           }}
         />
         <CardContent sx={{ pt: 0, height: 400 }}>
-          {chartBaseConfig ? <canvas ref={canvasRef} /> : 'No data available'}
+          {chartBaseConfig ? <canvas ref={canvasRef} /> : 'Veri yok'}
         </CardContent>
         <TimelineNavigator data={timelineData} range={range} onRangeChange={setRange} />
       </Card>

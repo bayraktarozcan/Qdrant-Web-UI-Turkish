@@ -65,7 +65,7 @@ function Jwt() {
 
   useEffect(() => {
     if (!canUseWebCrypto) {
-      enqueueSnackbar('Advanced cryptographic features are not available in this context.', { variant: 'warning' });
+      enqueueSnackbar('Gelişmiş şifreleme özellikleri bu bağlamda kullanılamıyor.', { variant: 'warning' });
       return;
     }
   }, []);
@@ -82,7 +82,7 @@ function Jwt() {
     });
     const apiKey = qdrantClient.getApiKey();
     if (!apiKey) {
-      setErrorMessage('Please provide API key');
+      setErrorMessage('Lütfen API anahtarı girin');
     }
     setApiKey(apiKey);
   }, []);
@@ -92,8 +92,7 @@ function Jwt() {
       <Box sx={{ p: 5, width: '100%' }}>
         <Grid size={12}>
           <Alert severity="warning">
-            Access Denied: Because of the serverless mode, jwt tools will not work correctly. Please contact your
-            administrator.
+            Erişim Reddedildi: Sunucusuz mod nedeniyle JWT araçları doğru çalışmayacaktır. Lütfen yöneticinize başvurun.
           </Alert>
         </Grid>
       </Box>
@@ -114,7 +113,7 @@ function Jwt() {
           gap: 4,
         }}
       >
-        <Typography variant="h4">Generate Access Token</Typography>
+        <Typography variant="h4">Erişim Anahtarı Oluştur</Typography>
 
         <JwtForm
           expiration={expirationDays}
@@ -130,16 +129,17 @@ function Jwt() {
 
         {canUseWebCrypto === false ? (
           <Alert severity="warning">
-            Advanced cryptographic features are not available in this context. Please use a secure context (HTTPS) to
-            enable JWT generation. Alternatively, you can generate the JWT token{' '}
+            Gelişmiş şifreleme özellikleri bu bağlamda kullanılamıyor.{' '}
+            JWT oluşturmayı etkinleştirmek için lütfen güvenli bir bağlam{' '}
+            (HTTPS) kullanın. Alternatif olarak, JWT anahtarını{' '}
             <Link
               href="https://qdrant.tech/documentation/guides/security/#generating-json-web-tokens"
               target="_blank"
               rel="noopener noreferrer"
             >
-              externally
+              harici olarak
             </Link>{' '}
-            using your API key and the desired payload.
+            API anahtarınızı ve istenen yükü kullanarak oluşturabilirsiniz.
           </Alert>
         ) : (
           <JwtTokenViewer jwt={jwt} token={token} />

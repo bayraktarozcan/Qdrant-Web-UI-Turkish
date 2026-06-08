@@ -49,19 +49,19 @@ const Vectors = memo(function Vectors({ point, onFindSimilar }) {
 
   return (
     <Box>
-      <Typography variant="subtitle2">Vectors:</Typography>
+      <Typography variant="subtitle2">Vektörler:</Typography>
       {Object.keys(vectors).map((key) => {
         return (
           <Grid key={key} container spacing={2} alignItems={'center'}>
             <Grid size={{ xs: 12, md: 4 }} display={'flex'} alignItems={'center'}>
               {key === '' ? (
                 <Typography variant="body2" color="text.secondary" display={'inline'} mr={1}>
-                  Default vector
+                  Varsayılan vektör
                 </Typography>
               ) : (
                 <>
                   <Typography variant="body2" color="text.secondary" display={'inline'} mr={1}>
-                    Name:
+                    Ad:
                   </Typography>
                   <Chip label={key} size="small" variant="outlined" sx={{ mr: 1 }} />
                 </>
@@ -69,7 +69,7 @@ const Vectors = memo(function Vectors({ point, onFindSimilar }) {
             </Grid>
             <Grid my={1} size={{ xs: 12, md: 4 }}>
               <Typography variant="body2" color="text.secondary" display={'inline'} mr={1}>
-                Length:
+                Uzunluk:
               </Typography>
               <Chip
                 sx={{
@@ -101,9 +101,9 @@ const Vectors = memo(function Vectors({ point, onFindSimilar }) {
             >
               <CopyTextButton
                 text={bigIntJSON.stringify(vectors[key])}
-                tooltip={'Copy vector to clipboard'}
+                tooltip={'Vektörü panoya kopyala'}
                 tooltipPlacement={'left'}
-                successMessage={`Copied ${key === '' ? 'default vector' : 'vector ' + key} to clipboard`}
+                successMessage={`${key === '' ? 'Varsayılan vektör' : key + ' vektörü'} panoya kopyalandı`}
                 buttonProps={{
                   size: 'small',
                 }}
@@ -116,7 +116,7 @@ const Vectors = memo(function Vectors({ point, onFindSimilar }) {
                   width: { xs: '100%', md: 'auto' },
                 }}
               >
-                Open graph
+                Grafikte aç
               </StyledButton>
               {typeof onFindSimilar !== 'function' ? null : (
                 <StyledButton
@@ -127,7 +127,7 @@ const Vectors = memo(function Vectors({ point, onFindSimilar }) {
                     width: { xs: '100%', md: 'auto' },
                   }}
                 >
-                  Find Similar
+                  Benzerini Bul
                 </StyledButton>
               )}
             </Grid>

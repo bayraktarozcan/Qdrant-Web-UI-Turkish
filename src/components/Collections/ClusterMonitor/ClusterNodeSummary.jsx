@@ -65,7 +65,7 @@ function PeerShardSummaryBadges({
   const badge = ({ state, count }) => (
     <Box
       component="span"
-      aria-label={`${count} shard${count === 1 ? '' : 's'} ${humanizePascalCase(state)}`}
+        aria-label={`${count} parçacık ${humanizePascalCase(state)}`}
       sx={{
         display: 'inline-flex',
         alignItems: 'center',
@@ -94,7 +94,7 @@ function PeerShardSummaryBadges({
       }}
     >
       <Typography variant="caption" color="text.secondary" component="span" sx={{ lineHeight: 1.35 }}>
-        {shardsLength} shard{shardsLength === 1 ? '' : 's'}
+        {shardsLength} parçacık
       </Typography>
       {shardStateEntries.map(({ state, count }) =>
         nestedTooltips ? (
@@ -107,7 +107,7 @@ function PeerShardSummaryBadges({
       )}
       {transferOut > 0 &&
         (nestedTooltips ? (
-          <Tooltip title="Transfers out" arrow placement="top">
+          <Tooltip title="Dışarı aktarımlar" arrow placement="top">
             <Typography
               component="span"
               variant="caption"
@@ -122,7 +122,7 @@ function PeerShardSummaryBadges({
             component="span"
             variant="caption"
             color="text.secondary"
-            aria-label={`${transferOut} transfer${transferOut === 1 ? '' : 's'} out`}
+            aria-label={`${transferOut} dışa aktarım`}
             sx={{ lineHeight: 1.35, display: 'inline-block' }}
           >
             ↗{transferOut}
@@ -130,7 +130,7 @@ function PeerShardSummaryBadges({
         ))}
       {transferIn > 0 &&
         (nestedTooltips ? (
-          <Tooltip title="Transfers in" arrow placement="top">
+          <Tooltip title="İçe aktarımlar" arrow placement="top">
             <Typography
               component="span"
               variant="caption"
@@ -145,7 +145,7 @@ function PeerShardSummaryBadges({
             component="span"
             variant="caption"
             color="text.secondary"
-            aria-label={`${transferIn} transfer${transferIn === 1 ? '' : 's'} in`}
+            aria-label={`${transferIn} içe aktarım`}
             sx={{ lineHeight: 1.35, display: 'inline-block' }}
           >
             ↙{transferIn}
@@ -233,11 +233,11 @@ const ClusterNodeSummary = ({ peerId, cluster, sortDirection, onSetSort }) => {
           }}
         >
           <Typography component="h3" variant="subtitle2" sx={{ fontWeight: 600, flexShrink: 0, minWidth: 0 }}>
-            Peer {peerId}
+            Düğüm {peerId}
           </Typography>
           {isLocalPeer && (
             <Chip
-              label="Local"
+              label="Yerel"
               size="small"
               color="primary"
               variant="outlined"
@@ -254,7 +254,7 @@ const ClusterNodeSummary = ({ peerId, cluster, sortDirection, onSetSort }) => {
           )}
         </Box>
         <Tooltip
-          title={sortDirection ? 'Reset to default order' : `Sort filled slots first for peer ${peerId}`}
+          title={sortDirection ? 'Varsayılan sıralamaya dön' : `Düğüm ${peerId} için dolu yuvaları önce sırala`}
           placement="bottom"
           arrow
         >
@@ -262,7 +262,7 @@ const ClusterNodeSummary = ({ peerId, cluster, sortDirection, onSetSort }) => {
             size="small"
             onClick={handleSortToggle}
             color={sortDirection ? 'primary' : 'default'}
-            aria-label={`Sort by peer ${peerId}`}
+            aria-label={`Düğüm ${peerId}'ye göre sırala`}
             sx={(theme) => ({
               flexShrink: 0,
               p: 0.25,

@@ -181,7 +181,7 @@ function Visualize() {
                         borderBottom: `1px solid ${theme.palette.divider}`,
                       }}
                     >
-                      <Tooltip title={'Back to collection'}>
+                      <Tooltip title={'Koleksiyona dön'}>
                         <IconButton
                           sx={{ mr: 3 }}
                           size="small"
@@ -229,9 +229,9 @@ function Visualize() {
                       backgroundColor: theme.palette.background.paper,
                     }}
                   >
-                    <Tabs value={tabValue} onChange={handleTabChange} aria-label="visualization tabs">
-                      <Tab label="Code" />
-                      <Tab label="Data Panel" />
+                    <Tabs value={tabValue} onChange={handleTabChange} aria-label="görselleştirme sekmeleri">
+                      <Tab label="Kod" />
+                      <Tab label="Veri Paneli" />
                     </Tabs>
                   </Box>
                   <TabPanel value={tabValue} index={0} style={{ flex: 1, overflow: 'hidden' }}>

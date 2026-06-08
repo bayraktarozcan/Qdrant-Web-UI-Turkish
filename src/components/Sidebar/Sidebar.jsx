@@ -54,7 +54,7 @@ export default function Sidebar() {
       <StyledList>
         {cloudInfo?.cloud_backlink && (
           <SidebarItem
-            title="Back to Cloud"
+            title="Buluta Dön"
             icon={<CornerUpLeft size="16px" />}
             linkTo={cloudInfo.cloud_backlink}
             active={isActive(cloudInfo.cloud_backlink)}
@@ -64,7 +64,7 @@ export default function Sidebar() {
 
         {!isRestricted && (
           <SidebarItem
-            title="Welcome"
+            title="Karşılama"
             icon={<Rocket size="16px" />}
             linkTo="/welcome"
             active={isActive('/welcome')}
@@ -72,14 +72,14 @@ export default function Sidebar() {
           />
         )}
         <SidebarItem
-          title="Console"
+          title="Konsol"
           icon={<SquareTerminal size="16px" />}
           linkTo="/console"
           active={isActive('/console')}
           disabled={false}
         />
         <SidebarItem
-          title="Collections"
+          title="Koleksiyonlar"
           icon={<RectangleEllipsis size="16px" />}
           linkTo="/collections"
           active={isActive('/collections')}
@@ -88,7 +88,7 @@ export default function Sidebar() {
 
         {!isRestricted && (
           <SidebarItem
-            title="Tutorial"
+            title="Eğitim"
             icon={<BookMarked size="16px" />}
             linkTo="/tutorial"
             active={isActive('/tutorial')}
@@ -96,11 +96,11 @@ export default function Sidebar() {
           />
         )}
 
-        {!isRestricted && sidebarItem('Datasets', <FileCode size="16px" />, '/datasets', location)}
+        {!isRestricted && sidebarItem('Veri Kümeleri', <FileCode size="16px" />, '/datasets', location)}
 
         {!isRestricted && jwtVisible && (
           <SidebarItem
-            title="Access Tokens"
+            title="Erişim Anahtarları"
             icon={<KeyRound size="16px" />}
             linkTo="/jwt"
             active={isActive('/jwt')}
@@ -113,7 +113,7 @@ export default function Sidebar() {
         <StyledSidebarFooterList>
           {cloudInfo?.support_url && (
             <SidebarItem
-              title="Get Support"
+              title="Destek Al"
               icon={<CircleHelp size="16px" />}
               linkTo={cloudInfo.support_url}
               active={false}
@@ -123,7 +123,7 @@ export default function Sidebar() {
 
           {isUpdateNewer && updateLink && (
             <SidebarItem
-              title="Update Available"
+              title="Güncelleme Mevcut"
               icon={<HardDriveUpload size="16px" />}
               linkTo={updateLink}
               active={false}

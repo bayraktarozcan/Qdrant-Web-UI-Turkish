@@ -187,7 +187,7 @@ function Graph() {
                         borderRadius: 0,
                       }}
                     >
-                      <Tooltip title={'Back to collection'}>
+                      <Tooltip title={'Koleksiyona dön'}>
                         <IconButton
                           sx={{ mr: 3 }}
                           size="small"
@@ -237,9 +237,9 @@ function Graph() {
                       backgroundColor: theme.palette.background.paper,
                     }}
                   >
-                    <Tabs value={tabValue} onChange={handleTabChange} aria-label="graph visualization tabs">
-                      <Tab label="Code" />
-                      <Tab label="Data Panel" />
+                    <Tabs value={tabValue} onChange={handleTabChange} aria-label="grafik görselleştirme sekmeleri">
+                      <Tab label="Kod" />
+                      <Tab label="Veri Paneli" />
                     </Tabs>
                   </Box>
                   <TabPanel value={tabValue} index={0} style={{ flex: 1, overflow: 'hidden' }}>

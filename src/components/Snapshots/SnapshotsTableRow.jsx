@@ -18,7 +18,7 @@ export const SnapshotsTableRow = ({ snapshot, downloadSnapshot, deleteSnapshot }
   return (
     <StyledTableRow key={snapshot.name}>
       <TableCell width={'60%'}>
-        <Tooltip title={'Download snapshot'} arrow placement={'top'}>
+        <Tooltip title={'Anlık görüntüyü indir'} arrow placement={'top'}>
           <Box
             sx={{
               display: 'inline-flex',
@@ -68,17 +68,17 @@ export const SnapshotsTableRow = ({ snapshot, downloadSnapshot, deleteSnapshot }
                 />
               )}
             </Box>
-            {/* if progres is not 0, show first 20 characters of the snapshot name + "..." to have enough space for the `Preparing download` chip */}
+            {/* show first 20 chars of snapshot name + "..." to fit `Preparing download` chip */}
             {progress === 0 ? snapshot.name : `${snapshot.name.slice(0, 20)}...`}
           </Box>
         </Tooltip>
         {progress > 0 && (
           <Chip
-            label={`Preparing download`}
+            label={`İndirme hazırlanıyor`}
             size="small"
             sx={{ ml: 3, mb: '2px' }}
             deleteIcon={
-              <Tooltip title={'Cancel download'} placement={'right'}>
+              <Tooltip title={'İndirmeyi iptal et'} placement={'right'}>
                 <CircleX size={16} />
               </Tooltip>
             }
@@ -105,7 +105,7 @@ export const SnapshotsTableRow = ({ snapshot, downloadSnapshot, deleteSnapshot }
               py: '4px',
             }}
           >
-            Download
+            İndir
           </Button>
           <Button
             variant="outlined"
@@ -118,17 +118,17 @@ export const SnapshotsTableRow = ({ snapshot, downloadSnapshot, deleteSnapshot }
               py: '4px',
             }}
           >
-            Delete
+            Sil
           </Button>
         </Box>
       </TableCell>
       <ConfirmationDialog
         open={isDeleteDialogOpen}
         onClose={() => setIsDeleteDialogOpen(false)}
-        title={'Delete snapshot'}
-        content={`Are you sure you want to delete snapshot ${snapshot.name}?`}
-        warning={`This action cannot be undone.`}
-        actionName={'Delete'}
+        title={'Anlık görüntüyü sil'}
+        content={`${snapshot.name} anlık görüntüsünü silmek istediğinize emin misiniz?`}
+        warning={`Bu işlem geri alınamaz.`}
+        actionName={'Sil'}
         actionHandler={() => deleteSnapshot(snapshot.name)}
       />
     </StyledTableRow>

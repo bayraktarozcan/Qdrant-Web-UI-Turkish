@@ -109,7 +109,7 @@ function HomeContent() {
                   endIcon={<Rocket size={16} />}
                   sx={{ mr: 2 }}
                 >
-                  Upgrade Cluster
+                  Kümeyi Yükselt
                 </Button>
               )}
 
@@ -127,7 +127,7 @@ function HomeContent() {
             Get Managed Cloud
           </Button> */}
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                <Tooltip title="API Key">
+                <Tooltip title="API Anahtarı">
                   <IconButton size="large" onClick={() => setApiKeyDialogOpen(true)}>
                     <Key size={20} />
                   </IconButton>

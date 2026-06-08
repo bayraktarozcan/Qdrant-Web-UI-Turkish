@@ -5,9 +5,9 @@ import { useCopyToClipboard } from '../../hooks/useCopyToClipboard';
 
 export const BaseCopyComponent = ({
   text,
-  tooltip = 'Copy to clipboard',
+  tooltip = 'Panoya kopyala',
   tooltipPlacement = 'left',
-  successMessage = 'Copied to clipboard',
+  successMessage = 'Panoya kopyalandı',
   renderButton,
 }) => {
   const { copyToClipboard } = useCopyToClipboard({ successMessage });

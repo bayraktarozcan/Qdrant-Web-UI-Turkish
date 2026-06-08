@@ -82,7 +82,7 @@ const MemoryTree = ({ data, onRefresh, isRefreshing }) => {
   return (
     <Card elevation={0}>
       <CardHeader
-        title={'Memory Usage'}
+        title={'Bellek Kullanımı'}
         variant="heading"
         sx={{ flexGrow: 1 }}
         action={
@@ -92,7 +92,7 @@ const MemoryTree = ({ data, onRefresh, isRefreshing }) => {
               value={mode}
               exclusive
               onChange={(_, v) => v && setMode(v)}
-              aria-label="memory view mode"
+              aria-label="bellek görünüm modu"
             >
               <ToggleButton value="memory" sx={{ px: 1.5, py: 0.25, textTransform: 'none' }}>
                 RAM
@@ -101,7 +101,7 @@ const MemoryTree = ({ data, onRefresh, isRefreshing }) => {
                 Disk
               </ToggleButton>
             </ToggleButtonGroup>
-            <Tooltip title="Refresh">
+            <Tooltip title="Yenile">
               <span>
                 <IconButton onClick={onRefresh} disabled={isRefreshing} size="small">
                   <RefreshCw size={18} />
@@ -128,34 +128,34 @@ const MemoryTree = ({ data, onRefresh, isRefreshing }) => {
           >
             <SummaryCell label="Disk" value={formatBytes(total.disk_bytes)} />
             <SummaryCell label="RAM" value={formatBytes(total.ram_bytes)} />
-            <SummaryCell label="Cached" value={formatBytes(total.cached_bytes)} />
-            <SummaryCell label="Expected cache" value={formatBytes(total.expected_cache_bytes)} />
+            <SummaryCell label="Önbellek" value={formatBytes(total.cached_bytes)} />
+            <SummaryCell label="Beklenen önbellek" value={formatBytes(total.expected_cache_bytes)} />
           </Box>
         )}
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2.5, flexWrap: 'wrap', px: 1, mb: 1.5 }}>
           {mode === 'memory' ? (
             <>
-              <LegendDot color={ramColor} label="RAM (non-evictable heap)" />
-              <LegendDot color={expectedTrackColor} label="Expected cache (slot)" />
-              <LegendDot color={cachedColor} label="Cached (within expected)" />
-              <LegendDot color={extraColor} label="Extra cache (beyond expected)" />
+              <LegendDot color={ramColor} label="RAM (çıkarılamayan yığın)" />
+              <LegendDot color={expectedTrackColor} label="Beklenen önbellek (yuva)" />
+              <LegendDot color={cachedColor} label="Önbellek (beklenen içinde)" />
+              <LegendDot color={extraColor} label="Ekstra önbellek (beklenen ötesi)" />
             </>
           ) : (
-            <LegendDot color={diskColor} label="Disk (file size)" />
+            <LegendDot color={diskColor} label="Disk (dosya boyutu)" />
           )}
         </Box>
 
         <Box sx={{ overflow: 'auto', borderRadius: 1, pt: 1, pr: 0.5 }}>
           {!data ? (
             <Typography variant="body2" color="text.secondary" align="center">
-              Loading memory info...
+              Bellek bilgisi yükleniyor...
             </Typography>
           ) : tree ? (
             <MemoryNode node={tree} maxBytes={maxBytes} mode={mode} />
           ) : (
             <Typography variant="body2" color="text.secondary" align="center">
-              No memory info available
+              Bellek bilgisi yok
             </Typography>
           )}
         </Box>

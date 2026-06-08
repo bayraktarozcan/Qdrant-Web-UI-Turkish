@@ -81,17 +81,17 @@ CollectionAccessToggle.propTypes = {
 const JwtPerCollection = ({ globalAccess, manageAccess, collections, setConfiguredCollections }) => {
   return (
     <StyledTableContainer>
-      <Table aria-label="Access per Collection">
+      <Table aria-label="Koleksiyon Başına Erişim">
         <StyledTableHead>
           <TableRow>
             <StyledHeaderCell width="33%" sx={{ py: 2 }}>
-              Collection Name
+              Koleksiyon Adı
             </StyledHeaderCell>
             <StyledHeaderCell width="33%" align="center" sx={{ py: 2 }}>
-              Read
+              Okuma
             </StyledHeaderCell>
             <StyledHeaderCell width="33%" align="center" sx={{ py: 2 }}>
-              Write
+              Yazma
             </StyledHeaderCell>
           </TableRow>
         </StyledTableHead>

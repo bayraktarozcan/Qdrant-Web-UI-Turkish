@@ -177,7 +177,7 @@ const SimilarSearchField = memo(function SimilarSearchField({
         {...params}
         variant="outlined"
         size="small"
-        placeholder="Similar to (id)"
+        placeholder="Benzer (id)"
         slotProps={{
           input: {
             sx: { paddingTop: '4px !important', paddingBottom: '4px !important' },

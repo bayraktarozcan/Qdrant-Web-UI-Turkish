@@ -64,13 +64,13 @@ const Welcome = () => {
             mb: '1rem',
           }}
         >
-          Welcome to Qdrant!
+          Qdrant&apos;a Hoş Geldiniz!
         </Typography>
 
         <CardBanner
-          title="Get started with vector search in Qdrant"
-          description="Start building your app by creating a collection and inserting your vectors."
-          buttonText="View Quickstart"
+          title="Qdrant'ta vektör aramaya başlayın"
+          description="Bir koleksiyon oluşturup vektörlerinizi ekleyerek uygulamanızı oluşturmaya başlayın."
+          buttonText="Hızlı Başlangıcı Görüntüle"
           linkTo="/tutorial/quickstart"
           imgSrc={getFullPath('/assets/console.svg')}
         />
@@ -78,16 +78,17 @@ const Welcome = () => {
 
       <Box component="section">
         <Typography component="h2" variant="h6" mb="1rem">
-          Connect to your Project or Start with Samples
+          Projenize Bağlanın veya Örneklerle Başlayın
         </Typography>
 
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, md: 6 }}>
             <InfoCard
               icon={Workflow}
-              title="API Reference"
+              title="API Başvuru Kılavuzu"
               description={
-                "Explore Qdrant's REST API and SDKs to connect, query, and manage your vector data with ease."
+                "Qdrant'ın REST API ve SDK'larını keşfederek vektör" +
+                  ' verilerinize kolayca bağlanın, sorgulayın ve yönetin.'
               }
               href="https://api.qdrant.tech/"
               showCta={false}
@@ -96,8 +97,9 @@ const Welcome = () => {
           <Grid size={{ xs: 12, md: 6 }}>
             <InfoCard
               icon={FileCode}
-              title="Load Sample Data"
-              description={`Follow this tutorial to import a remote snapshot and explore vector search with real data in just a few steps.`}
+              title="Örnek Veri Yükle"
+              description={`Bu eğitimi izleyerek uzak bir anlık görüntüyü içe aktarın
+                ve gerçek verilerle vektör aramayı birkaç adımda keşfedin.`}
               href="/datasets"
               showCta={false}
             />
@@ -107,7 +109,7 @@ const Welcome = () => {
 
       <Box component="section">
         <Typography component="h2" variant="h6" mb="1rem">
-          Interactive Tutorials
+          Etkileşimli Eğitimler
         </Typography>
         <TutorialLinks sections={['vectorSearch', 'multitenancy']} showTitle={false} />
       </Box>

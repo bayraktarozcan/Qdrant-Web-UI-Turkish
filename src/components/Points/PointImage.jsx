@@ -75,7 +75,7 @@ function PointImage({ data, sx }) {
         slotProps={{
           backdrop: {
             sx: { cursor: 'pointer' },
-            title: 'Click to close',
+            title: 'Kapatmak için tıkla',
           },
         }}
       >

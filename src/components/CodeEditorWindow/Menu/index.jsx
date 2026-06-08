@@ -26,8 +26,8 @@ function Menu({ code, handleEditorChange }) {
           borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
         }}
       >
-        <Button onClick={toggleDrawer('history', true)}>History</Button>
-        <Button onClick={toggleDrawer('savedCode', true)}>Saved Code</Button>
+        <Button onClick={toggleDrawer('history', true)}>Geçmiş</Button>
+        <Button onClick={toggleDrawer('savedCode', true)}>Kayıtlı Kod</Button>
       </Stack>
       <History state={state.history} code={code} handleEditorChange={handleEditorChange} toggleDrawer={toggleDrawer} />
       <SavedCode

@@ -6,14 +6,14 @@ import { BaseCopyComponent } from './BaseCopyComponent';
 
 export const CopyTextButton = ({
   text,
-  tooltip = 'Copy to clipboard',
+  tooltip = 'Panoya kopyala',
   tooltipPlacement = 'left',
-  successMessage = 'Copied to clipboard',
+  successMessage = 'Panoya kopyalandı',
   size,
   buttonProps,
   showIcon = true,
   iconPosition = 'start', // 'start' or 'end'
-  children = 'Copy',
+  children = 'Kopyala',
 }) => {
   const renderIcon = () => {
     if (!showIcon) return null;

@@ -74,7 +74,7 @@ export const SnapshotsTab = ({ collectionName }) => {
   const downloadSnapshot = (snapshotName, snapshotSize, progress, setProgress) => {
     if (progress > 0) {
       enqueueSnackbar(
-        'Please wait until the previous download is finished',
+        'Lütfen önceki indirme tamamlanana kadar bekleyin',
         getSnackbarOptions('warning', closeSnackbar, 2000)
       );
       return;
@@ -104,7 +104,7 @@ export const SnapshotsTab = ({ collectionName }) => {
       })
       .catch((error) => {
         if (error.name === 'AbortError') {
-          enqueueSnackbar('Download canceled', getSnackbarOptions('warning', closeSnackbar, 2000));
+          enqueueSnackbar('İndirme iptal edildi', getSnackbarOptions('warning', closeSnackbar, 2000));
           return;
         }
         enqueueSnackbar(error.message, errorSnackbarOptions);
@@ -117,7 +117,7 @@ export const SnapshotsTab = ({ collectionName }) => {
       .deleteSnapshot(collectionName, snapshotName)
       .then(() => {
         setSnapshots([...snapshots.filter((snapshot) => snapshot.name !== snapshotName)]);
-        enqueueSnackbar('Snapshot successfully deleted', getSnackbarOptions('success', closeSnackbar, 2000));
+        enqueueSnackbar('Anlık görüntü başarıyla silindi', getSnackbarOptions('success', closeSnackbar, 2000));
       })
       .catch((err) => {
         enqueueSnackbar(err.message, errorSnackbarOptions);
@@ -146,7 +146,7 @@ export const SnapshotsTab = ({ collectionName }) => {
           }}
         >
           <Typography variant="h4" component={'h1'}>
-            Snapshots
+            Anlık Görüntüler
           </Typography>
         </Grid>
         <Grid
@@ -162,57 +162,57 @@ export const SnapshotsTab = ({ collectionName }) => {
             startIcon={<Camera size={18} />}
             disabled={isSnapshotLoading}
           >
-            Take snapshot
+            Anlık görüntü al
           </Button>
         </Grid>
         {remoteShards && remoteShards.length !== 0 && (
           <InfoBanner severity={'warning'}>
             <Typography>
-              Snapshot will not contain the full collection. It will only include shards on the current machine.
+              Anlık görüntü koleksiyonun tamamını içermeyecektir. Yalnızca geçerli makinedeki parçacıkları içerecektir.
             </Typography>
 
             {localShards.length > 0 && (
               <>
-                <Typography>Local shards:</Typography>
+                <Typography>                Yerel parçacıklar:</Typography>
                 <ul>
                   {localShards.map((shard) => (
                     <Typography component={'li'} key={shard.shard_id}>
-                      Id: {shard.shard_id}
+                    No: {shard.shard_id}
                     </Typography>
                   ))}
                 </ul>
               </>
             )}
             <>
-              <Typography>Remote shards (not included in the snapshot):</Typography>
+              <Typography>Uzak parçacıklar (anlık görüntüye dahil değildir):</Typography>
               <ul>
                 {remoteShards.map((shard) => (
                   <Typography component={'li'} key={shard.shard_id}>
-                    Id: {shard.shard_id} ({shard.peer_id})
+                    No: {shard.shard_id} ({shard.peer_id})
                   </Typography>
                 ))}
               </ul>
             </>
             <Typography>
-              For more information, please visit the{' '}
+              Daha fazla bilgi için{' '}
               <Link href={'https://qdrant.tech/documentation/tutorials/create-snapshot/'} target="_blank">
-                documentation
+                belgelendirmeyi
               </Link>
-              .
+              ziyaret edin.
             </Typography>
           </InfoBanner>
         )}
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <div>Yükleniyor...</div>}
         {(snapshots?.length > 0 || isSnapshotLoading) && (
           <Grid size={12}>
             <StyledTableContainer>
               <Table aria-label="simple table">
                 <StyledTableHead>
                   <TableRow>
-                    <StyledHeaderCell>Snapshot Name</StyledHeaderCell>
-                    <StyledHeaderCell align="center">Created at</StyledHeaderCell>
-                    <StyledHeaderCell align="center">Size</StyledHeaderCell>
-                    <StyledHeaderCell align="center">Actions</StyledHeaderCell>
+                    <StyledHeaderCell>Anlık Görüntü Adı</StyledHeaderCell>
+                    <StyledHeaderCell align="center">Oluşturulma</StyledHeaderCell>
+                    <StyledHeaderCell align="center">Boyut</StyledHeaderCell>
+                    <StyledHeaderCell align="center">İşlemler</StyledHeaderCell>
                   </TableRow>
                 </StyledTableHead>
                 <StyledTableBody>
@@ -221,7 +221,7 @@ export const SnapshotsTab = ({ collectionName }) => {
                   {isSnapshotLoading && (
                     <StyledTableRow>
                       <TableCell colSpan={4} align="center">
-                        Loading...
+                        Yükleniyor...
                       </TableCell>
                     </StyledTableRow>
                   )}
@@ -232,7 +232,7 @@ export const SnapshotsTab = ({ collectionName }) => {
         )}
         {!isLoading && !snapshots?.length && !isSnapshotLoading && (
           <Grid textAlign={'center'} size={12}>
-            <Typography>No snapshots yet, take one! 📸</Typography>
+            <Typography>Henüz anlık görüntü yok, bir tane alın! 📸</Typography>
           </Grid>
         )}
       </Grid>

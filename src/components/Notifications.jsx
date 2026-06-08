@@ -107,7 +107,7 @@ export default function Notifications() {
     <React.Fragment>
       <Tooltip
         open={tooltipOpen}
-        title="Toggle notifications"
+        title="Bildirimleri aç/kapat"
         enterDelay={300}
         onOpen={() => {
           setTooltipOpen(!open);
@@ -240,13 +240,13 @@ function Notification({ issue }) {
           {error ? (
             <Box>
               <Typography color="error" variant="body1">
-                <b>Error</b>
+                <b>Hata</b>
               </Typography>
               <CodeBlock
                 codeStr={error.toString()}
                 language="json"
                 withRunButton={false}
-                title="Error"
+                title="Hata"
                 editable={false}
               />
             </Box>
@@ -326,7 +326,7 @@ ${JSON.stringify(choice.action.body, null, 2)}`}
                   </Box>
                   {index < issue.solution.immediate_choice.length - 1 ? (
                     <Divider sx={{ width: '100%' }}>
-                      <Chip label="OR" size="small" />
+                      <Chip label="VEYA" size="small" />
                     </Divider>
                   ) : null}
                 </React.Fragment>

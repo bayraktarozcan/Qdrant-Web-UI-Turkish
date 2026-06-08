@@ -70,15 +70,15 @@ const StatusBadge = styled(Box)(({ status, theme }) => {
 const getStatusTooltip = (status) => {
   switch (status?.toLowerCase()) {
     case 'green':
-      return 'Collection is ready';
+      return 'Koleksiyon hazır';
     case 'yellow':
-      return 'Collection is optimizing';
+      return 'Koleksiyon iyileştiriliyor';
     case 'grey':
-      return 'Collection is pending optimization';
+      return 'Koleksiyon iyileştirme bekliyor';
     case 'red':
-      return 'An error occurred';
+      return 'Bir hata oluştu';
     default:
-      return 'Unknown';
+      return 'Bilinmiyor';
   }
 };
 

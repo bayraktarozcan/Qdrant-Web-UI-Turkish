@@ -93,7 +93,7 @@ describe('CollectionsList', () => {
     expect(screen.getByText('euclidean')).toBeInTheDocument();
     expect(screen.getByText('32')).toBeInTheDocument();
     expect(screen.getByText('manhattan')).toBeInTheDocument();
-    expect(screen.getByText('Aliases: alias1, alias2')).toBeInTheDocument();
+    expect(screen.getByText('Takma Adlar: alias1, alias2')).toBeInTheDocument();
   });
   it('should render Refresh menu item in actions menu', () => {
     render(
@@ -106,7 +106,7 @@ describe('CollectionsList', () => {
         />
       </MemoryRouter>
     );
-    expect(screen.getAllByText('Refresh')).toHaveLength(COLLECTIONS.length);
+    expect(screen.getAllByText('Yenile')).toHaveLength(COLLECTIONS.length);
   });
 
   it('should call refreshCollection with collection name when Refresh is clicked', () => {
@@ -121,7 +121,7 @@ describe('CollectionsList', () => {
         />
       </MemoryRouter>
     );
-    const refreshButtons = screen.getAllByText('Refresh');
+    const refreshButtons = screen.getAllByText('Yenile');
     fireEvent.click(refreshButtons[0]);
     expect(mockRefresh).toHaveBeenCalledWith(COLLECTIONS[0].name);
   });
@@ -137,7 +137,7 @@ describe('CollectionsList', () => {
         />
       </MemoryRouter>
     );
-    const refreshButtons = screen.getAllByText('Refresh');
+    const refreshButtons = screen.getAllByText('Yenile');
     refreshButtons.forEach((btn) => {
       expect(btn.closest('li')).toHaveAttribute('aria-disabled', 'true');
     });

@@ -45,8 +45,8 @@ describe('CollectionAliases', () => {
         <CollectionAliases collectionName={'collection_without_aliases'} />
       </MemoryRouter>
     );
-    expect(await screen.findByText('Aliases')).toBeInTheDocument();
-    expect(await screen.findByText('No aliases found')).toBeInTheDocument();
+    expect(await screen.findByText('Takma Adlar')).toBeInTheDocument();
+    expect(await screen.findByText('Takma ad bulunamadı')).toBeInTheDocument();
   });
 
   it('should render CollectionAliases with given data', async () => {
@@ -55,7 +55,7 @@ describe('CollectionAliases', () => {
         <CollectionAliases collectionName={COLLECTION_NAME} />
       </MemoryRouter>
     );
-    expect(await screen.findByText('Aliases')).toBeInTheDocument();
+    expect(await screen.findByText('Takma Adlar')).toBeInTheDocument();
     expect(await screen.findByText('alias1')).toBeInTheDocument();
     expect(await screen.findByText('alias2')).toBeInTheDocument();
     expect(await screen.findByTestId('delete-alias-alias1')).toBeInTheDocument();
@@ -71,7 +71,7 @@ describe('CollectionAliases', () => {
     );
 
     // Open the Create Alias dialog
-    const createButton = screen.getByText('Create alias');
+    const createButton = screen.getByText('Takma ad oluştur');
     expect(createButton).toBeInTheDocument();
 
     await act(async () => {
@@ -128,7 +128,7 @@ describe('CollectionAliases', () => {
     });
 
     // Confirm the deletion
-    const confirmButton = screen.getByTestId('confirm-delete-button');
+    const confirmButton = screen.getByTestId('confirm-sil-button');
     expect(confirmButton).toBeInTheDocument();
 
     await act(async () => {

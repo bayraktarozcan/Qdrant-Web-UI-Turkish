@@ -12,7 +12,7 @@ const PointPreview = ({ point }) => {
   if (!point) {
     return (
       <Alert severity="info" sx={{ m: 5 }}>
-        Select a point to see its data preview
+        Veri önizlemesini görmek için bir nokta seçin
       </Alert>
     );
   }
@@ -36,7 +36,7 @@ const PointPreview = ({ point }) => {
           height: 48,
         }}
       >
-        <Typography variant="h6">Point {point.id}</Typography>
+        <Typography variant="h6">Nokta {point.id}</Typography>
       </Box>
 
       {/* Image Section */}

@@ -51,7 +51,7 @@ const CollectionAliases = ({ collectionName }) => {
           actions: [{ delete_alias: { alias_name: aliasName } }],
         });
         setAliases((prev) => prev.filter((alias) => alias.alias_name !== aliasName));
-        enqueueSnackbar('Alias deleted successfully', getSnackbarOptions('success', closeSnackbar, 2000));
+        enqueueSnackbar('Takma ad başarıyla silindi', getSnackbarOptions('success', closeSnackbar, 2000));
       } catch (err) {
         enqueueSnackbar(err.message, getSnackbarOptions('error', closeSnackbar));
       }
@@ -66,13 +66,13 @@ const CollectionAliases = ({ collectionName }) => {
 
       // if alias name already exists
       if (aliases.some((alias) => alias.alias_name === newAliasNameNormalized)) {
-        enqueueSnackbar('Alias name already exists', getSnackbarOptions('error', closeSnackbar, 2000));
+        enqueueSnackbar('Takma ad zaten mevcut', getSnackbarOptions('error', closeSnackbar, 2000));
         setOpenCreateModal(false);
         return;
       }
       // if alias name is empty
       if (!newAliasNameNormalized) {
-        enqueueSnackbar('Alias name cannot be empty', getSnackbarOptions('error', closeSnackbar, 2000));
+        enqueueSnackbar('Takma ad boş olamaz', getSnackbarOptions('error', closeSnackbar, 2000));
         return;
       }
 
@@ -82,7 +82,7 @@ const CollectionAliases = ({ collectionName }) => {
         });
         setAliases((prev) => [...prev, { alias_name: newAliasNameNormalized }]);
         setOpenCreateModal(false);
-        enqueueSnackbar('Alias created successfully', getSnackbarOptions('success', closeSnackbar, 2000));
+        enqueueSnackbar('Takma ad başarıyla oluşturuldu', getSnackbarOptions('success', closeSnackbar, 2000));
       } catch (err) {
         enqueueSnackbar(err.message, getSnackbarOptions('error', closeSnackbar));
       }
@@ -100,7 +100,7 @@ const CollectionAliases = ({ collectionName }) => {
         <StyledTableHead sx={{ background: theme.palette.background.paperElevation1, borderBottom: 0 }}>
           <TableRow sx={{ background: alpha(theme.palette.action.hover, 0.04) }}>
             <TableCell sx={{ py: 1, borderBottom: 0 }}>
-              <Typography variant="h6">Aliases</Typography>
+              <Typography variant="h6">Takma Adlar</Typography>
             </TableCell>
             <TableCell sx={{ py: 0.5, borderBottom: 0 }} align="right">
               <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -110,7 +110,7 @@ const CollectionAliases = ({ collectionName }) => {
                   sx={{ display: 'block', py: 0.75, mb: 0.2 }}
                   onClick={() => setOpenCreateModal(true)}
                 >
-                  Create alias
+                  Takma ad oluştur
                 </Button>
               </Box>
             </TableCell>
@@ -122,7 +122,7 @@ const CollectionAliases = ({ collectionName }) => {
             <StyledTableRow>
               <TableCell colSpan={2} width={'100%'} align="left">
                 <Typography variant="subtitle1" color="text.secondary">
-                  No aliases found
+                  Takma ad bulunamadı
                 </Typography>
               </TableCell>
             </StyledTableRow>
@@ -137,10 +137,10 @@ const CollectionAliases = ({ collectionName }) => {
       <ConfirmationDialog
         open={!!aliasToDelete}
         onClose={() => setAliasToDelete('')}
-        title={'Delete Alias'}
-        content={`Are you sure you want to delete the alias ${aliasToDelete}?`}
-        warning={`This action cannot be undone.`}
-        actionName={'Delete'}
+        title={'Takma Adı Sil'}
+        content={`${aliasToDelete} takma adını silmek istediğinize emin misiniz?`}
+        warning={`Bu işlem geri alınamaz.`}
+        actionName={'Sil'}
         actionHandler={() => {
           deleteAlias(aliasToDelete).catch((e) => console.error(e));
           setAliasToDelete('');
@@ -159,7 +159,7 @@ const AliasRow = ({ aliasName, onDelete }) => (
     </TableCell>
     <TableCell align="right">
       <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Tooltip title={'Delete alias'} placement={'left'}>
+        <Tooltip title={'Takma adı sil'} placement={'left'}>
           <Button
             variant="outlined"
             size="small"
@@ -173,7 +173,7 @@ const AliasRow = ({ aliasName, onDelete }) => (
             color="error"
             data-testid={`delete-alias-${aliasName}`}
           >
-            Delete
+            Sil
           </Button>
         </Tooltip>
       </Box>
@@ -233,13 +233,13 @@ const CreateAliasModal = ({ open, onClose, onCreate }) => {
       }}
     >
       <DialogTitle sx={{ p: 3 }} id="create-alias-title">
-        Create Collection Alias
+        Koleksiyon Takma Adı Oluştur
       </DialogTitle>
       <DialogContent>
         <TextField
           id="alias-name-input"
           data-testid="alias-name-input"
-          placeholder="Alias Name"
+          placeholder="Takma Adı"
           value={aliasName}
           onChange={handleInputChange}
           onKeyDown={(e) => {
@@ -249,7 +249,7 @@ const CreateAliasModal = ({ open, onClose, onCreate }) => {
             }
           }}
           error={error}
-          helperText={error ? 'Alias name is required' : ''}
+          helperText={error ? 'Takma adı gerekli' : ''}
           autoFocus
           required
           margin="dense"
@@ -259,10 +259,10 @@ const CreateAliasModal = ({ open, onClose, onCreate }) => {
       </DialogContent>
       <DialogActions sx={{ p: 3 }}>
         <Button variant="outlined" color="inherit" onClick={handleClose}>
-          Cancel
+          İptal
         </Button>
         <Button variant="contained" disabled={!aliasName} onClick={handleCreate} data-testid="create-alias-button">
-          Create
+          Oluştur
         </Button>
       </DialogActions>
     </Dialog>

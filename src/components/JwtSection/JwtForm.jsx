@@ -19,7 +19,7 @@ const ExpirationSelect = ({ expiration, setExpiration }) => {
           fontWeight: 500,
         }}
       >
-        Expiration
+        Süre
       </InputLabel>
       <TextField
         select
@@ -36,11 +36,11 @@ const ExpirationSelect = ({ expiration, setExpiration }) => {
           },
         }}
       >
-        <MenuItem value={1}>1 day</MenuItem>
-        <MenuItem value={7}>7 days</MenuItem>
-        <MenuItem value={30}>30 days</MenuItem>
-        <MenuItem value={90}>90 days</MenuItem>
-        <MenuItem value={0}>Never</MenuItem>
+        <MenuItem value={1}>1 gün</MenuItem>
+        <MenuItem value={7}>7 gün</MenuItem>
+        <MenuItem value={30}>30 gün</MenuItem>
+        <MenuItem value={90}>90 gün</MenuItem>
+        <MenuItem value={0}>Hiç</MenuItem>
       </TextField>
     </Box>
   );
@@ -65,7 +65,7 @@ function JwtForm({
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }} role="form">
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, py: 1 }}>
-        <StyledButtonGroup fullWidth variant="outlined" aria-label="Access Level">
+        <StyledButtonGroup fullWidth variant="outlined" aria-label="Erişim Seviyesi">
           <Button
             variant={!globalAccess && !manageAccess ? 'contained' : 'outlined'}
             onClick={() => {
@@ -73,7 +73,7 @@ function JwtForm({
               setGlobalAccess(false);
             }}
           >
-            Collection Access
+            Koleksiyon Erişimi
           </Button>
           <Button
             variant={globalAccess && !manageAccess ? 'contained' : 'outlined'}
@@ -83,7 +83,7 @@ function JwtForm({
               setConfiguredCollections([]); // Reset collections if global or managed access is selected
             }}
           >
-            Global Access
+            Küresel Erişim
           </Button>
           <Button
             variant={manageAccess ? 'contained' : 'outlined'}
@@ -93,27 +93,27 @@ function JwtForm({
               setConfiguredCollections([]); // Reset collections if global or managed access is selected
             }}
           >
-            Managed Access
+            Yönetilen Erişim
           </Button>
         </StyledButtonGroup>
 
         {/* Description of the access level, displayed depending on the button selection*/}
         {manageAccess && (
           <Typography variant="body2" color="text.secondary">
-            <strong>Managed Access:</strong> Full access to all data stored in Qdrant. This level of access allows you
-            to read and write data to all collections, as well as create and delete collections, modify collection
-            settings, etc.
+            <strong>Yönetilen Erişim:</strong> Qdrant&apos;ta saklanan tüm verilere tam erişim. Bu erişim seviyesi, tüm
+            koleksiyonlardaki verileri okumanıza ve yazmanıza, ayrıca koleksiyon oluşturma ve silme, koleksiyon
+            ayarlarını değiştirme vb. işlemleri yapmanıza olanak tanır.
           </Typography>
         )}
         {globalAccess && !manageAccess && (
           <Typography variant="body2" color="text.secondary">
-            <strong>Global Access:</strong> Allows read-only access to all data stored in Qdrant.
+            <strong>Küresel Erişim:</strong> Qdrant&apos;ta saklanan tüm verilere salt okunur erişim sağlar.
           </Typography>
         )}
         {!globalAccess && !manageAccess && (
           <Typography variant="body2" color="text.secondary">
-            <strong>Collection Access:</strong>
-            This access level allows to configure access level for specific collections.
+            <strong>Koleksiyon Erişimi:</strong>
+            Bu erişim seviyesi, belirli koleksiyonlar için erişim düzeyini yapılandırmanıza olanak tanır.
           </Typography>
         )}
       </Box>

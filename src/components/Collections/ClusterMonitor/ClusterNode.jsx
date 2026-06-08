@@ -51,7 +51,7 @@ const ClusterNode = ({ peerId, cluster, slotIndices, dragState, onSlotGrab, onSl
           );
         })
       ) : (
-        <div>No slots available</div>
+        <div>Yuva bulunamadı</div>
       )}
     </Box>
   );

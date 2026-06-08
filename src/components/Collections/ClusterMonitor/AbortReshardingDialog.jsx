@@ -7,25 +7,25 @@ const AbortReshardingDialog = ({ open, onClose, onConfirm, loading = false, coll
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
       <DialogTitle>
         <Typography variant="h6" component="div">
-          Cancel Resharding Operation
+          Yeniden Parçacıklama İşlemini İptal Et
         </Typography>
       </DialogTitle>
 
       <DialogContent>
         <Alert severity="warning" sx={{ mb: 2 }}>
           <Typography variant="body2">
-            Are you sure you want to cancel the ongoing resharding operation for collection{' '}
-            <strong>{collectionName}</strong>?
+            <strong>{collectionName}</strong> koleksiyonu için devam eden{' '}
+            yeniden parçacıklama işlemini iptal etmek istediğinize emin misiniz?
           </Typography>
         </Alert>
       </DialogContent>
 
       <DialogActions sx={{ px: 3, pb: 2 }}>
         <Button onClick={onClose} disabled={loading}>
-          Keep Resharding
+          Devam Et
         </Button>
         <Button onClick={onConfirm} variant="contained" color="error" disabled={loading}>
-          {loading ? 'Canceling...' : 'Cancel Resharding'}
+          {loading ? 'İptal ediliyor...' : 'Yeniden Parçacıklamayı İptal Et'}
         </Button>
       </DialogActions>
     </Dialog>

@@ -33,7 +33,7 @@ GET collections/startups
 {
     "vectors":
     {
-        "size": 1,, //this should give you error due to double comma improper json and this comment should be ignored/removed
+        "size": 1,, //double comma error; comment should be ignored/removed
         "distance": "Cosine"
     }
 }
@@ -144,7 +144,7 @@ describe('parser', () => {
     // {
     //     "vectors":
     //     {
-    //         "size": 1, //this should give you error due to double comma improper json and this comment should be ignored/removed
+    //         "size": 1, //double comma error; comment should be ignored/removed
     //         "distance": "Cosine"
     //     }
     // }

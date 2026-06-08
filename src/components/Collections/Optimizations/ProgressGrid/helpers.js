@@ -141,10 +141,14 @@ export const getStatusColor = (status, theme) => {
         return theme.palette.success.light;
       case SegmentStatus.QUEUED:
         // Radial gradient lines for QUEUED status (high-contrast)
-        return `repeating-radial-gradient(circle at 50% 50%, ${theme.palette.grey[300]}, ${theme.palette.grey[300]} 2px, ${theme.palette.grey[600]} 2px, ${theme.palette.grey[600]} 4px)`;
+        return `repeating-radial-gradient(circle at 50% 50%,
+          ${theme.palette.grey[300]}, ${theme.palette.grey[300]} 2px,
+          ${theme.palette.grey[600]} 2px, ${theme.palette.grey[600]} 4px)`;
 
       case SegmentStatus.RUNNING:
-        return `repeating-linear-gradient(135deg, ${theme.palette.warning.main}, ${theme.palette.warning.main} 3px, ${theme.palette.warning.dark} 3px, ${theme.palette.warning.dark} 6px)`;
+        return `repeating-linear-gradient(135deg,
+          ${theme.palette.warning.main}, ${theme.palette.warning.main} 3px,
+          ${theme.palette.warning.dark} 3px, ${theme.palette.warning.dark} 6px)`;
 
       default:
         return theme.palette.common.white;

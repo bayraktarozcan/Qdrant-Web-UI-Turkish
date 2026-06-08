@@ -70,7 +70,7 @@ export const CollectionInfo = ({ collectionName }) => {
         optimizers_config: {},
       })
       .then(() => {
-        enqueueSnackbar('Optimizers triggered', getSnackbarOptions('success', closeSnackbar));
+                enqueueSnackbar('İyileştiriciler çalıştırıldı', getSnackbarOptions('success', closeSnackbar));
         fetchCollection();
       })
       .catch((err) => {
@@ -104,7 +104,7 @@ export const CollectionInfo = ({ collectionName }) => {
       <CollectionAliases collectionName={collectionName} />
       <Card elevation={0}>
         <CardHeader
-          title={'Collection Info'}
+          title={'Koleksiyon Bilgisi'}
           variant="heading"
           sx={{
             flexGrow: 1,
@@ -124,10 +124,10 @@ export const CollectionInfo = ({ collectionName }) => {
                   mb: 0.2,
                 }}
               >
-                Trigger optimizers
+                İyileştiricileri çalıştır
               </Button>
               <CopyButton text={bigIntJSON.stringify(collection)} />
-              <Tooltip title="Refresh collection info">
+              <Tooltip title="Koleksiyon bilgisini yenile">
                 <IconButton size="small" sx={{ color: 'text.primary' }} onClick={refreshAll}>
                   <RefreshIcon />
                 </IconButton>

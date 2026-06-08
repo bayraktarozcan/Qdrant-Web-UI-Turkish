@@ -16,13 +16,13 @@ const ReplicationControl = ({ cluster, replicationFactor, replicationLoading, tr
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
       <Typography variant="body2" color="text.secondary" sx={{ whiteSpace: 'nowrap' }}>
-        Replication factor:
+        Çoğaltma faktörü:
       </Typography>
       <IconButton
         size="small"
         onClick={() => setLocalFactor((v) => Math.max(1, v - 1))}
         disabled={isLoading || localFactor <= 1}
-        aria-label="Decrease replication factor"
+        aria-label="Çoğaltma faktörünü azalt"
       >
         <Minus size={16} />
       </IconButton>
@@ -41,7 +41,7 @@ const ReplicationControl = ({ cluster, replicationFactor, replicationLoading, tr
         size="small"
         onClick={() => setLocalFactor((v) => Math.min(peerCount, v + 1))}
         disabled={isLoading || localFactor >= peerCount}
-        aria-label="Increase replication factor"
+        aria-label="Çoğaltma faktörünü artır"
       >
         <Plus size={16} />
       </IconButton>
@@ -58,7 +58,7 @@ const ReplicationControl = ({ cluster, replicationFactor, replicationLoading, tr
             ml: 0.5,
           }}
         >
-          {isLoading ? 'Applying...' : 'Apply'}
+          {isLoading ? 'Uygulanıyor...' : 'Uygula'}
         </Button>
       )}
     </Box>

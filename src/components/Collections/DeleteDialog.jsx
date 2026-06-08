@@ -17,7 +17,7 @@ export default function DeleteDialog({ open, setOpen, collectionName, getCollect
       setOpen(false);
       setHasError(false);
     } catch (error) {
-      setErrorMessage(`Deletion Unsuccessful, error: ${error.message}`);
+      setErrorMessage(`Silme başarısız, hata: ${error.message}`);
       setHasError(true);
       setOpen(false);
     }
@@ -33,14 +33,14 @@ export default function DeleteDialog({ open, setOpen, collectionName, getCollect
       <ConfirmationDialog
         open={open}
         onClose={handleClose}
-        title={'Do you want to delete ' + collectionName + '?'}
+        title={collectionName + ' koleksiyonunu silmek istiyor musunuz?'}
         warning={
-          'Deleting a collection cannot be undone. ' +
-          'Make sure you have backed up all important data before proceeding.'
+          'Bir koleksiyonu silmek geri alınamaz. ' +
+          'Devam etmeden önce tüm önemli verilerin yedeğini aldığınızdan emin olun.'
         }
-        actionName={'Delete'}
+        actionName={'Sil'}
         actionHandler={callDelete}
-        aria-label="Delete Collection Confirmation Dialog"
+        aria-label="Koleksiyon Silme Onay İletişimi"
       />
     </>
   );

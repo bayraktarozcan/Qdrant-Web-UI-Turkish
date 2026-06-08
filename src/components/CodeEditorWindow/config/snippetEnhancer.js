@@ -1,5 +1,6 @@
 /**
- * This function take a snippet and looks up for collection placeholders and replaces them with the actual collection names
+ * This function take a snippet and looks up for collection placeholders
+ * and replaces them with the actual collection names
  * Example input:
  * PUT /collections/${1:collection_name}/shards
  * {

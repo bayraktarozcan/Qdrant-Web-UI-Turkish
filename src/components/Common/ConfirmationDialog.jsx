@@ -34,7 +34,7 @@ const ConfirmationDialog = ({ open, onClose, title, content, warning, actionName
         >
           <Alert severity="error">
             <Typography color="error.main.dark" component={'span'}>
-              <b>Warning:</b> {warning}
+              <b>Uyarı:</b> {warning}
             </Typography>
           </Alert>
         </Box>
@@ -48,7 +48,7 @@ const ConfirmationDialog = ({ open, onClose, title, content, warning, actionName
         }}
       >
         <Button size="medium" sx={{ mr: 2 }} variant="outlined" color="inherit" onClick={onClose}>
-          Cancel
+          İptal
         </Button>
         <Button
           size="medium"

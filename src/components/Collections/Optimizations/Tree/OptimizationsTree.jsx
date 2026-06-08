@@ -61,7 +61,7 @@ const OptimizationsTree = ({ data, requestTime, ...other }) => {
   return (
     <Card elevation={0} {...other}>
       <CardHeader
-        title={'Optimizations Tree'}
+        title={'İyileştirme Ağacı'}
         variant="heading"
         sx={{
           flexGrow: 1,

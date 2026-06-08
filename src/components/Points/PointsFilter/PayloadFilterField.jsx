@@ -166,7 +166,8 @@ const PayloadFilterField = memo(function PayloadFilterField({
         const currentValueBgColor = isIdFilter ? idValueBgColor : valueBgColor;
 
         const valueSpan = value
-          ? `<span style="color:${currentValueColor};background:${currentValueBgColor};border-radius:2px;padding:0;margin:0;display:inline-block">${value}</span>`
+          ? `<span style="color:${currentValueColor};background:${currentValueBgColor};
+border-radius:2px;padding:0;margin:0;display:inline-block">${value}</span>`
           : '';
         return `<span style="color:${currentKeyColor};font-weight:500">${key}:</span>${valueSpan}`;
       });
@@ -305,14 +306,14 @@ const PayloadFilterField = memo(function PayloadFilterField({
             value={inputValue}
             onValueChange={handleValueChange}
             highlight={highlightCode}
-            placeholder="Filter by payload (key:value) or point ID (id:123)"
+            placeholder="Yük ile filtrele (anahtar:değer) veya nokta No (id:123)"
             onKeyDown={handleKeyDown}
             onFocus={handleFocus}
             onClick={handleClick}
             padding={0}
           />
           {inputValue && (
-            <ClearButton onClick={handleClear} size="small" title="Clear filter">
+            <ClearButton onClick={handleClear} size="small" title="Filtreyi temizle">
               <X size={18} />
             </ClearButton>
           )}

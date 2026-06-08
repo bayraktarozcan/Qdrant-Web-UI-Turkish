@@ -7,17 +7,17 @@ const ClusterInfoHead = () => {
       <TableRow>
         <TableCell>
           <Typography variant="subtitle1" fontWeight={600}>
-            Shard ID
+            Parçacık No
           </Typography>
         </TableCell>
         <TableCell>
           <Typography variant="subtitle1" fontWeight={600}>
-            Location
+            Konum
           </Typography>
         </TableCell>
         <TableCell>
           <Typography variant="subtitle1" fontWeight={600}>
-            Status
+            Durum
           </Typography>
         </TableCell>
       </TableRow>

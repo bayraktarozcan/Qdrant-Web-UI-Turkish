@@ -71,7 +71,7 @@ const CommandsTableRow = forwardRef((props, ref) => {
       tabIndex={tabIndex}
     >
       <TableCell sx={rowStyle} width={'50px'}>
-        <Tooltip title={'Insert command into the console window'} disableFocusListener>
+        <Tooltip title={'Komutu konsol penceresine ekle'} disableFocusListener>
           <IconButton onClick={onClick} className={'insert-button'}>
             <ArrowBack />
           </IconButton>
@@ -142,7 +142,7 @@ const CommandsTable = ({ commands, handleInsertCommand }) => {
     }`;
 
     handleInsertCommand(commandText);
-    enqueueSnackbar('Command inserted', successSnackbarOptions);
+    enqueueSnackbar('Komut eklendi', successSnackbarOptions);
   };
 
   const handleKeyDown = (e) => {

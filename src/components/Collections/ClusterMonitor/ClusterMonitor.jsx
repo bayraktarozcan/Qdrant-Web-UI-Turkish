@@ -48,19 +48,19 @@ const Legend = ({ sx, dragState }) => {
       >
         <Box display="flex" alignItems="center" gap={0.5}>
           <Circle size={'1rem'} color={theme.palette.mode === 'dark' ? colors.empty.dark : colors.empty.light} />
-          <Typography variant="caption">Empty</Typography>
+          <Typography variant="caption">Boş</Typography>
         </Box>
         <Box display="flex" alignItems="center" gap={0.5}>
           <Circle size={'1rem'} color={colors.active} />
-          <Typography variant="caption">Active</Typography>
+          <Typography variant="caption">Etkin</Typography>
         </Box>
         <Box display="flex" alignItems="center" gap={0.5}>
           <Circle size={'1rem'} color={colors.dead} />
-          <Typography variant="caption">Dead</Typography>
+          <Typography variant="caption">Ölü</Typography>
         </Box>
         <Box display="flex" alignItems="center" gap={0.5}>
           <Circle size={'1rem'} color={colors.default} />
-          <Typography variant="caption">Other</Typography>
+          <Typography variant="caption">Diğer</Typography>
         </Box>
         {dragState.isDragging && (
           <Box
@@ -76,7 +76,7 @@ const Legend = ({ sx, dragState }) => {
                 border: `1px dashed ${theme.palette.common.white}`,
               }}
             />
-            <Typography variant="caption">Drop Here</Typography>
+            <Typography variant="caption">Buraya Bırak</Typography>
           </Box>
         )}
       </Box>
@@ -288,7 +288,7 @@ const ClusterMonitor = ({ collectionName }) => {
         },
       });
 
-      enqueueSnackbar('Shard transfer initiated successfully', getSnackbarOptions('success', closeSnackbar, 2000));
+      enqueueSnackbar('Parçacık aktarımı başarıyla başlatıldı', getSnackbarOptions('success', closeSnackbar, 2000));
 
       // Close dialog and refresh cluster info
       setTransferDialog({ open: false, transferRequest: null });
@@ -297,7 +297,7 @@ const ClusterMonitor = ({ collectionName }) => {
       await refreshClusterInfo();
     } catch (err) {
       console.error('Error moving shard:', err);
-      enqueueSnackbar(`Failed to transfer shard: ${err.message}`, getSnackbarOptions('error', closeSnackbar));
+      enqueueSnackbar(`Parçacık aktarılamadı: ${err.message}`, getSnackbarOptions('error', closeSnackbar));
     } finally {
       setTransferLoading(false);
     }
@@ -337,7 +337,7 @@ const ClusterMonitor = ({ collectionName }) => {
       await qdrantClient.updateCollectionCluster(collectionName, requestPayload);
 
       enqueueSnackbar(
-        `Resharding ${direction} initiated successfully`,
+        `Yeniden parçacıklama ${direction} başarıyla başlatıldı`,
         getSnackbarOptions('success', closeSnackbar, 2000)
       );
 
@@ -349,7 +349,7 @@ const ClusterMonitor = ({ collectionName }) => {
     } catch (err) {
       console.error(`Error starting resharding ${direction}:`, err);
       enqueueSnackbar(
-        `Failed to start resharding ${direction}: ${err.message}`,
+        `Yeniden parçacıklama başlatılamadı ${direction}: ${err.message}`,
         getSnackbarOptions('error', closeSnackbar)
       );
     } finally {
@@ -374,7 +374,10 @@ const ClusterMonitor = ({ collectionName }) => {
         abort_resharding: {},
       });
 
-      enqueueSnackbar('Resharding operation aborted successfully', getSnackbarOptions('success', closeSnackbar, 2000));
+      enqueueSnackbar(
+        'Yeniden parçacıklama işlemi başarıyla iptal edildi',
+        getSnackbarOptions('success', closeSnackbar, 2000)
+      );
 
       // Close dialog and refresh cluster info
       setAbortReshardingDialog(false);
@@ -383,7 +386,10 @@ const ClusterMonitor = ({ collectionName }) => {
       await refreshClusterInfo();
     } catch (err) {
       console.error('Error aborting resharding:', err);
-      enqueueSnackbar(`Failed to abort resharding: ${err.message}`, getSnackbarOptions('error', closeSnackbar));
+      enqueueSnackbar(
+        `Yeniden parçacıklama iptal edilemedi: ${err.message}`,
+        getSnackbarOptions('error', closeSnackbar)
+      );
     } finally {
       setReshardingLoading(false);
     }
@@ -399,12 +405,15 @@ const ClusterMonitor = ({ collectionName }) => {
       await qdrantClient.updateCollection(collectionName, {
         params: { replication_factor: newFactor },
       });
-      enqueueSnackbar(`Replication factor updated to ${newFactor}`, getSnackbarOptions('success', closeSnackbar, 2000));
+      enqueueSnackbar(
+        `Çoğaltma faktörü ${newFactor} olarak güncellendi`,
+        getSnackbarOptions('success', closeSnackbar, 2000)
+      );
       await refreshClusterInfo();
     } catch (err) {
       console.error('Error updating replication factor:', err);
       enqueueSnackbar(
-        `Failed to update replication factor: ${err.message}`,
+        `Çoğaltma faktörü güncellenemedi: ${err.message}`,
         getSnackbarOptions('error', closeSnackbar)
       );
     } finally {
@@ -508,7 +517,7 @@ const ClusterMonitor = ({ collectionName }) => {
     return (
       <Box>
         <InfoBanner severity={'warning'} hideCloseButton={true}>
-          <Typography>Distributed mode is not enabled for this cluster.</Typography>
+          <Typography>Bu küme için dağıtık mod etkinleştirilmemiş.</Typography>
         </InfoBanner>
       </Box>
     );
@@ -557,7 +566,7 @@ const ClusterMonitor = ({ collectionName }) => {
           }}
         >
           <Typography variant="subtitle1" sx={{ mr: 1 }}>
-            Cluster Nodes
+            Küme Düğümleri
           </Typography>
           <Box
             sx={{
@@ -619,7 +628,7 @@ const ClusterMonitor = ({ collectionName }) => {
             }),
           }}
         >
-          Shards
+          Parçacıklar
         </Typography>
       </Box>
       <Box

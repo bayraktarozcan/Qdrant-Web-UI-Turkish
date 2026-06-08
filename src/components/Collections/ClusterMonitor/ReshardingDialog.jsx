@@ -68,7 +68,7 @@ const ReshardingDialog = ({ open, onClose, direction, onConfirm, loading = false
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
       <DialogTitle>
         <Typography variant="h6" component="div">
-          {isUp ? 'Reshard Up' : 'Reshard Down'}
+          {isUp ? 'Yukarı Yeniden Parçacıkla' : 'Aşağı Yeniden Parçacıkla'}
         </Typography>
       </DialogTitle>
 
@@ -76,42 +76,43 @@ const ReshardingDialog = ({ open, onClose, direction, onConfirm, loading = false
         <Box sx={{ mb: 3 }}>
           <Alert severity="info" sx={{ mb: 2 }}>
             <Typography variant="body2">
-              This action will {isUp ? 'increase' : 'decrease'} the number of shards in the collection{' '}
-              <strong>{collectionName}</strong>.
+              Bu işlem, <strong>{collectionName}</strong> koleksiyonundaki{' '}
+              parçacık sayısını {isUp ? 'artıracak' : 'azaltacak'}.
             </Typography>
             {isUp ? (
               <Typography variant="body2" sx={{ mt: 1 }}>
-                Resharding up will add a new shard to distribute data across more nodes, improving scalability and
-                performance.
+                Yukarı yeniden parçacıklama, verileri daha fazla düğüme dağıtmak{' '}
+                için yeni bir parçacık ekleyerek ölçeklenebilirliği ve{' '}
+                performansı iyileştirir.
               </Typography>
             ) : (
               <Typography variant="body2" sx={{ mt: 1 }}>
-                Resharding down will remove a shard, consolidating data into fewer shards.
+                Aşağı yeniden parçacıklama, bir parçacığı kaldırarak verileri daha az parçacıkta birleştirir.
               </Typography>
             )}
           </Alert>
 
           <Alert severity="warning" sx={{ mb: 2 }}>
             <Typography variant="body2" fontWeight="bold" sx={{ mb: 0.5 }}>
-              Important considerations:
+              Önemli hususlar:
             </Typography>
             <Typography variant="body2" component="ul" sx={{ pl: 2, mb: 0, mt: 0.5 }}>
-              <li>Performance may be slightly reduced during resharding</li>
-              <li>Reported point counts will not be accurate during the operation</li>
-              <li>Resharding may be a long-running operation on large collections</li>
-              <li>Only one resharding operation can run per collection at a time</li>
+              <li>Yeniden parçacıklama sırasında performans bir miktar düşebilir</li>
+              <li>İşlem sırasında bildirilen nokta sayıları doğru olmayacaktır</li>
+              <li>Büyük koleksiyonlarda yeniden parçacıklama uzun sürebilir</li>
+              <li>Koleksiyon başına aynı anda yalnızca bir yeniden parçacıklama işlemi çalışabilir</li>
             </Typography>
           </Alert>
 
           <Box sx={{ mb: 2 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
               <Typography variant="subtitle2" fontWeight="bold">
-                Request
+                İstek
               </Typography>
               <CopyButton
                 text={`POST collections/${collectionName}/cluster\n${requestString}`}
-                tooltip="Copy request to clipboard"
-                successMessage="Request copied to clipboard"
+                tooltip="İsteği panoya kopyala"
+                successMessage="İstek panoya kopyalandı"
               />
             </Box>
 
@@ -153,19 +154,19 @@ const ReshardingDialog = ({ open, onClose, direction, onConfirm, loading = false
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.secondary', mb: 2 }}>
             {isUp ? <ArrowUpward fontSize="small" /> : <ArrowDownward fontSize="small" />}
             <Typography variant="body2">
-              Direction: <strong>{isUp ? 'Up (add shard)' : 'Down (remove shard)'}</strong>
+              Yön: <strong>{isUp ? 'Yukarı (parçacık ekle)' : 'Aşağı (parçacık kaldır)'}</strong>
             </Typography>
           </Box>
 
           {hasShardKeys && (
             <Box sx={{ mb: 2 }}>
               <FormControl fullWidth required>
-                <InputLabel id="shard-key-select-label">Shard Key</InputLabel>
+                <InputLabel id="shard-key-select-label">Parçacık Anahtarı</InputLabel>
                 <Select
                   labelId="shard-key-select-label"
                   id="shard-key-select"
                   value={selectedShardKey}
-                  label="Shard Key *"
+                  label="Parçacık Anahtarı *"
                   onChange={(e) => setSelectedShardKey(e.target.value)}
                   disabled={loading}
                   required
@@ -178,7 +179,7 @@ const ReshardingDialog = ({ open, onClose, direction, onConfirm, loading = false
                 </Select>
               </FormControl>
               <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, display: 'block' }}>
-                Select a shard key for this collection. This collection uses custom sharding.
+                Bu koleksiyon için bir parçacık anahtarı seçin. Bu koleksiyon özel parçacıklama kullanıyor.
               </Typography>
             </Box>
           )}
@@ -187,7 +188,7 @@ const ReshardingDialog = ({ open, onClose, direction, onConfirm, loading = false
 
       <DialogActions sx={{ px: 3, pb: 2 }}>
         <Button onClick={onClose} disabled={loading}>
-          Cancel
+          İptal
         </Button>
         <Button
           onClick={handleConfirm}
@@ -195,7 +196,9 @@ const ReshardingDialog = ({ open, onClose, direction, onConfirm, loading = false
           color="primary"
           disabled={loading || (hasShardKeys && selectedShardKey === '')}
         >
-          {loading ? 'Starting...' : `Confirm ${isUp ? 'Reshard Up' : 'Reshard Down'}`}
+          {loading
+            ? 'Başlatılıyor...'
+            : `${isUp ? 'Yukarı Yeniden Parçacıklamayı' : 'Aşağı Yeniden Parçacıklamayı'} Onayla`}
         </Button>
       </DialogActions>
     </Dialog>

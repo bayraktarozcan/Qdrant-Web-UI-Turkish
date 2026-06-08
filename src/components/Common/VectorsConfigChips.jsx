@@ -40,9 +40,9 @@ const VectorsConfigChips = ({ collectionConfigParams, collectionName, sx = {} })
 
   const renderVectorChips = (vectorName, vectorConfig) => {
     const chips = [
-      <StyledChip key="name" label={vectorName || 'Default'} title={'Vector Name'} />,
-      <StyledChip key="size" label={vectorConfig.size} title={'Size'} />,
-      <StyledChip key="distance" label={vectorConfig.distance} title={'Distance'} />,
+      <StyledChip key="name" label={vectorName || 'Default'} title={'Vektör Adı'} />,
+      <StyledChip key="size" label={vectorConfig.size} title={'Boyut'} />,
+      <StyledChip key="distance" label={vectorConfig.distance} title={'Uzaklık'} />,
     ];
 
     // Add model chip if present
@@ -55,14 +55,13 @@ const VectorsConfigChips = ({ collectionConfigParams, collectionName, sx = {} })
 
   const renderSparseVectorChips = (vectorName) => {
     return [
-      <StyledChip key="name" label={vectorName} title={'Vector Name'} />,
-      <StyledChip key="type" label="Sparse" title={'Type'} />,
+      <StyledChip key="name" label={vectorName} title={'Vektör Adı'} />,
+      <StyledChip key="type" label="Seyrek" title={'Tür'} />,
     ];
   };
 
   const allChips = [];
 
-  // Handle single vector configuration
   if (collectionConfigParams.vectors.size) {
     allChips.push(
       <VectorChipsContainer key="default-vector">
@@ -71,7 +70,6 @@ const VectorsConfigChips = ({ collectionConfigParams, collectionName, sx = {} })
     );
   }
 
-  // Handle multiple named vectors
   if (!collectionConfigParams.vectors.size) {
     Object.keys(collectionConfigParams.vectors).forEach((vector) => {
       allChips.push(
@@ -82,7 +80,6 @@ const VectorsConfigChips = ({ collectionConfigParams, collectionName, sx = {} })
     });
   }
 
-  // Handle sparse vectors
   if (collectionConfigParams.sparse_vectors) {
     Object.keys(collectionConfigParams.sparse_vectors).forEach((vector) => {
       allChips.push(
@@ -91,7 +88,6 @@ const VectorsConfigChips = ({ collectionConfigParams, collectionName, sx = {} })
     });
   }
 
-  // Add ellipsis button if there are more than 3 vector groups
   if (allChips.length > 3) {
     const visibleChips = allChips.slice(0, 3);
     const ellipsisChip = (
@@ -104,7 +100,7 @@ const VectorsConfigChips = ({ collectionConfigParams, collectionName, sx = {} })
               <Ellipsis size={18} />
             </Box>
           }
-          title={'See all in Info section'}
+          title={'Tümünü Bilgi bölümünde gör'}
           component={Link}
           onClick={handleEllipsisClick}
           sx={{

@@ -13,8 +13,8 @@ export const TutorialIndex = () => {
       <Box sx={{ p: 5, width: '100%' }}>
         <Grid size={12}>
           <Alert severity="warning">
-            Access Denied: Because of the serverless mode, tutorial will not work here properly. Please contact your
-            administrator.
+            Erişim Reddedildi: Sunucusuz mod nedeniyle eğitim burada düzgün{' '}
+            çalışmayacaktır. Lütfen yöneticinize başvurun.
           </Alert>
         </Grid>
       </Box>
@@ -46,21 +46,21 @@ export const TutorialIndex = () => {
             mb: '1rem',
           }}
         >
-          Welcome to Qdrant!
+          Qdrant&apos;a Hoş Geldiniz!
         </Typography>
       </Box>
 
       <Box component="section">
         <Typography component="h2" variant="h6" mb="1rem">
-          Connect to your Project or Start with Samples
+          Projenize Bağlanın veya Örneklerle Başlayın
         </Typography>
 
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, md: 6 }}>
             <InfoCard
               icon={Zap}
-              title="Quickstart"
-              description={'Create a collection, upsert vectors, and run a search.'}
+              title="Hızlı Başlangıç"
+              description={'Bir koleksiyon oluşturun, vektörleri ekleyin ve arama yapın.'}
               href="/tutorial/quickstart"
               showCta={false}
               sx={{ flexGrow: 1 }}
@@ -69,8 +69,9 @@ export const TutorialIndex = () => {
           <Grid size={{ xs: 12, md: 6 }}>
             <InfoCard
               icon={FileCode}
-              title="Load Sample Data"
-              description={`Follow this tutorial to import a remote snapshot and explore vector search with real data in just a few steps.`}
+              title="Örnek Veri Yükle"
+              description={`Bu eğitimi izleyerek uzak bir anlık görüntüyü içe aktarın
+                ve gerçek verilerle vektör aramayı birkaç adımda keşfedin.`}
               href="/tutorial/loadcontent"
               showCta={false}
               sx={{ flexGrow: 1 }}

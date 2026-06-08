@@ -25,8 +25,8 @@ const CreateCollectionButton = ({ onComplete }) => {
       <Tooltip
         title={
           isRestricted
-            ? 'Access Denied: You do not have permission to create collections. Please contact your administrator.'
-            : 'Create collection'
+            ? 'Erişim Reddedildi: Koleksiyon oluşturma izniniz yok. Lütfen yöneticinize başvurun.'
+            : 'Koleksiyon oluştur'
         }
         placement="left"
       >
@@ -37,9 +37,9 @@ const CreateCollectionButton = ({ onComplete }) => {
             startIcon={<AddIcon fontSize="small" />}
             onClick={handleOpen}
             disabled={isRestricted}
-            aria-label="Create Collection"
+            aria-label="Koleksiyon Oluştur"
           >
-            Create Collection
+            Koleksiyon Oluştur
           </Button>
         </span>
       </Tooltip>

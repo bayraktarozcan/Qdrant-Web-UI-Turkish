@@ -41,22 +41,22 @@ function Collection() {
               <Tabs
                 value={currentTab}
                 onChange={handleTabChange}
-                aria-label="tabs"
+                aria-label="sekmeler"
                 aria-description="Collection tabs menu"
               >
-                <Tab label="Points" value={'points'} />
-                <Tab label="Info" value={'info'} />
-                {!isRestricted && <Tab label="Optimizations" value={'optimizations'} />}
-                {!isRestricted && <Tab label="Memory" value={'memory'} />}
-                {!isRestricted && <Tab label="Cluster" value={'cluster'} />}
-                {!isRestricted && <Tab label="ANN Recall" value={'quality'} />}
-                {!isRestricted && <Tab label="Snapshots" value={'snapshots'} />}
+                <Tab label="Noktalar" value={'points'} />
+                <Tab label="Bilgi" value={'info'} />
+                {!isRestricted && <Tab label="İyileştirmeler" value={'optimizations'} />}
+                {!isRestricted && <Tab label="Bellek" value={'memory'} />}
+                {!isRestricted && <Tab label="Küme" value={'cluster'} />}
+                {!isRestricted && <Tab label="ANN Geri Çağırma" value={'quality'} />}
+                {!isRestricted && <Tab label="Anlık Görüntüler" value={'snapshots'} />}
                 <Tab
-                  label="Visualize"
+                  label="Görselleştir"
                   component={Link}
                   to={`/collections/${encodeURIComponent(collectionName)}/visualize`}
                 />
-                <Tab label="Graph" component={Link} to={`/collections/${encodeURIComponent(collectionName)}/graph`} />
+                <Tab label="Grafik" component={Link} to={`/collections/${encodeURIComponent(collectionName)}/graph`} />
               </Tabs>
             </Box>
           </Grid>

@@ -57,10 +57,11 @@ export function ApiKeyDialog({ open, setOpen, onApply }) {
           },
         }}
       >
-        <DialogTitle>Set API Key</DialogTitle>
+        <DialogTitle>API Anahtarı Belirle</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ mb: 2 }}>
-            This instance of Qdrant might be protected by an API Key. If so, please enter your API Key to continue.
+            Bu Qdrant örneği bir API Anahtarı ile korunuyor olabilir.{' '}
+            Öyleyse, devam etmek için lütfen API Anahtarınızı girin.
           </DialogContentText>
           <TextField
             onChange={(e) => setApiKey(e.target.value)}
@@ -74,7 +75,7 @@ export function ApiKeyDialog({ open, setOpen, onApply }) {
             id="api-key-input"
             placeholder="API Key"
             error={error}
-            helperText={error ? 'API Key is required' : ''}
+            helperText={error ? 'API Anahtarı gerekli' : ''}
             type={showApiKey ? 'text' : 'password'}
             fullWidth
             variant="outlined"
@@ -97,10 +98,10 @@ export function ApiKeyDialog({ open, setOpen, onApply }) {
         </DialogContent>
         <DialogActions sx={{ p: 3 }}>
           <Button variant="outlined" color="inherit" onClick={handleClose}>
-            Cancel
+            İptal
           </Button>
           <Button variant="contained" onClick={handleApply}>
-            Apply
+            Uygula
           </Button>
         </DialogActions>
       </Dialog>

@@ -72,7 +72,7 @@ describe('collection cluster info', () => {
   it('should render CollectionClusterInfo with given data', () => {
     const shardReplicasCount = CLUSTER_INFO.result.local_shards.length + CLUSTER_INFO.result.remote_shards.length;
     render(<ClusterInfo collectionCluster={CLUSTER_INFO} />);
-    expect(screen.getByText('Collection Cluster Info')).toBeTruthy();
+    expect(screen.getByText('Koleksiyon Küme Bilgisi')).toBeTruthy();
     expect(screen.getAllByTestId('shard-row').length).toBe(shardReplicasCount);
   });
 });

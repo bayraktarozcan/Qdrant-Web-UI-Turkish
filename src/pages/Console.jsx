@@ -10,13 +10,13 @@ import { Code } from '@mui/icons-material';
 import CommandsDrawer from '../components/CodeEditorWindow/Menu/CommandsDrawer/CommandsDrawer';
 import { green } from '@mui/material/colors';
 
-const query = `// List all collections
+const query = `// Tüm koleksiyonları listele
 GET collections
 
-// Get collection info
+// Koleksiyon bilgisini al
 GET collections/collection_name
 
-// List points in a collection, using filter
+// Bir koleksiyondaki noktaları filtre kullanarak listele
 POST collections/collection_name/points/scroll
 {
   "limit": 10,
@@ -110,7 +110,7 @@ function Console() {
               </Panel>
             </PanelGroup>
           </Grid>
-          <Tooltip title="Commands" placement="left" arrow>
+          <Tooltip title="Komutlar" placement="left" arrow>
             <Fab
               sx={{
                 position: 'absolute',

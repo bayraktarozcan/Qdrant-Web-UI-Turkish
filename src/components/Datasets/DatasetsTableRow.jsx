@@ -17,7 +17,7 @@ export const DatasetsTableRow = ({ dataset, importDataset }) => {
   return (
     <StyledTableRow key={dataset.name} align={'center'}>
       <TableCell width={'50%'}>
-        <Tooltip title={'Import Dataset'} arrow placement={'top'}>
+        <Tooltip title={'Veri Kümesini İçe Aktar'} arrow placement={'top'}>
           <Box
             sx={{
               display: 'inline-flex',

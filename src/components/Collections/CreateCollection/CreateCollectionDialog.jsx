@@ -57,7 +57,7 @@ const CreateCollectionDialog = ({ open, handleClose }) => {
     return (
       <Box>
         <Typography variant="subtitle1" sx={{ fontWeight: '600' }}>
-          Equivalent Requests
+          Eşdeğer İstekler
         </Typography>
         <Box>
           <Highlight Prism={Prism} theme={customPrismTheme} code={request} language="json">
@@ -132,7 +132,7 @@ const CreateCollectionDialog = ({ open, handleClose }) => {
             mx: 'auto',
           }}
         >
-          <IconButton edge="start" color="default" onClick={handleClose} aria-label="close">
+          <IconButton edge="start" color="default" onClick={handleClose} aria-label="kapat">
             <ArrowLeft size={24} />
           </IconButton>
           <Typography
@@ -145,7 +145,7 @@ const CreateCollectionDialog = ({ open, handleClose }) => {
             variant="body1"
             component="div"
           >
-            Create New Collection
+            Yeni Koleksiyon Oluştur
           </Typography>
         </Toolbar>
       </AppBar>
@@ -168,7 +168,7 @@ const CreateCollectionDialog = ({ open, handleClose }) => {
             onFinish={handleFinish}
             onPreviewFormOutput={renderJsonPreview}
             scrollableParent={getScrollableParent}
-            aria-label="Create Collection Form"
+            aria-label="Koleksiyon Oluştur Formu"
             aria-role="dialog"
           />
         </Box>

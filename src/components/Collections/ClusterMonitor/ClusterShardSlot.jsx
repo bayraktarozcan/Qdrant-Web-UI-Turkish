@@ -118,30 +118,30 @@ const Slot = ({
           title={
             shard ? (
               <>
-                <TooltipRow label="Peer Id" value={currentPeerId} />
+                <TooltipRow label="Düğüm No" value={currentPeerId} />
                 {'shard_id' in shard && (
                   <>
                     <br />
-                    <TooltipRow label="Shard Id" value={shard.shard_id} />
+                    <TooltipRow label="Parçacık No" value={shard.shard_id} />
                   </>
                 )}
                 {shard.shard_key && (
                   <>
                     <br />
-                    <TooltipRow label="Shard Key" value={shard.shard_key} />
+                    <TooltipRow label="Parçacık Anahtarı" value={shard.shard_key} />
                   </>
                 )}
                 {shard.state && (
                   <>
                     <br />
-                    <TooltipRow label="Shard State" value={shard.state} />
+                    <TooltipRow label="Parçacık Durumu" value={shard.state} />
                   </>
                 )}
                 {shard.state === 'Active' && !transfer?.transfer && (
                   <>
                     <br />
                     <Typography variant="caption" sx={{ color: theme.palette.success.main, fontWeight: 'bold' }}>
-                      Drag to an empty slot to transfer
+                      Aktarmak için boş bir yuvaya sürükleyin
                     </Typography>
                   </>
                 )}
@@ -149,32 +149,32 @@ const Slot = ({
                   <>
                     <br />
                     <Typography variant="caption" sx={{ color: theme.palette.warning.main, fontWeight: 'bold' }}>
-                      Transferring to peer {transfer.transfer.to}
+                      {transfer.transfer.to} düğümüne aktarılıyor
                     </Typography>
                     <br />
                     <Typography variant="caption" sx={{ color: theme.palette.error.main, fontStyle: 'italic' }}>
-                      Cannot be dragged during transfer
+                      Aktarım sırasında sürüklenemez
                     </Typography>
                   </>
                 )}
               </>
             ) : dragAndDropState === 'awaiting' ? (
               <>
-                <TooltipRow label="Peer Id" value={currentPeerId} />
+                <TooltipRow label="Düğüm No" value={currentPeerId} />
                 <br />
-                <TooltipRow label="Slot Id" value={id} />
+                <TooltipRow label="Yuva No" value={id} />
                 <br />
                 <Typography variant="caption" sx={{ color: 'common.white', fontWeight: 'bold' }}>
-                  Drop here to move shard
+                  Parçacığı taşımak için buraya bırakın
                 </Typography>
               </>
             ) : (
               <>
-                <TooltipRow label="Peer Id" value={currentPeerId} />
+                <TooltipRow label="Düğüm No" value={currentPeerId} />
                 <br />
-                <TooltipRow label="Slot Id" value={id} />
+                <TooltipRow label="Yuva No" value={id} />
                 <br />
-                <Typography variant="caption">Empty slot</Typography>
+                <Typography variant="caption">Boş yuva</Typography>
               </>
             )
           }
@@ -191,7 +191,7 @@ const Slot = ({
           >
             {shard && (
               <Typography variant="subtitle2" sx={{ textAlign: 'center', fontWeight: 'bold' }}>
-                {`${!matches && peersNumber <= 12 ? 'Shard' : ''} ${shard.shard_id}`}
+                {`${!matches && peersNumber <= 12 ? 'Parçacık' : ''} ${shard.shard_id}`}
               </Typography>
             )}
             {shard?.shard_key && (

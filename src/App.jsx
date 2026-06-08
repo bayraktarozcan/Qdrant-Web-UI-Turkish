@@ -21,7 +21,7 @@ function NewApp() {
     : 'light';
 
   const routing = useRoutes(routes());
-  useTitle('UI | Qdrant ');
+  useTitle('Qdrant Arayüzü');
 
   return (
     <ColorModeProvider initialMode={resolvedMode}>

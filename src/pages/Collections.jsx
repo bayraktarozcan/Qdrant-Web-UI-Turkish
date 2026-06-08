@@ -164,15 +164,15 @@ function Collections() {
               component={'h1'}
               sx={{ lineHeight: '1', display: 'flex', alignItems: 'center', gap: 1 }}
             >
-              Collections{' '}
+              Koleksiyonlar{' '}
               {maxCollections && displayCollections ? `(${displayCollections.length} / ${maxCollections})` : ''}
-              <Tooltip title="Refresh collections">
+              <Tooltip title="Koleksiyonları yenile">
                 <span>
                   <IconButton
                     onClick={handleRefresh}
                     disabled={isRefreshing}
                     size="small"
-                    aria-label="Refresh collections list"
+                    aria-label="Koleksiyon listesini yenile"
                     sx={{ color: 'text.primary' }}
                   >
                     <RefreshCw
@@ -202,7 +202,7 @@ function Collections() {
 
           {errorMessage && (
             <Grid textAlign={'center'} mt={3} size={12}>
-              <Typography>⚠ Error: {errorMessage}</Typography>
+              <Typography>⚠ Hata: {errorMessage}</Typography>
             </Grid>
           )}
           {!displayCollections && !errorMessage && (
@@ -214,7 +214,7 @@ function Collections() {
           )}
           {displayCollections && !errorMessage && displayCollections.length === 0 && (
             <Grid textAlign={'center'} mt={3} size={12}>
-              <Typography> 📪 No collection is present</Typography>
+              <Typography> 📪 Koleksiyon bulunamadı</Typography>
             </Grid>
           )}
 

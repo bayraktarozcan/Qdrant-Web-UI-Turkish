@@ -33,7 +33,7 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
       <DialogTitle>
         <Typography variant="h6" component="div">
-          Transfer Shard
+          Parçacık Aktar
         </Typography>
       </DialogTitle>
 
@@ -41,20 +41,20 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
         <Box sx={{ mb: 3 }}>
           <Alert severity="info" sx={{ mb: 2 }}>
             <Typography variant="body2">
-              This action will move shard {shard.shard_id} from peer {fromPeerId} to peer {toPeerId}.
-              {shard.shard_key && ` Shard key: ${shard.shard_key}`}
+              Bu işlem {shard.shard_id} numaralı parçacığı {fromPeerId} düğümünden {toPeerId} düğümüne taşıyacak.
+              {shard.shard_key && ` Parçacık anahtarı: ${shard.shard_key}`}
             </Typography>
           </Alert>
 
           <Box sx={{ mb: 2 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
               <Typography variant="subtitle2" fontWeight="bold">
-                Request
+                İstek
               </Typography>
               <CopyButton
                 text={`POST collections/${collectionName}/cluster\n${requestString}`}
-                tooltip="Copy request to clipboard"
-                successMessage="Request copied to clipboard"
+                tooltip="İsteği panoya kopyala"
+                successMessage="İstek panoya kopyalandı"
               />
             </Box>
 
@@ -95,7 +95,7 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
 
           <Box>
             <Typography variant="subtitle2" fontWeight="bold" sx={{ mb: 1 }}>
-              Shard Details
+              Parçacık Detayları
             </Typography>
             <Box
               sx={{
@@ -106,12 +106,12 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
               }}
             >
               <Typography variant="body2" color="text.secondary">
-                ID:
+                No:
               </Typography>
               <Typography variant="body2">{shard.shard_id}</Typography>
 
               <Typography variant="body2" color="text.secondary">
-                State:
+                Durum:
               </Typography>
               <Typography
                 variant="body2"
@@ -125,9 +125,9 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
 
               {shard.shard_key && (
                 <>
-                  <Typography variant="body2" color="text.secondary">
-                    Key:
-                  </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Anahtar:
+              </Typography>
                   <Typography variant="body2" fontFamily="monospace">
                     {shard.shard_key}
                   </Typography>
@@ -135,12 +135,12 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
               )}
 
               <Typography variant="body2" color="text.secondary">
-                From Peer:
+                Kaynak Düğüm:
               </Typography>
               <Typography variant="body2">{fromPeerId}</Typography>
 
               <Typography variant="body2" color="text.secondary">
-                To Peer:
+                Hedef Düğüm:
               </Typography>
               <Typography variant="body2">{toPeerId}</Typography>
             </Box>
@@ -150,10 +150,10 @@ const ShardTransferDialog = ({ open, onClose, transferRequest, onConfirm, loadin
 
       <DialogActions sx={{ px: 3, pb: 2 }}>
         <Button onClick={onClose} disabled={loading}>
-          Cancel
+          İptal
         </Button>
         <Button onClick={handleConfirm} variant="contained" color="primary" disabled={loading}>
-          {loading ? 'Transferring...' : 'Confirm Transfer'}
+          {loading ? 'Aktarılıyor...' : 'Aktarımı Onayla'}
         </Button>
       </DialogActions>
     </Dialog>

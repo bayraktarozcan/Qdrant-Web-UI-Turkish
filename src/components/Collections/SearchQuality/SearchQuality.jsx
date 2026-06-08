@@ -60,7 +60,7 @@ const SearchQuality = ({ collectionName }) => {
 
       <Card elevation={0} sx={{ mt: 5 }}>
         <CardHeader
-          title={'Report'}
+          title={'Rapor'}
           variant="heading"
           sx={{
             flexGrow: 1,

@@ -58,19 +58,19 @@ const PointCard = (props) => {
           </Box>
         )}
         <CardHeader
-          title={'Point ' + point.id}
+          title={'Nokta ' + point.id}
           variant="heading"
-          aria-label="Point Card Header"
+          aria-label="Nokta Kartı Başlığı"
           action={
             <>
               <CopyButton
                 text={bigIntJSON.stringify(point)}
-                tooltip={'Copy point to clipboard'}
-                successMessage={'Point JSON copied to clipboard.'}
+                tooltip={'Noktayı panoya kopyala'}
+                successMessage={'Nokta JSON panoya kopyalandı.'}
               />
-              <Tooltip title={'Delete point'} placement={'left'}>
+              <Tooltip title={'Noktayı sil'} placement={'left'}>
                 <IconButton
-                  aria-label={'delete point'}
+                  aria-label={'noktayı sil'}
                   onClick={() => {
                     setOpenDeleteDialog(true);
                   }}
@@ -99,12 +99,12 @@ const PointCard = (props) => {
       <ConfirmationDialog
         open={openDeleteDialog}
         onClose={() => setOpenDeleteDialog(false)}
-        title={'Delete point ' + point.id}
-        content={`Are you sure you want to delete point with id ${point.id}?`}
-        warning={`This action cannot be undone.`}
-        actionName={'Delete'}
+        title={'Noktayı sil ' + point.id}
+        content={`${point.id} numaralı noktayı silmek istediğinize emin misiniz?`}
+        warning={`Bu işlem geri alınamaz.`}
+        actionName={'Sil'}
         actionHandler={() => deletePoint()}
-        aria-label="Delete Point Confirmation Dialog"
+        aria-label="Nokta Silme Onay İletişimi"
       />
     </>
   );

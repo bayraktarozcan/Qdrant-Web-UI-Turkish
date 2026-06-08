@@ -54,7 +54,8 @@ export const checkIndexRecall = async (
       logFoo(
         `Point ${pointId} (${
           idx + 1
-        }/${total}) recall@${limit}: ${recall} (search time: "exact" ${exactSearchElapsed}ms; "regular" ${searchElapsed}ms)`
+        }/${total}) recall@${limit}: ${recall}` +
+        ` (search time: "exact" ${exactSearchElapsed}ms; "regular" ${searchElapsed}ms)`
       );
 
     return recall;

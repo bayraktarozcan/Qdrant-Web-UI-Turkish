@@ -28,7 +28,7 @@ const VectorTableRow = ({ vectorObj, name, onCheckIndexQuality, recall, isInProg
     <TableRow data-testid="vector-row">
       <TableCell>
         <Typography variant="subtitle1" component={'span'} color="text.secondary">
-          {name == '' ? 'Default vector' : name}
+          {name == '' ? 'Varsayılan vektör' : name}
         </Typography>
       </TableCell>
       <TableCell>
@@ -51,13 +51,13 @@ const VectorTableRow = ({ vectorObj, name, onCheckIndexQuality, recall, isInProg
             <Button
               variant="contained"
               size="small"
-              aria-label="Check index quality"
+              aria-label="İndeks kalitesini kontrol et"
               data-testid="index-quality-check-button"
               onClick={onCheckIndexQuality}
               disabled={isDisabled}
               startIcon={<SearchCheck size={18} />}
             >
-              Check&nbsp;Index&nbsp;Quality
+              İndeks&nbsp;Kalitesini&nbsp;Kontrol&nbsp;Et
             </Button>
           </Box>
         )}
@@ -121,18 +121,18 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
   `);
 
   const queryRequestSchema = (vectorNames) => ({
-    description: 'Filter request',
+    description: 'Filtre isteği',
     type: 'object',
     properties: {
       limit: {
-        description: 'Page size. Default: 10',
+        description: 'Sayfa boyutu. Varsayılan: 10',
         type: 'integer',
         format: 'uint',
         minimum: 1,
         nullable: true,
       },
       filter: {
-        description: 'Look only for points which satisfies this conditions. If not provided - all points.',
+        description: 'Yalnızca bu koşulları karşılayan noktalara bak. Belirtilmezse tüm noktalar.',
         anyOf: [
           {
             $ref: '#/components/schemas/Filter',
@@ -143,12 +143,12 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
         ],
       },
       using: {
-        description: 'Vector field name',
+        description: 'Vektör alan adı',
         type: 'string',
         enum: vectorNames,
       },
       params: {
-        description: 'Additional search params',
+        description: 'Ek arama parametreleri',
         anyOf: [
           {
             $ref: '#/components/schemas/SearchParams',
@@ -159,7 +159,7 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
         ],
       },
       timeout: {
-        description: 'Timeout for search',
+        description: 'Arama zaman aşımı',
         type: 'integer',
         format: 'uint',
         minimum: 1,
@@ -188,7 +188,7 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
       const total = pointIds.length;
 
       loggingFoo &&
-        loggingFoo(`Starting measuring recall@${limit} on ${total} requests for: ${using || 'Default vector'}`);
+        loggingFoo(`${total} istek için recall@${limit} ölçümü başlıyor: ${using || 'Varsayılan vektör'}`);
 
       for (let idx = 0; idx < total; idx++) {
         const pointId = pointIds[idx];
@@ -241,7 +241,7 @@ const SearchQualityPanel = ({ collectionName, vectors, loggingFoo, clearLogsFoo,
   return (
     <Card elevation={0} data-testid="vectors-info" {...other}>
       <CardHeader
-        title="ANN Recall"
+        title="ANN Geri Çağırma"
         variant="heading"
         sx={{
           flexGrow: 1,

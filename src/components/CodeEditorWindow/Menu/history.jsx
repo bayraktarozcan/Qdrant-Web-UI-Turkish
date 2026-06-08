@@ -34,32 +34,32 @@ function History({ state, code, handleEditorChange, toggleDrawer }) {
   const columns = [
     {
       field: 'method',
-      headerName: 'Method',
+      headerName: 'Yöntem',
       width: 100,
       valueGetter: (r, v) => v.code.method,
     },
     {
       field: 'endpoint',
-      headerName: 'Endpoint',
+      headerName: 'Uç Nokta',
       minWidth: 100,
       valueGetter: (r, v) => v.code.endpoint,
       flex: 1,
     },
     {
       field: 'time',
-      headerName: 'Time',
+      headerName: 'Saat',
       width: 100,
       valueGetter: (r, v) => v.time,
     },
     {
       field: 'date',
-      headerName: 'Date',
+      headerName: 'Tarih',
       width: 100,
       valueGetter: (r, v) => v.date,
     },
     {
       field: 'delete',
-      headerName: 'Delete',
+      headerName: 'Sil',
       width: 100,
       align: 'center',
       headerAlign: 'center',
@@ -98,13 +98,13 @@ function History({ state, code, handleEditorChange, toggleDrawer }) {
           >
             <Stack direction="row" spacing={2}>
               <Typography variant="h5" m={2} gutterBottom>
-                History Mode
+                Geçmiş Modu
               </Typography>
             </Stack>
             {history.length === 0 && (
               <Stack direction="row" spacing={2}>
                 <Typography variant="h6" m={2} gutterBottom>
-                  No history available
+                  Geçmiş bulunamadı
                 </Typography>
               </Stack>
             )}
@@ -174,10 +174,10 @@ function History({ state, code, handleEditorChange, toggleDrawer }) {
                   toggleDrawer();
                 }}
               >
-                Apply Code
+                Kodu Uygula
               </Button>
               <Button key={'close'} variant="outlined" color="error" onClick={toggleDrawer}>
-                Close
+                Kapat
               </Button>
             </Stack>
           </Box>

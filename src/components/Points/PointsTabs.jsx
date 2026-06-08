@@ -186,7 +186,7 @@ const PointsTabs = ({ collectionName, client }) => {
   const isLoading = !points && !errorMessage && requestCount > 0;
 
   return (
-    <Grid container spacing={3} role="list" aria-label="Collection Points">
+    <Grid container spacing={3} role="list"   aria-label="Koleksiyon Noktaları">
       {/* Always render PointsFilter so users can clear or change filters after an error */}
       <Grid size={12}>
         <PointsFilter
@@ -208,7 +208,7 @@ const PointsTabs = ({ collectionName, client }) => {
             action={
               filters.length > 0 ? (
                 <Button variant="outlined" size="small" color="inherit" onClick={handleClearFilters}>
-                  Clear Filters
+                  Filtreleri Temizle
                 </Button>
               ) : undefined
             }
@@ -227,8 +227,8 @@ const PointsTabs = ({ collectionName, client }) => {
         </>
       )}
       {points && !errorMessage && requestCount === 0 && points.points?.length === 0 && (
-        <Grid textAlign={'center'} size={12} role="alert" aria-label="No Points">
-          <Typography>📪 No Points are present, {collectionName} is empty</Typography>
+        <Grid textAlign={'center'} size={12} role="alert"           aria-label="Nokta Yok">
+          <Typography>📪 Nokta bulunamadı, {collectionName} boş</Typography>
         </Grid>
       )}
       {points && !errorMessage && points.points?.length > 0 && (
@@ -255,7 +255,7 @@ const PointsTabs = ({ collectionName, client }) => {
               setOffset(nextPageOffset);
             }}
           >
-            Load More
+            Daha Fazla Yükle
           </Button>
         </Grid>
       )}

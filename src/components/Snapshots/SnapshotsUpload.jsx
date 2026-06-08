@@ -35,8 +35,8 @@ export const SnapshotsUpload = ({ onComplete, sx }) => {
       <Tooltip
         title={
           isRestricted
-            ? 'Access Denied: You do not have permission to upload snapshot. ' + 'Please contact your administrator.'
-            : 'Upload snapshot'
+            ? 'Erişim Reddedildi: Anlık görüntü yükleme izniniz yok. ' + 'Lütfen yöneticinize başvurun.'
+            : 'Anlık görüntü yükle'
         }
         placement="left"
       >
@@ -47,7 +47,7 @@ export const SnapshotsUpload = ({ onComplete, sx }) => {
             startIcon={<UploadFile fontSize={'small'} />}
             disabled={isRestricted}
           >
-            Upload snapshot
+            Anlık görüntü yükle
           </Button>
         </span>
       </Tooltip>
@@ -58,10 +58,10 @@ export const SnapshotsUpload = ({ onComplete, sx }) => {
         maxWidth={'sm'}
         open={open}
         onClose={() => setOpen(false)}
-        aria-labelledby="Snapshot upload dialog"
-        aria-describedby="Snapshot upload dialog"
+        aria-labelledby="Anlık görüntü yükleme diyaloğu"
+        aria-describedby="Anlık görüntü yükleme diyaloğu"
       >
-        <DialogTitle>Upload a Snapshot</DialogTitle>
+        <DialogTitle>Anlık Görüntü Yükle</DialogTitle>
         <DialogContent>
           <SnapshotUploadForm onSubmit={handleUpload} onComplete={onComplete} />
         </DialogContent>

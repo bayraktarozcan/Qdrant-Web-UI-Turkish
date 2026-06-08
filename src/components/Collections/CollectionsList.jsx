@@ -28,7 +28,7 @@ const CollectionTableRow = ({ collection, getCollectionsCall, refreshCollection,
           {collection.name}
         </Typography>
         <Typography component={'p'} variant="caption" color="text.secondary">
-          {collection.aliases && collection.aliases.length > 0 && `Aliases: ${collection.aliases.join(', ')}`}
+          {collection.aliases && collection.aliases.length > 0 && `Takma Adlar: ${collection.aliases.join(', ')}`}
         </Typography>
       </TableCell>
       <TableCell>
@@ -51,19 +51,19 @@ const CollectionTableRow = ({ collection, getCollectionsCall, refreshCollection,
       <TableCell align="right">
         <ActionsMenu>
           <MenuItem component={Link} to={`/collections/${encodeURIComponent(collection.name)}#snapshots`}>
-            Snapshots
+            Anlık Görüntüler
           </MenuItem>
           <MenuItem component={Link} to={`/collections/${encodeURIComponent(collection.name)}/visualize`}>
-            Visualize
+              Görselleştir
           </MenuItem>
           <MenuItem component={Link} to={`/collections/${encodeURIComponent(collection.name)}/graph`}>
-            Graph
+            Grafik
           </MenuItem>
           <MenuItem onClick={() => refreshCollection(collection.name)} disabled={isRefreshing}>
-            Refresh
+            Yenile
           </MenuItem>
           <MenuItem onClick={() => setOpenDeleteDialog(true)} sx={{ color: theme.palette.error.main }}>
-            Delete
+            Sil
           </MenuItem>
         </ActionsMenu>
         <DeleteDialog
@@ -90,16 +90,16 @@ const CollectionsList = ({ collections, getCollectionsCall, refreshCollection, i
       <Table aria-label="simple table">
         <StyledTableHead>
           <TableRow>
-            <StyledHeaderCell width="25%">Name</StyledHeaderCell>
-            <StyledHeaderCell width="12%">Status</StyledHeaderCell>
-            <StyledHeaderCell align="center">Points (Approx)</StyledHeaderCell>
-            <StyledHeaderCell align="center">Segments</StyledHeaderCell>
-            <StyledHeaderCell align="center">Shards</StyledHeaderCell>
+            <StyledHeaderCell width="25%">Ad</StyledHeaderCell>
+            <StyledHeaderCell width="12%">Durum</StyledHeaderCell>
+            <StyledHeaderCell align="center">Nokta (Yaklaşık)</StyledHeaderCell>
+            <StyledHeaderCell align="center">Parçalar</StyledHeaderCell>
+            <StyledHeaderCell align="center">Parçacıklar</StyledHeaderCell>
             <StyledHeaderCell width="20%" align="center">
-              Vectors Config
+              Vektör Yapılandırması
             </StyledHeaderCell>
             <StyledHeaderCell width="7%" align="right">
-              Actions
+              İşlemler
             </StyledHeaderCell>
           </TableRow>
         </StyledTableHead>
